@@ -35,8 +35,9 @@
 
     /* ── layout ── */
     .layout {
-      display: grid;
-      grid-template-columns: var(--sidebar-w) 1fr var(--toc-w);
+      display: block;
+      max-width: 960px;
+      margin: 0 auto;
       min-height: 100vh;
     }
 
@@ -774,50 +775,6 @@
 
 <div class="layout">
 
-  <aside class="sidebar">
-    <div class="sidebar-logo" id="sidebar-logo">NVIDIA IA</div>
-    <div class="sidebar-title">信息架构参考</div>
-    <div class="sidebar-panel" id="sidebar-nvidia">
-    <nav>
-      <div class="nav-group">模块一 · 导航</div>
-      <a href="#nv-module-nav">导航总览</a>
-      <a href="#nv-main-nav">交互架构图</a>
-      <div class="nav-group">模块二 · 主站与子站</div>
-      <a href="#nv-module-sites">关系总览</a>
-      <a href="#nv-overview">两层 IA 对比</a>
-      <a href="#nv-site-layer">子站层 IA</a>
-      <a href="#nv-outbound">主站 → 子域出站</a>
-      <div class="nav-group">模块三 · 页脚</div>
-      <a href="#nv-module-footer">页脚总览</a>
-      <a href="#nv-footer-ia">页脚 IA 结构</a>
-    </nav>
-    </div>
-    <div class="sidebar-panel" id="sidebar-hiascend" hidden>
-    <nav>
-      <div class="nav-group">模块一 · 导航</div>
-      <a href="#hs-module-nav">导航总览</a>
-      <a href="#hs-main-nav">交互架构图</a>
-      <div class="nav-group">模块二 · 主站与子站</div>
-      <a href="#hs-module-sites">关系总览</a>
-      <a href="#hs-overview">两层 IA 对比</a>
-      <a href="#hs-site-layer">站点层 IA</a>
-      <a href="#hs-outbound">主站 → 关联域出站</a>
-      <div class="nav-group">模块三 · 页脚</div>
-      <a href="#hs-module-footer">页脚总览</a>
-      <a href="#hs-footer-ia">页脚 IA 结构</a>
-    </nav>
-    </div>
-    <div class="sidebar-panel" id="sidebar-compare" hidden>
-    <nav>
-      <div class="nav-group">IA 罗列（上）</div>
-      <a href="#cmp-overview">顶部导航结构</a>
-      <a href="#cmp-ux">用户体验场景</a>
-      <div class="nav-group">差异分析（下）</div>
-      <a href="#cmp-pros-cons">差异分析观点</a>
-      <a href="#cmp-recommendations">改进建议</a>
-    </nav>
-    </div>
-  </aside>
 
   <main>
     <div class="site-tabs" role="tablist">
@@ -1840,43 +1797,6 @@
     </div>
   </main>
 
-  <aside class="toc" id="toc">
-    <div class="toc-panel" id="toc-nvidia">
-<div class="toc-title">目录</div>
-    <div class="toc-title" style="margin-top:12px">模块一 · 导航</div>
-    <a href="#nv-module-nav">导航总览</a>
-    <a href="#nv-main-nav" class="toc-l2">交互架构图</a>
-    <div class="toc-title" style="margin-top:12px">模块二 · 主站与子站</div>
-    <a href="#nv-module-sites">关系总览</a>
-    <a href="#nv-overview" class="toc-l2">两层 IA 对比</a>
-    <a href="#nv-site-layer" class="toc-l2">子站层 IA</a>
-    <a href="#nv-outbound" class="toc-l2">主站 → 子域出站</a>
-    <div class="toc-title" style="margin-top:12px">模块三 · 页脚</div>
-    <a href="#nv-module-footer">页脚总览</a>
-    <a href="#nv-footer-ia" class="toc-l2">页脚 IA 结构</a>
-    </div>
-    <div class="toc-panel" id="toc-hiascend" hidden>
-<div class="toc-title">目录</div>
-    <div class="toc-title" style="margin-top:12px">模块一 · 导航</div>
-    <a href="#hs-module-nav">导航总览</a>
-    <a href="#hs-main-nav" class="toc-l2">交互架构图</a>
-    <div class="toc-title" style="margin-top:12px">模块二 · 主站与子站</div>
-    <a href="#hs-module-sites">关系总览</a>
-    <a href="#hs-overview" class="toc-l2">两层 IA 对比</a>
-    <a href="#hs-site-layer" class="toc-l2">站点层 IA</a>
-    <a href="#hs-outbound" class="toc-l2">主站 → 关联域出站</a>
-    <div class="toc-title" style="margin-top:12px">模块三 · 页脚</div>
-    <a href="#hs-module-footer">页脚总览</a>
-    <a href="#hs-footer-ia" class="toc-l2">页脚 IA 结构</a>
-    </div>
-    <div class="toc-panel" id="toc-compare" hidden>
-<div class="toc-title">目录</div>
-    <a href="#cmp-overview">顶部导航 IA 罗列</a>
-    <a href="#cmp-ux" class="toc-l2">用户体验场景</a>
-    <a href="#cmp-pros-cons">差异分析</a>
-    <a href="#cmp-recommendations" class="toc-l2">改进建议</a>
-    </div>
-  </aside>
 
 </div>
 
