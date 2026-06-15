@@ -1837,14 +1837,6 @@
     document.getElementById('site-nvidia').hidden = site !== 'nvidia';
     document.getElementById('site-hiascend').hidden = site !== 'hiascend';
     document.getElementById('site-compare').hidden = site !== 'compare';
-    document.getElementById('sidebar-nvidia').hidden = site !== 'nvidia';
-    document.getElementById('sidebar-hiascend').hidden = site !== 'hiascend';
-    document.getElementById('sidebar-compare').hidden = site !== 'compare';
-    document.getElementById('toc-nvidia').hidden = site !== 'nvidia';
-    document.getElementById('toc-hiascend').hidden = site !== 'hiascend';
-    document.getElementById('toc-compare').hidden = site !== 'compare';
-    document.getElementById('sidebar-logo').textContent =
-      site === 'nvidia' ? 'NVIDIA IA' : site === 'hiascend' ? '昇腾 IA' : 'IA 对比';
     document.getElementById('page-footer').textContent =
       site === 'nvidia' ? 'NVIDIA 信息架构参考 · 架构工作区 · 2026-06-15'
       : site === 'hiascend' ? '昇腾社区信息架构参考 · 架构工作区 · 2026-06-15'
@@ -1872,40 +1864,7 @@
   if (location.hash === '#hiascend') switchSite('hiascend');
   else if (location.hash === '#compare') switchSite('compare');
 
-  function onScroll() {
-    var tocPanel = document.getElementById(panelId('toc'));
-    var tocLinks = tocPanel.querySelectorAll('a[href^="#"]');
-    var sections = Array.from(tocLinks).map(function (a) {
-      return document.querySelector(a.getAttribute('href'));
-    }).filter(Boolean);
-    if (!sections.length) return;
-    var scrollY = window.scrollY + 100;
-    var current = sections[0];
-    sections.forEach(function (sec) {
-      if (sec.offsetTop <= scrollY) current = sec;
-    });
-    tocLinks.forEach(function (a) {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current.id);
-    });
-    tocPanel.querySelectorAll('.sidebar-panel a, .sidebar a').forEach(function(){});
-  }
-
-  // sync sidebar active state
-  window.addEventListener('scroll', function () {
-    var sidebarPanel = document.getElementById(panelId('sidebar'));
-    var tocPanel = document.getElementById(panelId('toc'));
-    var links = sidebarPanel.querySelectorAll('nav a[href^="#"]');
-    var tocLinks = tocPanel.querySelectorAll('a[href^="#"]');
-    var allLinks = Array.from(links).concat(Array.from(tocLinks));
-    var sections = allLinks.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
-    if (!sections.length) return;
-    var scrollY = window.scrollY + 100;
-    var current = sections[0];
-    sections.forEach(function (sec) { if (sec.offsetTop <= scrollY) current = sec; });
-    allLinks.forEach(function (a) {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current.id);
-    });
-  }, { passive: true });
+  function onScroll() {}
 })();
 </script>
 </body>
