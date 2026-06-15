@@ -777,12 +777,12 @@
 
   <main>
     <div class="site-tabs" role="tablist">
-      <button type="button" class="site-tab" data-site="compare" role="tab" aria-selected="false">对比分析</button>
+      <button type="button" class="site-tab active-cmp" data-site="compare" role="tab" aria-selected="true">对比分析</button>
       <button type="button" class="site-tab" data-site="hiascend" role="tab" aria-selected="false">昇腾社区</button>
-      <button type="button" class="site-tab active-nv" data-site="nvidia" role="tab" aria-selected="true">NVIDIA</button>
+      <button type="button" class="site-tab" data-site="nvidia" role="tab" aria-selected="false">NVIDIA</button>
     </div>
 
-    <div class="site-panel" id="site-nvidia">
+    <div class="site-panel" id="site-nvidia" hidden>
 <div class="eyebrow">nvidia.com/en-us · 信息架构</div>
     <h1>NVIDIA 信息架构图</h1>
 
@@ -1528,7 +1528,7 @@
     </div>
     </div>
 
-    <div class="site-panel" id="site-compare" hidden>
+    <div class="site-panel" id="site-compare">
 <div class="eyebrow">NVIDIA × 昇腾 · 对比分析</div>
     <h1>两家网站信息架构对比</h1>
 
@@ -1803,7 +1803,7 @@
 
 <script>
 (function () {
-  var currentSite = 'nvidia';
+  var currentSite = 'compare';
 
   function getActivePanel() {
     if (currentSite === 'compare') return document.getElementById('site-compare');
@@ -1861,8 +1861,9 @@
     btn.addEventListener('click', function () { switchSite(btn.dataset.site); });
   });
 
-  if (location.hash === '#hiascend') switchSite('hiascend');
-  else if (location.hash === '#compare') switchSite('compare');
+  if (location.hash === '#nvidia') switchSite('nvidia');
+  else if (location.hash === '#hiascend') switchSite('hiascend');
+  else switchSite('compare');
 
   function onScroll() {}
 })();
