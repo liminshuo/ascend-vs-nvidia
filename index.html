@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>信息架构图 · NVIDIA & 昇腾</title>
+  <style>
+
+    :root {
+      --nv-green: #76b900;
+      --nv-green-dim: rgba(118, 185, 0, 0.12);
+      --bg: #f7f7f8;
+      --surface: #fff;
+      --border: #e4e4e7;
+      --text: #1a1a1a;
+      --muted: #666;
+      --products: #7c3aed;
+      --solutions: #059669;
+      --industries: #d97706;
+      --utility: #64748b;
+      --subdomain: #2563eb;
+      --sidebar-w: 220px;
+      --toc-w: 200px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* ── layout ── */
+    .layout {
+      display: grid;
+      grid-template-columns: var(--sidebar-w) 1fr var(--toc-w);
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      background: #111;
+      color: #ccc;
+      padding: 24px 16px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .sidebar-logo {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--nv-green);
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+
+    .sidebar-title {
+      font-size: 14px;
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .sidebar nav a {
+      display: block;
+      color: #aaa;
+      text-decoration: none;
+      font-size: 13px;
+      padding: 6px 8px;
+      border-radius: 4px;
+      margin-bottom: 2px;
+    }
+
+    .sidebar nav a:hover,
+    .sidebar nav a.active {
+      background: rgba(118, 185, 0, 0.15);
+      color: var(--nv-green);
+    }
+
+    .sidebar nav .nav-group {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #555;
+      margin: 16px 8px 6px;
+    }
+
+    main {
+      padding: 32px 40px 80px;
+      max-width: 960px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 32px 16px;
+      border-left: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .toc-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .toc a {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 4px 0;
+      border-left: 2px solid transparent;
+      padding-left: 8px;
+      line-height: 1.4;
+    }
+
+    .toc a:hover { color: var(--nv-green); }
+    .toc a.active {
+      color: var(--nv-green);
+      border-left-color: var(--nv-green);
+      font-weight: 600;
+    }
+
+    .toc .toc-l2 { padding-left: 18px; font-size: 11px; }
+
+    /* ── typography ── */
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 32px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    h2:first-child { margin-top: 0; }
+
+    /* ── modules ── */
+    .module {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 48px;
+    }
+
+    .module-header {
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .module-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--nv-green);
+      margin-bottom: 6px;
+    }
+
+    .module-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .module-desc {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .module-nav { border-top: 4px solid var(--products); }
+    .module-sites { border-top: 4px solid var(--subdomain); }
+    .module-footer { border-top: 4px solid #111; }
+
+    /* ── footer IA ── */
+    .footer-preview {
+      background: #000;
+      border-radius: 8px;
+      padding: 28px 32px;
+      margin: 16px 0;
+    }
+
+    .footer-cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .footer-col h4 {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #333;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      font-size: 13px;
+      padding: 5px 0;
+      color: var(--nv-green);
+    }
+
+    .footer-col li .outbound {
+      display: block;
+      font-size: 10px;
+      color: #666;
+      font-family: "SF Mono", "Fira Code", monospace;
+      margin-top: 1px;
+    }
+
+    @media (max-width: 1100px) {
+      .footer-cols { grid-template-columns: 1fr; gap: 24px; }
+    }
+    h3 { font-size: 16px; font-weight: 600; margin: 24px 0 10px; }
+    p { margin-bottom: 12px; color: #333; }
+    .lead { font-size: 16px; color: var(--muted); margin-bottom: 24px; }
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--nv-green);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    /* ── cards & badges ── */
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-right: 4px;
+    }
+    .badge-products { background: #ede9fe; color: var(--products); }
+    .badge-solutions { background: #d1fae5; color: var(--solutions); }
+    .badge-industries { background: #fef3c7; color: var(--industries); }
+    .badge-utility { background: #f1f5f9; color: var(--utility); }
+    .badge-subdomain { background: #dbeafe; color: var(--subdomain); }
+
+    .info-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+
+    .info-box.highlight {
+      border-left: 4px solid var(--nv-green);
+      background: var(--nv-green-dim);
+    }
+
+    /* ── IA tree ── */
+    .ia-root {
+      background: var(--surface);
+      border: 2px solid var(--text);
+      border-radius: 10px;
+      padding: 16px 24px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    .ia-l0-row {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .ia-l0 {
+      border-radius: 8px;
+      padding: 12px 8px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      border: 2px solid transparent;
+    }
+
+    .ia-l0:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .ia-l0.active { border-color: currentColor; box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+
+    .ia-l0.products { background: #ede9fe; color: var(--products); }
+    .ia-l0.solutions { background: #d1fae5; color: var(--solutions); }
+    .ia-l0.industries { background: #fef3c7; color: var(--industries); }
+    .ia-l0.utility { background: #f1f5f9; color: var(--utility); }
+
+    .ia-l0 .l0-count {
+      display: block;
+      font-size: 10px;
+      font-weight: 400;
+      opacity: 0.75;
+      margin-top: 4px;
+    }
+
+    .ia-panel {
+      display: none;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 24px;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .ia-panel.visible { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .panel-header h3 { margin: 0; font-size: 18px; }
+
+    .panel-meta {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .l1-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+    }
+
+    .l1-item {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 13px;
+      position: relative;
+    }
+
+    .l1-item .arrow {
+      color: var(--nv-green);
+      font-size: 11px;
+      float: right;
+    }
+
+    /* Industries 4-col */
+    .industries-cols {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .ind-col {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .ind-col-header {
+      background: #fef3c7;
+      color: var(--industries);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 8px 12px;
+      letter-spacing: 0.04em;
+    }
+
+    .ind-col ul {
+      list-style: none;
+      padding: 8px 0;
+    }
+
+    .ind-col li {
+      padding: 6px 12px;
+      font-size: 12px;
+      border-bottom: 1px solid #f4f4f5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ind-col li:last-child { border-bottom: none; }
+    .ind-col li .arrow { color: var(--nv-green); font-size: 10px; }
+
+    /* hiascend mega menu (L1 分组 + L2 项) */
+    .mega-cols { display: grid; gap: 16px; }
+    .mega-cols.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .mega-cols.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .mega-cols.cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .mega-col {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 12px;
+      background: #fafafa;
+    }
+    .mega-group { margin-bottom: 18px; }
+    .mega-group:last-child { margin-bottom: 0; }
+    .mega-l1 {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .mega-l2-list { list-style: none; }
+    .mega-l2-list li {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 0;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      line-height: 1.35;
+    }
+    .mega-l2-list li:last-child { border-bottom: none; }
+    .mega-l2-list li .arrow { color: var(--nv-green); font-size: 10px; flex-shrink: 0; }
+    @media (max-width: 900px) {
+      .mega-cols.cols-4, .mega-cols.cols-3, .mega-cols.cols-2 { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .mega-cols.cols-4, .mega-cols.cols-3, .mega-cols.cols-2 { grid-template-columns: 1fr; }
+    }
+
+    /* 3-axis diagram */
+    .axis-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .axis-card {
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .axis-card.products { background: #ede9fe; }
+    .axis-card.solutions { background: #d1fae5; }
+    .axis-card.industries { background: #fef3c7; }
+
+    .axis-card .axis-q {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .axis-card .axis-label {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .axis-card .axis-desc {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* subdomain map */
+    .subdomain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .subdomain-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      border-top: 3px solid var(--subdomain);
+    }
+
+    .subdomain-card h4 {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .subdomain-card .domain {
+      font-family: "SF Mono", "Fira Code", monospace;
+      font-size: 12px;
+      color: var(--subdomain);
+      margin-bottom: 8px;
+    }
+
+    .subdomain-card p {
+      font-size: 12px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .subdomain-card .audience {
+      font-size: 11px;
+      margin-top: 8px;
+      color: #888;
+    }
+
+    /* tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin: 12px 0;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    th { background: #f4f4f5; font-weight: 600; }
+
+    code {
+      font-family: "SF Mono", "Fira Code", monospace;
+      font-size: 12px;
+      background: #f4f4f5;
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+
+    .ref-img {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 12px 0;
+    }
+
+    .layer-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .layer-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .layer-card h4 { font-size: 14px; margin-bottom: 8px; }
+    .layer-card p { font-size: 13px; margin: 0; color: var(--muted); }
+
+    footer {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    @media (max-width: 1100px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar, .toc { display: none; }
+      main { padding: 24px 20px; }
+      .ia-l0-row { grid-template-columns: repeat(3, 1fr); }
+      .industries-cols { grid-template-columns: repeat(2, 1fr); }
+      .axis-grid { grid-template-columns: 1fr; }
+    }
+  
+
+    /* ── site tabs ── */
+    .site-tabs {
+      display: none;
+      gap: 0; margin-bottom: 28px;
+      border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+      background: var(--surface);
+    }
+    .site-tab {
+      flex: 1; padding: 14px 20px; text-align: center; font-size: 15px;
+      font-weight: 600; cursor: pointer; border: none; background: transparent;
+      color: var(--muted); transition: background 0.15s, color 0.15s;
+      border-bottom: 3px solid transparent;
+    }
+    .site-tab:hover { background: #f4f4f5; }
+    .site-tab.active-nv { color: var(--nv-green); border-bottom-color: var(--nv-green); background: var(--nv-green-dim); }
+    .site-tab.active-hs { color: #c7000b; border-bottom-color: #c7000b; background: rgba(199,0,11,0.08); }
+    .site-tab.active-cmp { color: #4338ca; border-bottom-color: #4338ca; background: rgba(67,56,202,0.08); }
+    .site-panel[hidden] { display: none !important; }
+    .sidebar-panel[hidden], .toc-panel[hidden] { display: none !important; }
+
+    /* hiascend-specific */
+    body.site-hiascend { --brand-accent: #c7000b; --brand-dim: rgba(199,0,11,0.1); }
+    body.site-nvidia { --brand-accent: var(--nv-green); --brand-dim: var(--nv-green-dim); }
+    body.site-compare { --brand-accent: #4338ca; --brand-dim: rgba(67,56,202,0.1); }
+    body.site-hiascend .sidebar-logo { color: #c7000b; }
+    body.site-hiascend .sidebar nav a:hover,
+    body.site-hiascend .sidebar nav a.active { background: rgba(199,0,11,0.15); color: #ff6b6b; }
+    body.site-hiascend .toc a:hover,
+    body.site-hiascend .toc a.active { color: #c7000b; border-left-color: #c7000b; }
+    body.site-hiascend .module-num { color: #c7000b; }
+    body.site-hiascend .eyebrow { color: #c7000b; }
+    body.site-hiascend .info-box.highlight { border-left-color: #c7000b; background: rgba(199,0,11,0.08); }
+    body.site-hiascend .l1-item .arrow,
+    body.site-hiascend .ind-col li .arrow { color: #c7000b; }
+    body.site-hiascend .mega-l2-list li .arrow { color: #c7000b; }
+    body.site-hiascend .ia-l0.dev { background: #dbeafe; color: #2563eb; }
+    body.site-hiascend .ia-l0.product { background: #ede9fe; color: #7c3aed; }
+    body.site-hiascend .ia-l0.community { background: #d1fae5; color: #059669; }
+    body.site-hiascend .ia-l0.doc { background: #fef3c7; color: #d97706; }
+    body.site-hiascend .badge-dev { background: #dbeafe; color: #2563eb; }
+    body.site-hiascend .badge-product { background: #ede9fe; color: #7c3aed; }
+    body.site-hiascend .badge-community { background: #d1fae5; color: #059669; }
+    body.site-hiascend .badge-sites { background: #fef3c7; color: #d97706; }
+    body.site-hiascend .ia-l0-row.row2 { grid-template-columns: repeat(4, 1fr); }
+    body.site-hiascend .ia-l0-row.row3 { grid-template-columns: repeat(3, 1fr); }
+    body.site-hiascend .ia-l0 .l0-path { display: block; font-size: 9px; font-weight: 400; opacity: 0.7; margin-top: 3px; font-family: monospace; }
+    body.site-hiascend .footer-cols { grid-template-columns: repeat(5, 1fr); }
+    @media (max-width: 1100px) {
+      body.site-hiascend .footer-cols { grid-template-columns: repeat(2, 1fr); }
+      body.site-hiascend .ia-l0-row.row2 { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* compare tab */
+    body.site-compare .sidebar-logo { color: #818cf8; }
+    body.site-compare .sidebar nav a:hover,
+    body.site-compare .sidebar nav a.active { background: rgba(67,56,202,0.2); color: #a5b4fc; }
+    body.site-compare .toc a:hover,
+    body.site-compare .toc a.active { color: #4338ca; border-left-color: #4338ca; }
+    body.site-compare .module-num { color: #4338ca; }
+    body.site-compare .eyebrow { color: #4338ca; }
+    body.site-compare .info-box.highlight { border-left-color: #4338ca; background: rgba(67,56,202,0.08); }
+    .cmp-tag-nv { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; background: var(--nv-green-dim); color: var(--nv-green); }
+    .cmp-tag-hs { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; background: rgba(199,0,11,0.1); color: #c7000b; }
+    .cmp-matrix td:first-child { font-weight: 500; white-space: nowrap; }
+    .cmp-insight { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+    @media (max-width: 900px) { .cmp-insight { grid-template-columns: 1fr; } }
+    .cmp-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+    .cmp-card h4 { font-size: 14px; margin-bottom: 8px; }
+    .cmp-card.nv { border-top: 3px solid var(--nv-green); }
+    .cmp-card.hs { border-top: 3px solid #c7000b; }
+    /* ---- Ascend 顶栏模拟 ---- */
+    .hs-navbar-mock { display:flex; align-items:center; justify-content:space-between; background:#fff; border:1px solid #e5e7eb; border-radius:8px; padding:10px 16px; margin-bottom:4px; font-size:13px; box-shadow:0 1px 4px rgba(0,0,0,.06); }
+    .hs-navbar-left, .hs-navbar-right { display:flex; align-items:center; gap:14px; }
+    .hs-brand { font-weight:700; color:#cc3300; letter-spacing:.5px; margin-right:8px; }
+    .hs-l0-mock { color:#374151; cursor:default; padding:2px 4px; border-radius:4px; }
+    .hs-l0-mock.active { color:#cc3300; font-weight:600; border-bottom:2px solid #cc3300; }
+    .hs-tool { color:#374151; cursor:default; white-space:nowrap; }
+    .hs-tool.active-tool { color:#cc3300; font-weight:600; }
+    .icon-tool { font-size:14px; }
+    .hs-tool-dropdown { position:relative; display:inline-block; }
+    .hs-tool-dropdown:hover .hs-dropdown-menu, .hs-tool-dropdown .hs-dropdown-menu { display:block; }
+    .hs-dropdown-menu { position:absolute; right:0; top:100%; background:#fff; border:1px solid #e5e7eb; border-radius:6px; box-shadow:0 4px 12px rgba(0,0,0,.1); padding:6px 0; min-width:130px; z-index:10; }
+    .hs-dropdown-menu a { display:block; padding:7px 16px; color:#374151; font-size:12px; white-space:nowrap; cursor:default; }
+    .hs-dropdown-menu a:hover { background:#f9fafb; }
+    /* ---- end navbar mock ---- */
+    /* ---- cmp split layout ---- */
+    .cmp-split { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0 24px; }
+    @media (max-width:760px) { .cmp-split { grid-template-columns:1fr; } }
+    .cmp-side { background:#fff; border:1px solid #e5e7eb; border-radius:8px; padding:16px 18px; }
+    .hs-side { border-left:3px solid #cc3300; }
+    .nv-side { border-left:3px solid #76b900; }
+    .cmp-side-header { display:flex; align-items:center; gap:8px; font-size:14px; font-weight:700; margin-bottom:12px; color:#111; }
+    .cmp-dot { width:10px; height:10px; border-radius:50%; display:inline-block; flex-shrink:0; }
+    .hs-dot { background:#cc3300; }
+    .nv-dot { background:#76b900; }
+    .cmp-fact-list { list-style:none; font-size:13px; line-height:1.6; margin:0; padding:0; }
+    .cmp-fact-list li { display:flex; gap:8px; padding:6px 0; border-bottom:1px solid #f3f4f6; }
+    .cmp-fact-list li:last-child { border-bottom:none; }
+    .cmp-dim { flex-shrink:0; min-width:78px; font-weight:600; color:#6b7280; font-size:11px; padding-top:2px; }
+    /* ---- diff list ---- */
+    .cmp-diff-list { list-style:none; padding:0; margin:16px 0; }
+    .cmp-diff-list > li { padding:12px 16px; margin-bottom:10px; background:#f8fafc; border-left:4px solid #4338ca; border-radius:0 6px 6px 0; font-size:13.5px; line-height:1.65; }
+    .cmp-diff-list > li strong { display:block; color:#1e1b4b; margin-bottom:6px; }
+    .cmp-sub-list { list-style:none; padding:0; margin:6px 0 0 0; display:flex; flex-direction:column; gap:5px; }
+    .cmp-sub-list li { padding:3px 0; font-size:13px; line-height:1.6; }
+    .cmp-sub-list li::before { content: '· '; color:#94a3b8; }
+    /* arch compare cards */
+    .arch-compare { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:10px; }
+    @media (max-width:720px) { .arch-compare { grid-template-columns:1fr; } }
+    .arch-card { border-radius:6px; padding:12px 14px; font-size:12.5px; }
+    .arch-hs { background:#fff5f5; border:1px solid #fca5a5; }
+    .arch-nv { background:#f0fdf4; border:1px solid #86efac; }
+    .arch-title { font-weight:700; font-size:12.5px; margin-bottom:2px; }
+    .arch-hs .arch-title { color:#991b1b; }
+    .arch-nv .arch-title { color:#166534; }
+    .arch-sub { font-size:11px; color:#6b7280; margin-bottom:8px; font-family:monospace; }
+    .arch-list { list-style:none; padding:0; margin:0; }
+    .arch-list li { padding:4px 0 4px 18px; position:relative; line-height:1.5; border-bottom:1px solid rgba(0,0,0,.04); }
+    .arch-list li:last-child { border-bottom:none; }
+    .arch-list li.good::before { content:"＋"; position:absolute; left:0; color:#16a34a; font-weight:700; }
+    .arch-list li.bad::before { content:"－"; position:absolute; left:0; color:#dc2626; font-weight:700; }
+    /* end arch compare */
+    .diff-dim-row { display:flex; align-items:center; gap:8px; margin-bottom:6px; }
+    .diff-dim-label { font-size:11px; font-weight:700; color:#6b7280; background:#e5e7eb; padding:2px 8px; border-radius:8px; }
+    .diff-verdict { font-size:11px; font-weight:700; padding:2px 10px; border-radius:8px; }
+    .verdict-nv { background:#dcfce7; color:#166534; }
+    .verdict-hs { background:#fee2e2; color:#991b1b; }
+    .verdict-tie { background:#fef9c3; color:#854d0e; }
+    /* ---- rec grid ---- */
+    .cmp-rec-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0; }
+    @media (max-width:760px) { .cmp-rec-grid { grid-template-columns:1fr; } }
+    .cmp-rec-block { background:#fff; border:1px solid #e5e7eb; border-radius:8px; padding:16px 18px; }
+    .hs-rec { border-top:3px solid #cc3300; }
+    .nv-rec { border-top:3px solid #76b900; }
+    .cmp-rec-label { font-size:13px; font-weight:700; margin-bottom:12px; }
+    /* ---- ia tree ---- */
+    .cmp-tree-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0 24px; }
+    @media (max-width:760px) { .cmp-tree-row { grid-template-columns:1fr; } }
+    .cmp-tree-col { background:#fff; border:1px solid #e5e7eb; border-radius:8px; padding:16px 18px; }
+    .hs-tree-col { border-left:3px solid #cc3300; }
+    .nv-tree-col { border-left:3px solid #76b900; }
+    .cmp-tree-header { display:flex; align-items:center; gap:6px; font-size:13px; font-weight:700; margin-bottom:12px; }
+    .ia-tree { font-size:12.5px; line-height:1.65; }
+    .tr-section-label { font-size:10.5px; font-weight:700; color:#9ca3af; letter-spacing:.06em; text-transform:uppercase; margin:8px 0 4px; }
+    .tr-l0 { display:flex; align-items:baseline; gap:5px; padding:3px 0; flex-wrap:wrap; }
+    .tr-l1 { display:flex; align-items:baseline; gap:4px; padding:1px 0; flex-wrap:wrap; }
+    .tr-c { color:#d1d5db; font-family:monospace; flex-shrink:0; font-size:11px; }
+    .tr-name { font-weight:600; color:#111827; }
+    .tr-product { color:#b45309; }
+    .tr-solutions { color:#7c3aed; }
+    .tr-dev { color:#0369a1; }
+    .tr-doc { color:#065f46; }
+    .tr-path { color:#9ca3af; font-size:11px; }
+    .tr-ext { color:#6b7280; font-size:11px; }
+    .tr-note { color:#6b7280; font-size:11px; background:#f3f4f6; padding:1px 5px; border-radius:8px; }
+    .tr-badge { font-size:10px; background:#dbeafe; color:#1d4ed8; padding:1px 6px; border-radius:8px; }
+    /* ---- end ia tree ---- */
+    /* ---- end cmp ---- */
+    .hs-toolbar-label { font-size:11px; font-weight:600; color:var(--muted); letter-spacing:.08em; text-transform:uppercase; margin:14px 0 6px; padding-left:4px; border-left:3px solid #e5e7eb; }
+    .hs-toolbar-row { grid-template-columns: repeat(3, 1fr) !important; }
+    .hs-toolbar-row .ia-l0 { opacity:.85; border-style:dashed; }
+    .hs-toolbar-row .ia-l0.active { opacity:1; border-style:solid; }
+    .cmp-ux-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 16px 0; }
+    @media (max-width: 760px) { .cmp-ux-grid { grid-template-columns: 1fr; } }
+    .cmp-persona { background: #fafafa; border: 1px solid var(--border); border-radius: 8px; padding: 14px; font-size: 13px; }
+    .cmp-persona h4 { font-size: 13px; margin-bottom: 8px; }
+    .cmp-persona .who { color: var(--muted); font-size: 12px; margin-bottom: 8px; }
+    .cmp-pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+    @media (max-width: 760px) { .cmp-pros-cons { grid-template-columns: 1fr; } }
+    .cmp-pros-cons h4 { font-size: 14px; margin-bottom: 10px; }
+    .cmp-pros-cons ul { list-style: none; font-size: 13px; line-height: 1.55; }
+    .cmp-pros-cons li { padding: 6px 0 6px 18px; position: relative; border-bottom: 1px solid #f0f0f0; }
+    .cmp-pros-cons li:last-child { border-bottom: none; }
+    .cmp-pros-cons .pros li::before { content: "+"; position: absolute; left: 0; color: #059669; font-weight: 700; }
+    .cmp-pros-cons .cons li::before { content: "−"; position: absolute; left: 0; color: #dc2626; font-weight: 700; }
+    .cmp-rec-list { font-size: 13px; }
+    .cmp-rec-list li { margin-bottom: 12px; line-height: 1.55; }
+
+  </style>
+</head>
+<body class="site-nvidia">
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-logo" id="sidebar-logo">NVIDIA IA</div>
+    <div class="sidebar-title">信息架构参考</div>
+    <div class="sidebar-panel" id="sidebar-nvidia">
+    <nav>
+      <div class="nav-group">模块一 · 导航</div>
+      <a href="#nv-module-nav">导航总览</a>
+      <a href="#nv-main-nav">交互架构图</a>
+      <div class="nav-group">模块二 · 主站与子站</div>
+      <a href="#nv-module-sites">关系总览</a>
+      <a href="#nv-overview">两层 IA 对比</a>
+      <a href="#nv-site-layer">子站层 IA</a>
+      <a href="#nv-outbound">主站 → 子域出站</a>
+      <div class="nav-group">模块三 · 页脚</div>
+      <a href="#nv-module-footer">页脚总览</a>
+      <a href="#nv-footer-ia">页脚 IA 结构</a>
+    </nav>
+    </div>
+    <div class="sidebar-panel" id="sidebar-hiascend" hidden>
+    <nav>
+      <div class="nav-group">模块一 · 导航</div>
+      <a href="#hs-module-nav">导航总览</a>
+      <a href="#hs-main-nav">交互架构图</a>
+      <div class="nav-group">模块二 · 主站与子站</div>
+      <a href="#hs-module-sites">关系总览</a>
+      <a href="#hs-overview">两层 IA 对比</a>
+      <a href="#hs-site-layer">站点层 IA</a>
+      <a href="#hs-outbound">主站 → 关联域出站</a>
+      <div class="nav-group">模块三 · 页脚</div>
+      <a href="#hs-module-footer">页脚总览</a>
+      <a href="#hs-footer-ia">页脚 IA 结构</a>
+    </nav>
+    </div>
+    <div class="sidebar-panel" id="sidebar-compare" hidden>
+    <nav>
+      <div class="nav-group">IA 罗列（上）</div>
+      <a href="#cmp-overview">顶部导航结构</a>
+      <a href="#cmp-ux">用户体验场景</a>
+      <div class="nav-group">差异分析（下）</div>
+      <a href="#cmp-pros-cons">差异分析观点</a>
+      <a href="#cmp-recommendations">改进建议</a>
+    </nav>
+    </div>
+  </aside>
+
+  <main>
+    <div class="site-tabs" role="tablist" hidden>
+      <button type="button" class="site-tab active-nv" data-site="nvidia" role="tab" aria-selected="true" hidden>NVIDIA</button>
+      <button type="button" class="site-tab" data-site="hiascend" role="tab" aria-selected="false" hidden>昇腾社区</button>
+      <button type="button" class="site-tab" data-site="compare" role="tab" aria-selected="false">对比分析</button>
+    </div>
+
+    <div class="site-panel" id="site-nvidia">
+<div class="eyebrow">nvidia.com/en-us · 信息架构</div>
+    <h1>NVIDIA 信息架构图</h1>
+
+    <!-- ══════════════════════════════════════
+         模块一 · 导航
+         ══════════════════════════════════════ -->
+    <div class="module module-nav" id="nv-module-nav">
+      <div class="module-header">
+        <div class="module-num">模块一</div>
+        <div class="module-title">导航</div>
+        <p class="module-desc"><code>nvidia.com/en-us</code> 顶部 Mega Menu · L0 / L1 / L2 层级 · Products / Solutions / Industries 三维矩阵</p>
+      </div>
+
+    <!-- ── 交互 IA 图 ── -->
+    <section id="nv-main-nav">
+      <h2>交互架构图</h2>
+
+      <div class="ia-l0-row" id="nv-l0-tabs">
+        <div class="ia-l0 products active" data-panel="nv-panel-products">
+          Products
+          <span class="l0-count">11 项 L1 · ~70 链</span>
+        </div>
+        <div class="ia-l0 solutions" data-panel="nv-panel-solutions">
+          Solutions
+          <span class="l0-count">6 项 L1 · ~40 链</span>
+        </div>
+        <div class="ia-l0 industries" data-panel="nv-panel-industries">
+          Industries
+          <span class="l0-count">19 项 · 四列</span>
+        </div>
+        <div class="ia-l0 utility" data-panel="nv-panel-shop">Shop</div>
+        <div class="ia-l0 utility" data-panel="nv-panel-drivers">Drivers</div>
+        <div class="ia-l0 utility" data-panel="nv-panel-support">Support</div>
+      </div>
+
+      <!-- Products panel -->
+      <div class="ia-panel visible" id="nv-panel-products">
+        <div class="panel-header">
+          <span class="badge badge-products">Products</span>
+          <h3>按产品形态 · 「它是什么」</h3>
+        </div>
+        <p class="panel-meta">全屏 Mega Menu · Software / Tools 独立分区 · 子项带功能性描述副标题</p>
+        <div class="l1-grid">
+          <div class="l1-item">Cloud Services <span class="arrow">›</span></div>
+          <div class="l1-item">Creating <span class="arrow">›</span></div>
+          <div class="l1-item">Data Center <span class="arrow">›</span></div>
+          <div class="l1-item">Embedded Systems <span class="arrow">›</span></div>
+          <div class="l1-item">Gaming <span class="arrow">›</span></div>
+          <div class="l1-item">Graphics Cards &amp; GPUs <span class="arrow">›</span></div>
+          <div class="l1-item">Laptops &amp; Desktops <span class="arrow">›</span></div>
+          <div class="l1-item">Networking <span class="arrow">›</span></div>
+          <div class="l1-item">Pro Workstations <span class="arrow">›</span></div>
+          <div class="l1-item">Software <span class="arrow">›</span></div>
+          <div class="l1-item">Tools <span class="arrow">›</span></div>
+        </div>
+      </div>
+
+      <!-- Solutions panel -->
+      <div class="ia-panel" id="nv-panel-solutions">
+        <div class="panel-header">
+          <span class="badge badge-solutions">Solutions</span>
+          <h3>按使用场景 · 「它能做什么」</h3>
+        </div>
+        <p class="panel-meta">场景叙事为主 · 每项链至相关产品线组合页</p>
+        <div class="l1-grid">
+          <div class="l1-item">Artificial Intelligence <span class="arrow">›</span></div>
+          <div class="l1-item">Cloud &amp; Data Center <span class="arrow">›</span></div>
+          <div class="l1-item">Design &amp; Simulation <span class="arrow">›</span></div>
+          <div class="l1-item">HPC <span class="arrow">›</span></div>
+          <div class="l1-item">Robotics &amp; Edge AI <span class="arrow">›</span></div>
+          <div class="l1-item">Autonomous Vehicles <span class="arrow">›</span></div>
+        </div>
+      </div>
+
+      <!-- Industries panel -->
+      <div class="ia-panel" id="nv-panel-industries">
+        <div class="panel-header">
+          <span class="badge badge-industries">Industries</span>
+          <h3>按行业垂直 · 「谁在用」</h3>
+        </div>
+        <p class="panel-meta">四列 Mega Menu · 扁平 L1 · 每项带 › 指示 L2 落地页 · 2026-06-15 截图核验</p>
+        <div class="industries-cols">
+          <div class="ind-col">
+            <div class="ind-col-header">COL 1</div>
+            <ul>
+              <li>Overview <span class="arrow">›</span></li>
+              <li>Architecture, Engineering, Construction &amp; Operations <span class="arrow">›</span></li>
+              <li>Automotive <span class="arrow">›</span></li>
+              <li>Cybersecurity <span class="arrow">›</span></li>
+            </ul>
+          </div>
+          <div class="ind-col">
+            <div class="ind-col-header">COL 2</div>
+            <ul>
+              <li>Energy <span class="arrow">›</span></li>
+              <li>Financial Services <span class="arrow">›</span></li>
+              <li>Healthcare and Life Sciences <span class="arrow">›</span></li>
+              <li>Higher Education <span class="arrow">›</span></li>
+              <li>Game Development <span class="arrow">›</span></li>
+            </ul>
+          </div>
+          <div class="ind-col">
+            <div class="ind-col-header">COL 3</div>
+            <ul>
+              <li>Government <span class="arrow">›</span></li>
+              <li>Manufacturing <span class="arrow">›</span></li>
+              <li>Media and Entertainment <span class="arrow">›</span></li>
+              <li>Restaurants <span class="arrow">›</span></li>
+              <li>Retail and CPG <span class="arrow">›</span></li>
+            </ul>
+          </div>
+          <div class="ind-col">
+            <div class="ind-col-header">COL 4</div>
+            <ul>
+              <li>Robotics <span class="arrow">›</span></li>
+              <li>Semiconductor <span class="arrow">›</span></li>
+              <li>Smart Cities <span class="arrow">›</span></li>
+              <li>Supercomputing <span class="arrow">›</span></li>
+              <li>Telecommunications <span class="arrow">›</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Utility panels -->
+      <div class="ia-panel" id="nv-panel-shop">
+        <div class="panel-header"><span class="badge badge-utility">Shop</span><h3>交易入口</h3></div>
+        <p>跳转至 <code>marketplace.nvidia.com</code> · 主站 CTA，实际购买在 Marketplace 子域</p>
+      </div>
+      <div class="ia-panel" id="nv-panel-drivers">
+        <div class="panel-header"><span class="badge badge-utility">Drivers</span><h3>驱动下载</h3></div>
+        <p>GeForce / NVIDIA 驱动下载 · 面向终端用户 · 非 developer/docs 技术文档入口</p>
+      </div>
+      <div class="ia-panel" id="nv-panel-support">
+        <div class="panel-header"><span class="badge badge-utility">Support</span><h3>售后与保修</h3></div>
+        <p>支持门户、保修查询 · 面向终端用户 · 域内或独立支持路径</p>
+      </div>
+    </section>
+
+    </div><!-- /module-nav -->
+
+    <!-- ══════════════════════════════════════
+         模块二 · 主站与子站
+         ══════════════════════════════════════ -->
+    <div class="module module-sites" id="nv-module-sites">
+      <div class="module-header">
+        <div class="module-num">模块二</div>
+        <div class="module-title">主站与子站</div>
+        <p class="module-desc">跨域名站点层 IA · 主站与子域的职能边界 · 导航入口与子站出站的映射关系</p>
+      </div>
+
+    <section id="nv-overview">
+      <h2>两层 IA 对比</h2>
+      <div class="layer-compare">
+        <div class="layer-card">
+          <h4><span class="badge badge-subdomain">站点层</span> 跨子域</h4>
+          <p>按受众/职能分域，基本互不交叉。URL 域名携带 IA 信号，LLM 做站点级过滤。</p>
+        </div>
+        <div class="layer-card">
+          <h4><span class="badge badge-products">主站导航层</span> 域内 Mega Menu</h4>
+          <p>Products / Solutions / Industries 三维矩阵，允许交叉重复，多路径触达同一产品。</p>
+        </div>
+      </div>
+      <div class="info-box highlight">
+        主站 Mega Menu 是 <strong>发现层</strong>（定位去哪类页面），不是 <strong>规范层</strong>。技术问答优先路由至 <code>docs.nvidia.com</code> / <code>developer.*</code>。
+      </div>
+    </section>
+
+    <section id="nv-site-layer">
+      <h2>子站层 IA</h2>
+      <p>仅列<strong>独立 hostname 子域</strong>（对外 IA 有意义的 9 个）· 与 <a href="nvidia-site-ia.md">nvidia-site-ia.md</a> 对应。</p>
+      <div class="info-box" style="margin-bottom:14px;font-size:13px">
+        <strong>本区不含：</strong>
+        <code>nvidia.com</code> 主站 · 主站路径型（<code>/gtc/</code>、<code>/research/</code>、<code>/training</code>）·
+        301 别名（<code>research.*</code>、<code>learn.*</code>、<code>ngc.nvidia.com</code> → catalog）· CDN / 登录等内部子域。
+        主站见模块一导航；路径型边界见 <code>nvidia-site-ia.md</code> 附录。
+      </div>
+      <div class="subdomain-grid">
+        <div class="subdomain-card">
+          <h4>开发者主站</h4>
+          <div class="domain">developer.nvidia.com</div>
+          <p>SDK 下载、文档导航、Technical Blog 入口</p>
+          <div class="audience">受众：工程师 · 次选源 / 下载</div>
+        </div>
+        <div class="subdomain-card">
+          <h4>开发者论坛</h4>
+          <div class="domain">forums.developer.nvidia.com</div>
+          <p>CUDA、NIM、DGX 等板块 · 社区 Q&A</p>
+          <div class="audience">受众：工程师 · 社区补充源</div>
+        </div>
+        <div class="subdomain-card">
+          <h4>技术文档</h4>
+          <div class="domain">docs.nvidia.com</div>
+          <p>API 参考、安装指南、Release Notes · 域内按产品线路径</p>
+          <div class="audience">受众：工程师 · LLM 权威首选</div>
+        </div>
+        <div class="subdomain-card">
+          <h4>AI API 试用</h4>
+          <div class="domain">build.nvidia.com</div>
+          <p>NIM 在线试用与部署 · API Playground</p>
+          <div class="audience">受众：工程师 · 部署行动点</div>
+        </div>
+        <div class="subdomain-card">
+          <h4>NGC 软件目录</h4>
+          <div class="domain">catalog.ngc.nvidia.com</div>
+          <p>GPU 优化容器、预训练模型、Helm Charts</p>
+          <div class="audience">受众：部署者 · 拉取镜像行动点</div>
+        </div>
+        <div class="subdomain-card">
+          <h4>NVIDIA 商城</h4>
+          <div class="domain">marketplace.nvidia.com</div>
+          <p>主站 Shop 跳转目标 · 硬件 / 软件采购</p>
+          <div class="audience">受众：采购 · 非集成文档</div>
+        </div>
+        <div class="subdomain-card">
+          <h4>官方博客</h4>
+          <div class="domain">blogs.nvidia.com</div>
+          <p>AI / Gaming / Robotics 等 · 大众向叙事</p>
+          <div class="audience">受众：媒体 / 泛用户 · LLM 低优先级</div>
+        </div>
+        <div class="subdomain-card">
+          <h4>新闻室</h4>
+          <div class="domain">nvidianews.nvidia.com</div>
+          <p>新闻稿与产品公告</p>
+          <div class="audience">受众：媒体 / 投资者 · 背景源</div>
+        </div>
+        <div class="subdomain-card">
+          <h4>投资者关系</h4>
+          <div class="domain">investor.nvidia.com</div>
+          <p>财报、SEC 文件、投资者演示</p>
+          <div class="audience">受众：投资者 · 工程技术问答排除</div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:12px">
+        <code>developer.nvidia.com/blog</code> 为 developer 域下<strong>路径型</strong>技术博客，职能独立但 hostname 未变，不单独占卡。
+        全域约 148 个子域，上表为 LLM 信源路由相关的<strong>完整对外子站清单</strong>。
+      </p>
+    </section>
+
+    <section id="nv-outbound">
+      <h2>主站 → 子域出站</h2>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:12px">下表分两类：<strong>Mega Menu</strong>（顶栏导航）与<strong>页脚</strong>（模块三已列结构）。部分历史子域名为 301 别名，落地页仍在 <code>nvidia.com</code> 路径下。</p>
+      <div class="info-box" style="margin-bottom:16px">
+        <strong>别名核验（2026-06-15）：</strong>
+        <code>research.nvidia.com</code> → <code>/en-us/research/</code>；
+        <code>learn.nvidia.com</code> → <code>/en-us/training</code>；
+        <code>ngc.nvidia.com</code> → <code>catalog.ngc.nvidia.com</code>。
+        Research / DLI 培训<strong>不是独立 IA 子站</strong>，而是主站路径型内容区。
+      </div>
+      <h3 style="font-size:14px;margin:16px 0 8px">Mega Menu 出站</h3>
+      <table>
+        <thead><tr><th>主站路径</th><th>主站角色</th><th>出站子域</th></tr></thead>
+        <tbody>
+          <tr><td>Products → Software → NIM</td><td>产品营销</td><td><code>build.nvidia.com</code> · <code>docs.nvidia.com/nim/</code></td></tr>
+          <tr><td>Products → Tools → NGC</td><td>工具概览</td><td><code>catalog.ngc.nvidia.com</code>（<code>ngc.nvidia.com</code> 别名）</td></tr>
+          <tr><td>Products → Tools → Nsight</td><td>工具概览</td><td><code>docs.nvidia.com</code></td></tr>
+          <tr><td>Products → Tools → AI Workbench 等</td><td>开发者工具概览</td><td><code>developer.nvidia.com</code></td></tr>
+          <tr><td>Shop</td><td>购买 CTA</td><td><code>marketplace.nvidia.com</code></td></tr>
+          <tr><td>Solutions / Industries 各场景</td><td>场景/行业叙事</td><td>深链产品页 → 技术细节出站 <code>docs.*</code> / <code>developer.*</code></td></tr>
+        </tbody>
+      </table>
+      <h3 style="font-size:14px;margin:20px 0 8px">页脚出站（原表未覆盖）</h3>
+      <table>
+        <thead><tr><th>页脚入口</th><th>实际落地</th><th>IA 归类</th></tr></thead>
+        <tbody>
+          <tr><td>Research</td><td><code>research.nvidia.com</code> → <code>nvidia.com/…/research/</code></td><td>主站路径型 · 研究论文 / Demo</td></tr>
+          <tr><td>Technical Training</td><td><code>learn.nvidia.com</code> → <code>nvidia.com/…/training</code></td><td>主站路径型 · DLI 培训</td></tr>
+          <tr><td>Developers</td><td><code>developer.nvidia.com</code></td><td>开发者生态</td></tr>
+          <tr><td>Documentation</td><td><code>docs.nvidia.com</code></td><td>技术文档</td></tr>
+          <tr><td>Technical Blog</td><td><code>developer.nvidia.com/blog</code></td><td>开发者生态（路径型博客）</td></tr>
+          <tr><td>Company Blog / Newsroom</td><td><code>blogs.nvidia.com</code> · <code>nvidianews.nvidia.com</code></td><td>内容与媒体</td></tr>
+          <tr><td>Investors / GTC</td><td><code>investor.nvidia.com</code> · <code>nvidia.com/gtc/</code></td><td>资本市场 / 会议活动</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:12px;color:var(--muted);margin-top:12px">开发者论坛 <code>forums.developer.nvidia.com</code> 已含于 <code>developer.*</code> 群组，由开发者门户链入，非 Mega Menu / 页脚一级入口。全域约 148 个子域，多数为 CDN / 登录 / 内部服务，不影响对外 IA 分组。</p>
+    </section>
+
+    </div><!-- /module-sites -->
+
+    <!-- ══════════════════════════════════════
+         模块三 · 页脚
+         ══════════════════════════════════════ -->
+    <div class="module module-footer" id="nv-module-footer">
+      <div class="module-header">
+        <div class="module-num">模块三</div>
+        <div class="module-title">页脚</div>
+        <p class="module-desc"><code>nvidia.com</code> 全站页脚 · 三列链接组 · 公司信息 / 新闻活动 / 常用入口 · 2026-06-15 截图核验</p>
+      </div>
+
+    <section id="nv-footer-ia">
+      <h2>页脚 IA 结构</h2>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px">页脚按职能分为三列，每列 8 项链接；多项出站至子域（标注于下方灰色文字）。</p>
+
+      <div class="footer-preview">
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h4>Company Information</h4>
+            <ul>
+              <li>About Us</li>
+              <li>Investors<span class="outbound">→ investor.nvidia.com</span></li>
+              <li>Venture Capital (NVentures)</li>
+              <li>NVIDIA Foundation</li>
+              <li>Research<span class="outbound">→ research.nvidia.com</span></li>
+              <li>Corporate Sustainability</li>
+              <li>Technologies</li>
+              <li>Careers</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>News and Events</h4>
+            <ul>
+              <li>Newsroom<span class="outbound">→ nvidianews.nvidia.com</span></li>
+              <li>Company Blog<span class="outbound">→ blogs.nvidia.com</span></li>
+              <li>Technical Blog<span class="outbound">→ developer.nvidia.com/blog</span></li>
+              <li>Webinars</li>
+              <li>Stay Informed</li>
+              <li>Events Calendar</li>
+              <li>GTC AI Conference<span class="outbound">→ nvidia.com/gtc/</span></li>
+              <li>NVIDIA On-Demand</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Popular Links</h4>
+            <ul>
+              <li>Developers<span class="outbound">→ developer.nvidia.com</span></li>
+              <li>Partners</li>
+              <li>Executive Insights</li>
+              <li>Startups and VCs</li>
+              <li>NVIDIA Connect for ISVs</li>
+              <li>Documentation<span class="outbound">→ docs.nvidia.com</span></li>
+              <li>Technical Training<span class="outbound">→ learn.nvidia.com</span></li>
+              <li>Professional Services for Data Science</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <table>
+        <thead><tr><th>列</th><th>组织维度</th><th>项数</th><th>与子站层关系</th></tr></thead>
+        <tbody>
+          <tr><td>Company Information</td><td>公司实体 / 治理 / 招聘</td><td>8</td><td>Investors → 资本市场；Research → 研究子域</td></tr>
+          <tr><td>News and Events</td><td>内容传播 / 活动</td><td>8</td><td>Newsroom / Blog / GTC → 内容与媒体、会议活动群组</td></tr>
+          <tr><td>Popular Links</td><td>高频跨受众入口</td><td>8</td><td>Developers / Documentation / Training → 开发者生态、docs、DLI</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    </div><!-- /module-footer -->
+    </div>
+
+    <div class="site-panel" id="site-hiascend" hidden>
+<div class="eyebrow">hiascend.com · 信息架构</div>
+    <h1>昇腾社区 信息架构图</h1>
+
+    <!-- 模块一 · 导航 -->
+    <div class="module module-nav" id="hs-module-nav">
+      <div class="module-header">
+        <div class="module-num">模块一</div>
+        <div class="module-title">导航</div>
+        <p class="module-desc"><code>hiascend.com/zh</code> 社区首页顶栏 · L0 以硬件/方案/生态营销为主 · 菜单 API：<code>tenantCode=community_site</code> · 右侧工具栏：文档 / 在线开发 / 资源▾ / 搜索 / 登录</p>
+      </div>
+
+      <section id="hs-main-nav">
+        <h2>交互架构图</h2>
+        <!-- 顶栏整体结构示意 -->
+        <div class="hs-navbar-mock">
+          <div class="hs-navbar-left">
+            <span class="hs-brand">Ascend</span>
+            <span class="hs-l0-mock active">CANN</span>
+            <span class="hs-l0-mock">产品</span>
+            <span class="hs-l0-mock">解决方案</span>
+            <span class="hs-l0-mock">开发者与合作伙伴</span>
+            <span class="hs-l0-mock">支持与服务</span>
+          </div>
+          <div class="hs-navbar-right">
+            <span class="hs-tool">文档</span>
+            <span class="hs-tool">在线开发 ↗</span>
+            <div class="hs-tool-dropdown">
+              <span class="hs-tool active-tool">资源 ▾</span>
+              <div class="hs-dropdown-menu">
+                <a>资源下载中心</a>
+                <a>固件与驱动</a>
+                <a>昇腾镜像仓库</a>
+              </div>
+            </div>
+            <span class="hs-tool icon-tool">🔍</span>
+            <span class="hs-tool icon-tool">👤</span>
+          </div>
+        </div>
+        <div class="info-box" style="margin:10px 0 14px;font-size:13px">
+          <strong>右侧工具栏（5 项）：</strong>
+          <strong>文档</strong>（直链 <code>/document</code>，文档中心快捷入口）·
+          <strong>在线开发</strong>（外链开发环境）·
+          <strong>资源 ▾</strong>（下拉三项：资源下载中心 / 固件与驱动 / 昇腾镜像仓库）·
+          搜索 · 登录。<br>
+          <span style="color:var(--muted)">注：「文档」直接挂在工具栏而非 L0，是工程师的隐形快捷入口；「在线开发」为外跳环境链接。</span>
+        </div>
+
+        <!-- 主菜单 L0（5 项，左侧 Mega Menu） -->
+        <div class="ia-l0-row">
+          <div class="ia-l0 product active" data-panel="hs-comm-cann">CANN<span class="l0-path">/cann</span></div>
+          <div class="ia-l0 product" data-panel="hs-comm-product">产品</div>
+          <div class="ia-l0 solutions" data-panel="hs-comm-solutions">解决方案</div>
+          <div class="ia-l0 dev" data-panel="hs-comm-ecosystem">开发者与合作伙伴</div>
+          <div class="ia-l0 doc" data-panel="hs-comm-support">支持与服务<span class="l0-path">/support</span></div>
+        </div>
+
+        <!-- 右侧工具栏（3 项，快捷功能区） -->
+        <div class="hs-toolbar-label">右侧工具栏</div>
+        <div class="ia-l0-row hs-toolbar-row">
+          <div class="ia-l0 doc" data-panel="hs-tool-doc">文档<span class="l0-path">/document</span></div>
+          <div class="ia-l0 dev" data-panel="hs-tool-devonline">在线开发 <span style="font-size:11px">↗</span></div>
+          <div class="ia-l0 product" data-panel="hs-tool-resource">资源 <span style="font-size:11px">▾</span></div>
+        </div>
+
+        <div class="ia-panel visible" id="hs-comm-cann">
+            <div class="panel-header"><span class="badge badge-product">CANN</span><h3>运营位独立入口</h3></div>
+            <p class="panel-meta">API 中挂在「运营位」下，UI 提升为首个 L0 · 跳转 <code>/cann</code>（路径型产品线门户，独立子导航）</p>
+          </div>
+          <div class="ia-panel" id="hs-comm-product">
+            <div class="panel-header"><span class="badge badge-product">产品</span><h3>昇腾系列硬件 Mega Menu</h3></div>
+            <p class="panel-meta">四列下拉 · L1 为硬件形态 · L2 为 Atlas SKU · 深链 <code>/hardware/…</code> · 2026-06-15 截图核验</p>
+            <div class="mega-cols cols-4">
+              <div class="mega-col">
+                <div class="mega-group">
+                  <div class="mega-l1">集群</div>
+                  <ul class="mega-l2-list">
+                    <li>Atlas 900 A3 SuperPoD 超节点 <span class="arrow">›</span></li>
+                    <li>Atlas 900 A2 PoD 集群基础单元 <span class="arrow">›</span></li>
+                    <li>Atlas 900 SuperCluster AI集群 <span class="arrow">›</span></li>
+                  </ul>
+                </div>
+                <div class="mega-group">
+                  <div class="mega-l1">集群自智引擎</div>
+                  <ul class="mega-l2-list">
+                    <li>CCAE <span class="arrow">›</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="mega-col">
+                <div class="mega-group">
+                  <div class="mega-l1">服务器</div>
+                  <ul class="mega-l2-list">
+                    <li>Atlas 800T A3 超节点服务器 <span class="arrow">›</span></li>
+                    <li>Atlas 800I A3 超节点服务器 <span class="arrow">›</span></li>
+                    <li>Atlas 800T A2 训练服务器 <span class="arrow">›</span></li>
+                    <li>Atlas 800I A2 推理服务器 <span class="arrow">›</span></li>
+                    <li>Atlas 800 推理服务器 <span class="arrow">›</span></li>
+                    <li>Atlas 500 Pro 智能边缘服务器 <span class="arrow">›</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="mega-col">
+                <div class="mega-group">
+                  <div class="mega-l1">加速卡</div>
+                  <ul class="mega-l2-list">
+                    <li>Atlas 300I A2 推理卡 <span class="arrow">›</span></li>
+                    <li>Atlas 300V 视频解析卡 <span class="arrow">›</span></li>
+                    <li>Atlas 300V Pro 视频解析卡 <span class="arrow">›</span></li>
+                    <li>Atlas 300I Pro 推理卡 <span class="arrow">›</span></li>
+                    <li>Atlas 300I Duo 推理卡 <span class="arrow">›</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="mega-col">
+                <div class="mega-group">
+                  <div class="mega-l1">智能小站</div>
+                  <ul class="mega-l2-list">
+                    <li>Atlas 500 A2 智能小站 <span class="arrow">›</span></li>
+                  </ul>
+                </div>
+                <div class="mega-group">
+                  <div class="mega-l1">加速模块</div>
+                  <ul class="mega-l2-list">
+                    <li>Atlas 200I A2 加速模块 <span class="arrow">›</span></li>
+                  </ul>
+                </div>
+                <div class="mega-group">
+                  <div class="mega-l1">开发者套件</div>
+                  <ul class="mega-l2-list">
+                    <li>Atlas 200I DK A2 开发者套件 <span class="arrow">›</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ia-panel" id="hs-comm-solutions">
+            <div class="panel-header"><span class="badge badge-solutions">解决方案</span><h3>行业应用 + 方案</h3></div>
+            <p class="panel-meta">两列下拉 · 左列 9 个行业 · 右列 3 个方案 · 2026-06-15 截图核验</p>
+            <div class="mega-cols cols-2">
+              <div class="mega-col">
+                <div class="mega-group">
+                  <div class="mega-l1">行业应用</div>
+                  <ul class="mega-l2-list">
+                    <li>互联网 <span class="arrow">›</span></li>
+                    <li>电信 <span class="arrow">›</span></li>
+                    <li>政府 <span class="arrow">›</span></li>
+                    <li>金融 <span class="arrow">›</span></li>
+                    <li>教育 <span class="arrow">›</span></li>
+                    <li>能源 <span class="arrow">›</span></li>
+                    <li>交通 <span class="arrow">›</span></li>
+                    <li>制造 <span class="arrow">›</span></li>
+                    <li>医疗 <span class="arrow">›</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="mega-col">
+                <div class="mega-group">
+                  <div class="mega-l1">解决方案</div>
+                  <ul class="mega-l2-list">
+                    <li>大规模专家并行解决方案 <span class="arrow">›</span></li>
+                    <li>昇腾大模型解决方案 <span class="arrow">›</span></li>
+                    <li>昇腾生态解决方案 <span class="arrow">›</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ia-panel" id="hs-comm-ecosystem">
+            <div class="panel-header"><span class="badge badge-dev">开发者与合作伙伴</span><h3>生态入口四宫格</h3></div>
+            <div class="l1-grid">
+              <div class="l1-item">开发者 <span class="arrow">›</span> /developer</div>
+              <div class="l1-item">合作伙伴 <span class="arrow">›</span> /ecosystem</div>
+              <div class="l1-item">教育科研 <span class="arrow">›</span> edu.hicomputing.huawei.com</div>
+              <div class="l1-item">昇腾AI市场 <span class="arrow">›</span> /marketplace/solution</div>
+            </div>
+          </div>
+          <div class="ia-panel" id="hs-comm-support">
+            <div class="panel-header"><span class="badge badge-sites">支持与服务</span><h3>技术支持 · 自助查询 · 资讯</h3></div>
+            <p class="panel-meta">三列下拉 · L0 链至 <code>/support</code> · 2026-06-15 截图核验</p>
+            <div class="mega-cols cols-3">
+              <div class="mega-col">
+                <div class="mega-group">
+                  <div class="mega-l1">技术支持</div>
+                  <ul class="mega-l2-list">
+                    <li>论坛求助 <span class="arrow">›</span></li>
+                    <li>技术工单 <span class="arrow">›</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="mega-col">
+                <div class="mega-group">
+                  <div class="mega-l1">自助查询</div>
+                  <ul class="mega-l2-list">
+                    <li>常见问题 <span class="arrow">›</span></li>
+                    <li>故障案例 <span class="arrow">›</span></li>
+                    <li>文档 <span class="arrow">›</span></li>
+                    <li>昇腾论坛 <span class="arrow">›</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="mega-col">
+                <div class="mega-group">
+                  <div class="mega-l1">资讯</div>
+                  <ul class="mega-l2-list">
+                    <li>产品公告 <span class="arrow">›</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 右侧工具栏面板 -->
+          <div class="ia-panel" id="hs-tool-doc">
+            <div class="panel-header"><span class="badge badge-doc">文档</span><h3>全站常驻文档直达入口</h3></div>
+            <p class="panel-meta">顶栏右侧工具区常驻按钮 · 昇腾<strong>所有页面</strong>均可见 · 直链 <code>hiascend.com/document</code> · 无下拉</p>
+            <div class="l1-grid">
+              <div class="l1-item">点击即跳转文档中心 <span class="arrow">›</span> <code>/document</code></div>
+              <div class="l1-item" style="background:#f0fdf4;border-left:3px solid #22c55e;color:#166534">「文档」在昇腾全站顶栏持续显示，工程师无论在哪个页面都能一键到达文档中心，可达性与 NVIDIA <code>docs.*</code> 子域等效</div>
+            </div>
+          </div>
+
+          <div class="ia-panel" id="hs-tool-devonline">
+            <div class="panel-header"><span class="badge badge-dev">在线开发</span><h3>云端开发环境入口</h3></div>
+            <p class="panel-meta">工具栏外链按钮 ↗ · 跳出昇腾社区至独立在线 IDE / 开发平台</p>
+            <div class="l1-grid">
+              <div class="l1-item">点击直跳外部在线开发平台 <span class="arrow">↗</span></div>
+              <div class="l1-item" style="background:#f0f9ff;border-left:3px solid #0ea5e9;color:#0c4a6e">注：出站链接，无 Mega Menu；目标域待核验（平台登录后环境）</div>
+            </div>
+          </div>
+
+          <div class="ia-panel" id="hs-tool-resource">
+            <div class="panel-header"><span class="badge badge-product">资源</span><h3>下拉三项 · 资源快捷下载</h3></div>
+            <p class="panel-meta">工具栏下拉菜单 · 三项 · 2026-06-15 截图核验</p>
+            <div class="l1-grid">
+              <div class="l1-item">资源下载中心 <span class="arrow">›</span> <code>/developer/download</code></div>
+              <div class="l1-item">固件与驱动 <span class="arrow">›</span> <code>/document/firmware</code></div>
+              <div class="l1-item">昇腾镜像仓库 <span class="arrow">›</span> <code>/developer/ascendhub</code>（AscendHub）</div>
+            </div>
+          </div>
+
+      </section>
+    </div>
+
+    <!-- 模块二 · 主站与子站 -->
+    <div class="module module-sites" id="hs-module-sites">
+      <div class="module-header">
+        <div class="module-num">模块二</div>
+        <div class="module-title">主站与子站</div>
+        <p class="module-desc">昇腾以 <code>hiascend.com</code> 单域为主 · 职能靠路径划分 · 关联域含 <code>hiascend.cn</code>、<code>mindspore.cn</code>、<code>developer.huawei.com</code></p>
+      </div>
+
+      <section id="hs-overview">
+        <h2>两层 IA 对比</h2>
+        <div class="layer-compare">
+          <div class="layer-card">
+            <h4><span class="badge badge-sites">站点层</span> 域 + 路径</h4>
+            <p>主站 <code>hiascend.com</code> 承载社区、文档、论坛、产品线页；少数关联域（昇思、华为开发者）出站。</p>
+          </div>
+          <div class="layer-card">
+            <h4><span class="badge badge-dev">导航层</span> 首页顶栏</h4>
+            <p><code>/zh</code> 顶栏 L0：CANN / 产品 / 解决方案 / 开发者与合作伙伴 / 支持与服务 · Mega Menu 按硬件 SKU、行业、生态入口组织。</p>
+          </div>
+        </div>
+        <div class="info-box highlight">
+          与 NVIDIA 不同：昇腾<strong>较少独立子域</strong>，文档权威源集中在 <code>hiascend.com/document</code>（及 <code>hiascend.cn</code> 镜像）。LLM 信源路由应优先社区官方域，而非 <code>developer.huawei.com</code> 论坛帖或第三方教程。
+        </div>
+      </section>
+
+      <section id="hs-site-layer">
+        <h2>子站层 IA</h2>
+        <p>仅列<strong>独立 hostname 关联域</strong>（昇腾社区对外出站子站 · 共 4 个）· 与 NVIDIA 子站层口径一致。</p>
+        <div class="info-box" style="margin-bottom:14px;font-size:13px">
+          <strong>本区不含：</strong>
+          <code>hiascend.com</code> / <code>hiascend.cn</code> 主站（<code>.cn</code> 为镜像域，非独立子站）·
+          主站路径型职能区（<code>/document</code> · <code>/cann</code> · <code>/developer</code> · <code>/forum</code> 等）·
+          页脚友情链接（鲲鹏社区、华为云等泛华为生态，非昇腾专属子站）。
+          路径型边界见上方「两层 IA 对比」；主站顶栏见模块一。
+        </div>
+        <div class="subdomain-grid">
+          <div class="subdomain-card">
+            <h4>昇思社区</h4>
+            <div class="domain">mindspore.cn</div>
+            <p>MindSpore 框架开源社区 · 页脚「开源社区」· 开发菜单 AI 框架出站</p>
+            <div class="audience">受众：框架开发者 · 与 CANN 文档互补</div>
+          </div>
+          <div class="subdomain-card">
+            <h4>教育科研 / 创新汇</h4>
+            <div class="domain">edu.hicomputing.huawei.com</div>
+            <p>高校科研、产学合作 · 首页「开发者与合作伙伴 → 教育科研」出站</p>
+            <div class="audience">受众：教师 / 学生 / 科研 · 非工程技术文档主源</div>
+          </div>
+          <div class="subdomain-card">
+            <h4>HiDevLab 在线开发</h4>
+            <div class="domain">hidevlab.huawei.com</div>
+            <p>云端在线实验环境 · 开发者菜单「开发资源 → HiDevLab」出站</p>
+            <div class="audience">受众：开发者 · 实验 / 沙箱行动点</div>
+          </div>
+          <div class="subdomain-card">
+            <h4>华为开发者联盟</h4>
+            <div class="domain">developer.huawei.com</div>
+            <p>CANN Kit 历史文档、泛华为开发者论坛 · 页脚友情链接</p>
+            <div class="audience">受众：开发者 · 次选 / 交叉验证 · 非 hiascend 主文档</div>
+          </div>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin-top:12px">
+          二次确认（2026-06-15）：菜单 API、页脚、开发者 Mega Menu 出站域已核对——<strong>无第 5 个昇腾专属对外子域</strong>。
+          文档 / 论坛 / CANN 等核心职能均在 <code>hiascend.com</code> 路径下完成，不另开子域。
+        </p>
+      </section>
+
+      <section id="hs-outbound">
+        <h2>主站 → 关联域出站</h2>
+        <table>
+          <thead><tr><th>入口</th><th>顶栏上下文</th><th>出站 / 深链</th></tr></thead>
+          <tbody>
+            <tr><td>首页 → CANN</td><td>community_site</td><td><code>hiascend.com/cann</code>（路径型子导航）</td></tr>
+            <tr><td>首页 → 开发者与合作伙伴 → 开发者</td><td>community_site</td><td><code>/developer</code></td></tr>
+            <tr><td>首页 → 开发者与合作伙伴 → 教育科研</td><td>community_site</td><td><code>edu.hicomputing.huawei.com</code></td></tr>
+            <tr><td>支持与服务 → 文档 / 论坛</td><td>community_site</td><td><code>/document</code> · <code>/forum/</code></td></tr>
+            <tr><td>开发者区 → MindSpore</td><td>深链</td><td><code>mindspore.cn</code></td></tr>
+            <tr><td>开发 → HiDevLab</td><td>开发资源</td><td><code>hidevlab.huawei.com</code></td></tr>
+            <tr><td>页脚 → 昇思社区</td><td>页脚</td><td><code>mindspore.cn</code></td></tr>
+            <tr><td>页脚友情链接</td><td>页脚</td><td><code>developer.huawei.com</code>（次选）</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+    <!-- 模块三 · 页脚 -->
+    <div class="module module-footer" id="hs-module-footer">
+      <div class="module-header">
+        <div class="module-num">模块三</div>
+        <div class="module-title">页脚</div>
+        <p class="module-desc"><code>hiascend.com</code> 全站页脚 · 五列链接组 · 2026-06-15 截图核验</p>
+      </div>
+
+      <section id="hs-footer-ia">
+        <h2>页脚 IA 结构</h2>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:16px">五列按职能划分：公司认知 / 新闻活动 / 交流资讯 / 支持服务 / 开源社区</p>
+
+        <div class="footer-preview">
+          <div class="footer-cols">
+            <div class="footer-col">
+              <h4>关于昇腾</h4>
+              <ul>
+                <li>昇腾计算产业概述</li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>新闻与活动</h4>
+              <ul>
+                <li>新闻资讯</li>
+                <li>昇腾活动</li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>交流与资讯</h4>
+              <ul>
+                <li>昇腾论坛<span class="outbound">→ hiascend.com/forum</span></li>
+                <li>技术干货</li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>支持与服务</h4>
+              <ul>
+                <li>文档<span class="outbound">→ hiascend.com/document</span></li>
+                <li>技术工单</li>
+                <li>举报中心</li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>开源社区</h4>
+              <ul>
+                <li>昇思社区<span class="outbound">→ mindspore.cn</span></li>
+                <li>昇腾开放资源</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <table>
+          <thead><tr><th>列</th><th>组织维度</th><th>项数</th><th>与顶栏关系</th></tr></thead>
+          <tbody>
+            <tr><td>关于昇腾</td><td>品牌 / 产业认知</td><td>1</td><td>顶栏无对应，页脚专属</td></tr>
+            <tr><td>新闻与活动</td><td>动态 / 活动</td><td>2</td><td>页脚专属 · 首页顶栏无「活动」L0</td></tr>
+            <tr><td>交流与资讯</td><td>社区 / 内容</td><td>2</td><td>呼应「支持与服务」中的论坛入口</td></tr>
+            <tr><td>支持与服务</td><td>文档 / 工单</td><td>3</td><td>呼应顶栏「支持与服务」+ 页脚文档</td></tr>
+            <tr><td>开源社区</td><td>开源生态</td><td>2</td><td>出站昇思 · 开放资源</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+    </div>
+
+    <div class="site-panel" id="site-compare" hidden>
+<div class="eyebrow">NVIDIA × 昇腾 · 对比分析</div>
+    <h1>两家网站信息架构对比</h1>
+
+    <div class="module" style="border-top:4px solid #4338ca;padding:28px 32px">
+
+    <!-- ① 顶部导航 -->
+    <section id="cmp-overview">
+      <h2>顶部导航 / 信息架构</h2>
+
+      <!-- 上：两列 IA 事实罗列 -->
+      <div class="cmp-tree-row">
+
+        <!-- 昇腾 树形 IA -->
+        <div class="cmp-tree-col hs-tree-col">
+          <div class="cmp-tree-header"><span class="cmp-dot hs-dot"></span> 昇腾 <code style="font-size:11px;margin-left:4px">hiascend.com/zh</code></div>
+          <div class="ia-tree">
+
+            <div class="tr-section-label">主菜单 L0</div>
+
+            <div class="tr-l0">
+              <span class="tr-c">├─</span>
+              <span class="tr-name tr-product">CANN</span>
+              <span class="tr-path">/cann · 独立子导航</span>
+            </div>
+
+            <div class="tr-l0">
+              <span class="tr-c">├─</span>
+              <span class="tr-name tr-product">产品</span>
+              <span class="tr-note">硬件 Mega Menu · 4列</span>
+            </div>
+            <div class="tr-l1"><span class="tr-c">│ ├─</span> 集群 <span class="tr-path">Atlas 900 A3 / A2 / SuperCluster</span></div>
+            <div class="tr-l1"><span class="tr-c">│ ├─</span> 服务器 <span class="tr-path">Atlas 800T/I A3 / A2 / 推理</span></div>
+            <div class="tr-l1"><span class="tr-c">│ ├─</span> 加速卡 <span class="tr-path">Atlas 300I / 300V 系列</span></div>
+            <div class="tr-l1"><span class="tr-c">│ └─</span> 智能小站 / 加速模块 / 开发者套件</div>
+
+            <div class="tr-l0">
+              <span class="tr-c">├─</span>
+              <span class="tr-name tr-solutions">解决方案</span>
+              <span class="tr-note">2列</span>
+            </div>
+            <div class="tr-l1"><span class="tr-c">│ ├─</span> 行业应用 <span class="tr-path">金融 · 制造 · 医疗… ×9</span></div>
+            <div class="tr-l1"><span class="tr-c">│ └─</span> 解决方案 <span class="tr-path">大模型 · 视频 · 工业 ×3</span></div>
+
+            <div class="tr-l0">
+              <span class="tr-c">├─</span>
+              <span class="tr-name tr-dev">开发者与合作伙伴</span>
+              <span class="tr-note">四宫格</span>
+            </div>
+            <div class="tr-l1"><span class="tr-c">│ ├─</span> 开发者 <span class="tr-path">/developer</span></div>
+            <div class="tr-l1"><span class="tr-c">│ ├─</span> 合作伙伴 <span class="tr-path">/ecosystem</span></div>
+            <div class="tr-l1"><span class="tr-c">│ ├─</span> 教育科研 <span class="tr-ext">↗ edu.hicomputing.huawei.com</span></div>
+            <div class="tr-l1"><span class="tr-c">│ └─</span> 昇腾AI市场 <span class="tr-path">/marketplace</span></div>
+
+            <div class="tr-l0">
+              <span class="tr-c">└─</span>
+              <span class="tr-name tr-doc">支持与服务</span>
+              <span class="tr-path">/support · 3列</span>
+            </div>
+            <div class="tr-l1"><span class="tr-c">　 ├─</span> 技术支持 <span class="tr-path">论坛求助 / 技术工单</span></div>
+            <div class="tr-l1"><span class="tr-c">　 ├─</span> 自助查询 <span class="tr-path">常见问题 / 文档 / 昇腾论坛</span></div>
+            <div class="tr-l1"><span class="tr-c">　 └─</span> 资讯 <span class="tr-path">产品公告</span></div>
+
+            <div class="tr-section-label" style="margin-top:10px">右侧工具栏（全站常驻）</div>
+
+            <div class="tr-l0">
+              <span class="tr-c">├─</span>
+              <span class="tr-name tr-doc">文档</span>
+              <span class="tr-path">/document</span>
+              <span class="tr-badge">全站可见</span>
+            </div>
+            <div class="tr-l0">
+              <span class="tr-c">├─</span>
+              <span class="tr-name tr-dev">在线开发</span>
+              <span class="tr-ext">↗ 外链</span>
+            </div>
+            <div class="tr-l0">
+              <span class="tr-c">└─</span>
+              <span class="tr-name tr-product">资源 ▾</span>
+            </div>
+            <div class="tr-l1"><span class="tr-c">　 ├─</span> 资源下载中心</div>
+            <div class="tr-l1"><span class="tr-c">　 ├─</span> 固件与驱动</div>
+            <div class="tr-l1"><span class="tr-c">　 └─</span> 昇腾镜像仓库 <span class="tr-path">AscendHub</span></div>
+
+            <div class="tr-section-label" style="margin-top:10px">路径型功能区（同域）</div>
+            <div class="tr-l0"><span class="tr-c">├─</span> <span class="tr-name tr-doc">hiascend.com/document</span> <span class="tr-note">文档中心 · 权威源</span> <span class="tr-badge">LLM 首选</span></div>
+            <div class="tr-l0"><span class="tr-c">├─</span> <span class="tr-name tr-dev">hiascend.com/developer</span> <span class="tr-note">开发者中心</span></div>
+            <div class="tr-l0"><span class="tr-c">├─</span> <span class="tr-name tr-dev">hiascend.com/forum</span> <span class="tr-note">社区论坛</span></div>
+            <div class="tr-l0"><span class="tr-c">└─</span> <span class="tr-name tr-product">hiascend.com/cann</span> <span class="tr-note">CANN 专区 · 独立子导航</span></div>
+
+            <div class="tr-section-label" style="margin-top:10px">关联站点</div>
+            <div class="tr-l0"><span class="tr-c">├─</span> <span class="tr-name tr-solutions">mindspore.cn</span> <span class="tr-note">昇思 MindSpore 开源框架</span></div>
+            <div class="tr-l0"><span class="tr-c">├─</span> <span class="tr-name tr-solutions">edu.hicomputing.huawei.com</span> <span class="tr-note">教育科研平台</span></div>
+            <div class="tr-l0"><span class="tr-c">├─</span> <span class="tr-name tr-solutions">hidevlab.huawei.com</span> <span class="tr-note">HiDevLab 开发者实验室</span></div>
+            <div class="tr-l0"><span class="tr-c">└─</span> <span class="tr-name tr-solutions">developer.huawei.com</span> <span class="tr-note">华为开发者社区</span></div>
+
+          </div>
+        </div>
+
+        <!-- NVIDIA 树形 IA -->
+        <div class="cmp-tree-col nv-tree-col">
+          <div class="cmp-tree-header"><span class="cmp-dot nv-dot"></span> NVIDIA <code style="font-size:11px;margin-left:4px">nvidia.com/en-us</code></div>
+          <div class="ia-tree">
+
+            <div class="tr-section-label">主菜单 L0</div>
+
+            <div class="tr-l0">
+              <span class="tr-c">├─</span>
+              <span class="tr-name tr-product">Products</span>
+              <span class="tr-note">11 类</span>
+            </div>
+            <div class="tr-l1"><span class="tr-c">│ ├─</span> AI & Data Science</div>
+            <div class="tr-l1"><span class="tr-c">│ ├─</span> High Performance Computing</div>
+            <div class="tr-l1"><span class="tr-c">│ ├─</span> Networking / Robotics / Automotive…</div>
+            <div class="tr-l1"><span class="tr-c">│ └─</span> <span class="tr-path">Tools: NGC · Nsight · Workbench ↗子域</span></div>
+
+            <div class="tr-l0">
+              <span class="tr-c">├─</span>
+              <span class="tr-name tr-solutions">Solutions</span>
+              <span class="tr-note">6 类</span>
+            </div>
+            <div class="tr-l1"><span class="tr-c">│ ├─</span> Conversational AI / Cybersecurity…</div>
+            <div class="tr-l1"><span class="tr-c">│ └─</span> Cloud / Edge / On-Premises</div>
+
+            <div class="tr-l0">
+              <span class="tr-c">├─</span>
+              <span class="tr-name tr-solutions">Industries</span>
+              <span class="tr-note">19 项 · 4列</span>
+            </div>
+            <div class="tr-l1"><span class="tr-c">│ ├─</span> Automotive / Financial Services / Healthcare…</div>
+            <div class="tr-l1"><span class="tr-c">│ └─</span> Retail / Robotics / Telecommunications…</div>
+
+            <div class="tr-l0">
+              <span class="tr-c">├─</span>
+              <span class="tr-name tr-product">Shop</span>
+              <span class="tr-ext">→ marketplace.nvidia.com</span>
+            </div>
+
+            <div class="tr-l0">
+              <span class="tr-c">├─</span>
+              <span class="tr-name tr-doc">Drivers</span>
+              <span class="tr-path">/drivers</span>
+            </div>
+
+            <div class="tr-l0">
+              <span class="tr-c">└─</span>
+              <span class="tr-name tr-doc">Support</span>
+            </div>
+
+            <div class="tr-section-label" style="margin-top:10px">独立子站（9 个主机名）</div>
+            <div class="tr-l0"><span class="tr-c">├─</span> <span class="tr-name tr-doc">docs.nvidia.com</span> <span class="tr-note">技术文档权威源</span> <span class="tr-badge">LLM 首选</span></div>
+            <div class="tr-l0"><span class="tr-c">├─</span> <span class="tr-name tr-dev">developer.nvidia.com</span> <span class="tr-note">开发者门户</span></div>
+            <div class="tr-l1"><span class="tr-c">│ └─</span> <span class="tr-name tr-dev">forums.developer.nvidia.com</span> <span class="tr-note">社区论坛</span></div>
+            <div class="tr-l0"><span class="tr-c">├─</span> <span class="tr-name tr-product">build.nvidia.com</span> <span class="tr-note">API / 模型在线试用</span></div>
+            <div class="tr-l0"><span class="tr-c">├─</span> <span class="tr-name tr-product">catalog.ngc.nvidia.com</span> <span class="tr-note">容器 / 模型目录</span></div>
+            <div class="tr-l0"><span class="tr-c">├─</span> <span class="tr-name tr-product">marketplace.nvidia.com</span> <span class="tr-note">软件商城</span></div>
+            <div class="tr-l0"><span class="tr-c">├─</span> <span class="tr-name tr-solutions">blogs.nvidia.com</span> <span class="tr-note">官方博客</span></div>
+            <div class="tr-l0"><span class="tr-c">├─</span> <span class="tr-name tr-solutions">nvidianews.nvidia.com</span> <span class="tr-note">新闻发布</span></div>
+            <div class="tr-l0"><span class="tr-c">└─</span> <span class="tr-name tr-solutions">investor.nvidia.com</span> <span class="tr-note">投资者关系</span></div>
+
+            <div class="tr-section-label" style="margin-top:10px">主站路径型功能区</div>
+            <div class="tr-l0"><span class="tr-c">├─</span> <span class="tr-name tr-product">nvidia.com/en-us/research/</span> <span class="tr-note">AI 研究 · 原 research.* 301</span></div>
+            <div class="tr-l0"><span class="tr-c">├─</span> <span class="tr-name tr-solutions">nvidia.com/en-us/training/</span> <span class="tr-note">技术培训 · 原 learn.* 301</span></div>
+            <div class="tr-l0"><span class="tr-c">└─</span> <span class="tr-name tr-dev">nvidia.com/gtc/</span> <span class="tr-note">GTC 大会 · 独立子导航</span></div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ② anchor kept for TOC -->
+    <section id="cmp-ux" style="display:none"></section>
+
+    <!-- ③ 差异分析 -->
+    <section id="cmp-pros-cons">
+      <h2>差异分析</h2>
+      <ul class="cmp-diff-list">
+
+        <li>
+          <div class="diff-dim-row">
+            <span class="diff-dim-label">外部可发现性</span>
+            <span class="diff-verdict verdict-nv">NVIDIA 更易被识别</span>
+          </div>
+          <strong>子域名 vs 路径，搜索引擎和 AI 识别权威内容的难度不同</strong>
+          <ul class="cmp-sub-list">
+            <li><span class="cmp-tag-nv">NVIDIA</span> <code>docs.nvidia.com</code> 靠域名即可被认定为权威文档；各子站互相内链，AI 能从链接图谱推断权威中心。</li>
+            <li><span class="cmp-tag-hs">昇腾</span> <code>hiascend.com/document</code> 需要额外路径规则才能与营销页区分；深层 URL 含数字 ID，AI 难以凭路径判断内容类型；关联站点是外跳链接，链接图谱在社区这里断开。</li>
+          </ul>
+        </li>
+
+        <li>
+          <div class="diff-dim-row">
+            <span class="diff-dim-label">受众覆盖</span>
+            <span class="diff-verdict verdict-tie">各有侧重</span>
+          </div>
+          <strong>两家各自优先照顾了不同用户角色，点击路径也各自更短</strong>
+          <ul class="cmp-sub-list">
+            <li><span class="cmp-tag-nv">NVIDIA</span> 设了 Industries 菜单，行业 BD 直接按行业进来 2 步到位；但开发者找 CUDA 要从主站进 Developer 再找 SDK，需要 3 步。</li>
+            <li><span class="cmp-tag-hs">昇腾</span> CANN 放在主站第一位，开发者找框架 1 步直达，但这同时意味着主站默认访客是开发者——采购、BD、合作伙伴进来都要先绕过一个对他们无关的软件框架入口。NVIDIA 的做法是把 CUDA 放进开发者子站，主站只露硬件和方案。另外昇腾没有独立行业入口，BD 要在「解决方案」下拉里多翻一层，3 步。</li>
+          </ul>
+        </li>
+
+        <li>
+          <div class="diff-dim-row">
+            <span class="diff-dim-label">标签系统</span>
+            <span class="diff-verdict verdict-nv">NVIDIA 更通用</span>
+          </div>
+          <strong>导航标签是否需要预备知识才能读懂</strong>
+          <ul class="cmp-sub-list">
+            <li><span class="cmp-tag-nv">NVIDIA</span> Products / Solutions / Industries 是通用词，任何背景的人都能猜到大致内容。</li>
+            <li><span class="cmp-tag-hs">昇腾</span> CANN 列在顶栏第一位，不认识这个产品名的人看了不知道是否和自己相关，标签预设了用户已熟悉产品线。</li>
+          </ul>
+        </li>
+
+        <li>
+          <div class="diff-dim-row">
+            <span class="diff-dim-label">跨站一致性</span>
+            <span class="diff-verdict verdict-hs">昇腾更流畅</span>
+          </div>
+          <strong>在不同功能区之间切换，昇腾全程保持同一套导航</strong>
+          <ul class="cmp-sub-list">
+            <li><span class="cmp-tag-nv">NVIDIA</span> 进入子站后域名和导航结构都换了，用户感觉「到了另一个网站」，容易打断思路。</li>
+            <li><span class="cmp-tag-hs">昇腾</span> 全站同一域名，顶栏结构不变，从文档跳论坛、从社区进文档几乎无感。</li>
+          </ul>
+        </li>
+
+        <li>
+          <div class="diff-dim-row">
+            <span class="diff-dim-label">内容组织</span>
+            <span class="diff-verdict verdict-hs">昇腾更直接</span>
+          </div>
+          <strong>昇腾一个菜单看完所有型号，NVIDIA 同一产品出现在三处</strong>
+          <ul class="cmp-sub-list">
+            <li><span class="cmp-tag-nv">NVIDIA</span> 硬件分散在 Products / Solutions / Industries，描述角度各不同，用户不确定哪个才是主入口。</li>
+            <li><span class="cmp-tag-hs">昇腾</span> 点开「产品」，Atlas 硬件四列平铺，直接对比选购。</li>
+          </ul>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- ④ 改进建议 -->
+    <section id="cmp-recommendations">
+      <h2>改进建议</h2>
+      <div class="cmp-rec-block hs-rec" style="max-width:100%">
+        <div class="cmp-rec-label"><span class="cmp-tag-hs">昇腾</span> 可以怎么做</div>
+        <ol class="cmp-rec-list">
+          <li>
+            <div class="diff-dim-row"><span class="diff-dim-label">外部可发现性</span></div>
+            <strong>为文档申请独立子域</strong>：<code>hiascend.com/document</code> 外部识别难度高。独立子域 <code>docs.hiascend.com</code> 靠域名本身就能传递「这是文档」的信号，搜索引擎和 AI 引用时更精准。
+          </li>
+          <li>
+            <div class="diff-dim-row"><span class="diff-dim-label">受众覆盖</span></div>
+            <strong>把 CANN 移入开发者专区，主站顶栏换成对所有人友好的入口</strong>：CANN 是开发者工具，放在面向所有人的主站第一位，等于把受众假设做窄了。参考 NVIDIA 的分层——主站顶栏放「产品 / 解决方案 / 行业」，另设一个「开发者」入口，进去之后 CANN 在里面第一位。这样采购、BD 不用绕开软件框架，开发者也能直达。同时，把「行业」维度提升到主站顶栏独立入口，让行业 BD 不需要进入「解决方案」下拉再找。
+          </li>
+          <li>
+            <div class="diff-dim-row"><span class="diff-dim-label">标签系统</span></div>
+            <strong>给产品名加一行说明文字，降低认知门槛</strong>：菜单里 CANN、Atlas、MindStudio 这类名称对不熟悉昇腾产品线的人来说是黑盒。短期内可以在每个菜单项下加一行副标签——「CANN · AI 计算软件框架」「Atlas · AI 加速硬件」——让新访客一眼判断这个入口是否和自己相关，不需要点进去才知道。
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    </div>
+    </div>
+  </main>
+
+  <aside class="toc" id="toc">
+    <div class="toc-panel" id="toc-nvidia">
+<div class="toc-title">目录</div>
+    <div class="toc-title" style="margin-top:12px">模块一 · 导航</div>
+    <a href="#nv-module-nav">导航总览</a>
+    <a href="#nv-main-nav" class="toc-l2">交互架构图</a>
+    <div class="toc-title" style="margin-top:12px">模块二 · 主站与子站</div>
+    <a href="#nv-module-sites">关系总览</a>
+    <a href="#nv-overview" class="toc-l2">两层 IA 对比</a>
+    <a href="#nv-site-layer" class="toc-l2">子站层 IA</a>
+    <a href="#nv-outbound" class="toc-l2">主站 → 子域出站</a>
+    <div class="toc-title" style="margin-top:12px">模块三 · 页脚</div>
+    <a href="#nv-module-footer">页脚总览</a>
+    <a href="#nv-footer-ia" class="toc-l2">页脚 IA 结构</a>
+    </div>
+    <div class="toc-panel" id="toc-hiascend" hidden>
+<div class="toc-title">目录</div>
+    <div class="toc-title" style="margin-top:12px">模块一 · 导航</div>
+    <a href="#hs-module-nav">导航总览</a>
+    <a href="#hs-main-nav" class="toc-l2">交互架构图</a>
+    <div class="toc-title" style="margin-top:12px">模块二 · 主站与子站</div>
+    <a href="#hs-module-sites">关系总览</a>
+    <a href="#hs-overview" class="toc-l2">两层 IA 对比</a>
+    <a href="#hs-site-layer" class="toc-l2">站点层 IA</a>
+    <a href="#hs-outbound" class="toc-l2">主站 → 关联域出站</a>
+    <div class="toc-title" style="margin-top:12px">模块三 · 页脚</div>
+    <a href="#hs-module-footer">页脚总览</a>
+    <a href="#hs-footer-ia" class="toc-l2">页脚 IA 结构</a>
+    </div>
+    <div class="toc-panel" id="toc-compare" hidden>
+<div class="toc-title">目录</div>
+    <a href="#cmp-overview">顶部导航 IA 罗列</a>
+    <a href="#cmp-ux" class="toc-l2">用户体验场景</a>
+    <a href="#cmp-pros-cons">差异分析</a>
+    <a href="#cmp-recommendations" class="toc-l2">改进建议</a>
+    </div>
+  </aside>
+
+</div>
+
+<footer id="page-footer">NVIDIA 信息架构参考 · 架构工作区 · 2026-06-15</footer>
+
+<script>
+(function () {
+  var currentSite = 'nvidia';
+
+  function getActivePanel() {
+    if (currentSite === 'compare') return document.getElementById('site-compare');
+    return document.getElementById(currentSite === 'nvidia' ? 'site-nvidia' : 'site-hiascend');
+  }
+
+  function panelId(prefix) {
+    if (currentSite === 'compare') return prefix + '-compare';
+    return currentSite === 'nvidia' ? prefix + '-nvidia' : prefix + '-hiascend';
+  }
+
+  function bindL0Tabs(container) {
+    container.querySelectorAll('.ia-l0').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var block = tab.closest('#hs-main-nav') || tab.closest('.site-panel') || tab.closest('section') || container;
+        block.querySelectorAll('.ia-l0').forEach(function (t) { t.classList.remove('active'); });
+        block.querySelectorAll('.ia-panel').forEach(function (p) { p.classList.remove('visible'); });
+        tab.classList.add('active');
+        var panel = document.getElementById(tab.dataset.panel);
+        if (panel) panel.classList.add('visible');
+      });
+    });
+  }
+
+  bindL0Tabs(document.getElementById('site-nvidia'));
+  bindL0Tabs(document.getElementById('site-hiascend'));
+
+  function switchSite(site) {
+    currentSite = site;
+    document.body.className = site === 'compare' ? 'site-compare' : ('site-' + site);
+    document.getElementById('site-nvidia').hidden = site !== 'nvidia';
+    document.getElementById('site-hiascend').hidden = site !== 'hiascend';
+    document.getElementById('site-compare').hidden = site !== 'compare';
+    document.getElementById('sidebar-nvidia').hidden = site !== 'nvidia';
+    document.getElementById('sidebar-hiascend').hidden = site !== 'hiascend';
+    document.getElementById('sidebar-compare').hidden = site !== 'compare';
+    document.getElementById('toc-nvidia').hidden = site !== 'nvidia';
+    document.getElementById('toc-hiascend').hidden = site !== 'hiascend';
+    document.getElementById('toc-compare').hidden = site !== 'compare';
+    document.getElementById('sidebar-logo').textContent =
+      site === 'nvidia' ? 'NVIDIA IA' : site === 'hiascend' ? '昇腾 IA' : 'IA 对比';
+    document.getElementById('page-footer').textContent =
+      site === 'nvidia' ? 'NVIDIA 信息架构参考 · 架构工作区 · 2026-06-15'
+      : site === 'hiascend' ? '昇腾社区信息架构参考 · 架构工作区 · 2026-06-15'
+      : 'NVIDIA × 昇腾 IA 对比分析 · 架构工作区 · 2026-06-15';
+    document.title =
+      site === 'nvidia' ? '信息架构图 · NVIDIA'
+      : site === 'hiascend' ? '信息架构图 · 昇腾社区'
+      : '信息架构对比 · NVIDIA × 昇腾';
+    document.querySelectorAll('.site-tab').forEach(function (btn) {
+      var active = btn.dataset.site === site;
+      btn.classList.toggle('active-nv', active && site === 'nvidia');
+      btn.classList.toggle('active-hs', active && site === 'hiascend');
+      btn.classList.toggle('active-cmp', active && site === 'compare');
+      btn.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    window.scrollTo(0, 0);
+    history.replaceState(null, '', site === 'nvidia' ? location.pathname : location.pathname + '#' + site);
+    onScroll();
+  }
+
+  document.querySelectorAll('.site-tab').forEach(function (btn) {
+    btn.addEventListener('click', function () { switchSite(btn.dataset.site); });
+  });
+
+  if (location.hash === '#hiascend') switchSite('hiascend');
+  else if (location.hash === '#compare') switchSite('compare');
+
+  function onScroll() {
+    var tocPanel = document.getElementById(panelId('toc'));
+    var tocLinks = tocPanel.querySelectorAll('a[href^="#"]');
+    var sections = Array.from(tocLinks).map(function (a) {
+      return document.querySelector(a.getAttribute('href'));
+    }).filter(Boolean);
+    if (!sections.length) return;
+    var scrollY = window.scrollY + 100;
+    var current = sections[0];
+    sections.forEach(function (sec) {
+      if (sec.offsetTop <= scrollY) current = sec;
+    });
+    tocLinks.forEach(function (a) {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current.id);
+    });
+    tocPanel.querySelectorAll('.sidebar-panel a, .sidebar a').forEach(function(){});
+  }
+
+  // sync sidebar active state
+  window.addEventListener('scroll', function () {
+    var sidebarPanel = document.getElementById(panelId('sidebar'));
+    var tocPanel = document.getElementById(panelId('toc'));
+    var links = sidebarPanel.querySelectorAll('nav a[href^="#"]');
+    var tocLinks = tocPanel.querySelectorAll('a[href^="#"]');
+    var allLinks = Array.from(links).concat(Array.from(tocLinks));
+    var sections = allLinks.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+    if (!sections.length) return;
+    var scrollY = window.scrollY + 100;
+    var current = sections[0];
+    sections.forEach(function (sec) { if (sec.offsetTop <= scrollY) current = sec; });
+    allLinks.forEach(function (a) {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current.id);
+    });
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>

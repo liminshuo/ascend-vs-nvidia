@@ -1,0 +1,50 @@
+flowchart LR
+  subgraph brand [品牌层]
+    MainSite["nvidia.com<br/>品牌 / 产品 / 行业方案"]
+  end
+
+  subgraph dev [开发者生态]
+    DevMain["developer.nvidia.com<br/>SDK · 文档入口"]
+    Docs["docs.nvidia.com<br/>技术文档中心"]
+    Forums["forums.developer.nvidia.com<br/>开发者论坛"]
+    Build["build.nvidia.com<br/>AI API · NIM 试用"]
+  end
+
+  subgraph media [内容与媒体]
+    Blogs["blogs.nvidia.com<br/>大众博客"]
+    DevBlog["developer.nvidia.com/blog<br/>技术博客"]
+    News["nvidianews.nvidia.com<br/>新闻室"]
+  end
+
+  subgraph delivery [服务交付]
+    NGC["catalog.ngc.nvidia.com<br/>容器 · 模型 · Helm"]
+    Market["marketplace.nvidia.com<br/>商城"]
+  end
+
+  subgraph other [其他受众]
+    Investor["investor.nvidia.com<br/>投资者关系"]
+    GTC["nvidia.com/gtc/<br/>GTC 大会"]
+  end
+
+  subgraph appendix [可选扩展]
+    Learn["learn.nvidia.com<br/>DLI 培训"]
+    Research["research.nvidia.com<br/>研究论文"]
+  end
+
+  MainSite -->|"Shop 跳转"| Market
+  MainSite -->|"Developer 入口"| DevMain
+  MainSite -->|"GTC 路径"| GTC
+
+  DevMain --> Docs
+  DevMain --> Forums
+  DevMain --> Build
+  DevMain --> DevBlog
+
+  Build -->|"部署 NIM"| NGC
+  Build -->|"集成文档"| Docs
+
+  GTC -->|"回放 / 讲义"| DevMain
+  GTC -->|"技术文档"| Docs
+
+  DevMain -.->|"培训入口"| Learn
+  DevMain -.->|"研究参考"| Research
