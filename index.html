@@ -592,7 +592,7 @@
 
     /* ── site tabs ── */
     .site-tabs {
-      display: none;
+      display: flex;
       gap: 0; margin-bottom: 28px;
       border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
       background: var(--surface);
@@ -820,10 +820,10 @@
   </aside>
 
   <main>
-    <div class="site-tabs" role="tablist" hidden>
-      <button type="button" class="site-tab active-nv" data-site="nvidia" role="tab" aria-selected="true" hidden>NVIDIA</button>
-      <button type="button" class="site-tab" data-site="hiascend" role="tab" aria-selected="false" hidden>昇腾社区</button>
+    <div class="site-tabs" role="tablist">
       <button type="button" class="site-tab" data-site="compare" role="tab" aria-selected="false">对比分析</button>
+      <button type="button" class="site-tab" data-site="hiascend" role="tab" aria-selected="false">昇腾社区</button>
+      <button type="button" class="site-tab active-nv" data-site="nvidia" role="tab" aria-selected="true">NVIDIA</button>
     </div>
 
     <div class="site-panel" id="site-nvidia">
