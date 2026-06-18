@@ -172,6 +172,46 @@
       background: #f7fbf0;
     }
     #push-drawer-nv-install .push-drawer-head h2 { color: #5a8e00; }
+    #push-drawer-hs-container .push-drawer-head {
+      border-bottom: 1px solid #f6d2d5;
+      background: #fef7f7;
+    }
+    #push-drawer-hs-container .push-drawer-head h2 { color: #c7000b; }
+    #push-drawer-nv-container .push-drawer-head {
+      border-bottom: 1px solid #d7e8b3;
+      background: #f7fbf0;
+    }
+    #push-drawer-nv-container .push-drawer-head h2 { color: #5a8e00; }
+    #push-drawer-hs-p2-custom-op .push-drawer-head,
+    #push-drawer-hs-p2-precision .push-drawer-head,
+    #push-drawer-hs-p2-tiling .push-drawer-head,
+    #push-drawer-hs-p2-fusion .push-drawer-head,
+    #push-drawer-hs-p2-register .push-drawer-head,
+    #push-drawer-hs-p2-oplib .push-drawer-head {
+      border-bottom: 1px solid #f6d2d5;
+      background: #fef7f7;
+    }
+    #push-drawer-hs-p2-custom-op .push-drawer-head h2,
+    #push-drawer-hs-p2-precision .push-drawer-head h2,
+    #push-drawer-hs-p2-tiling .push-drawer-head h2,
+    #push-drawer-hs-p2-fusion .push-drawer-head h2,
+    #push-drawer-hs-p2-register .push-drawer-head h2,
+    #push-drawer-hs-p2-oplib .push-drawer-head h2 { color: #c7000b; }
+    #push-drawer-nv-p2-custom-op .push-drawer-head,
+    #push-drawer-nv-p2-precision .push-drawer-head,
+    #push-drawer-nv-p2-tiling .push-drawer-head,
+    #push-drawer-nv-p2-fusion .push-drawer-head,
+    #push-drawer-nv-p2-register .push-drawer-head,
+    #push-drawer-nv-p2-oplib .push-drawer-head {
+      border-bottom: 1px solid #d7e8b3;
+      background: #f7fbf0;
+    }
+    #push-drawer-nv-p2-custom-op .push-drawer-head h2,
+    #push-drawer-nv-p2-precision .push-drawer-head h2,
+    #push-drawer-nv-p2-tiling .push-drawer-head h2,
+    #push-drawer-nv-p2-fusion .push-drawer-head h2,
+    #push-drawer-nv-p2-register .push-drawer-head h2,
+    #push-drawer-nv-p2-oplib .push-drawer-head h2 { color: #5a8e00; }
     .push-drawer-sub {
       font-size: 11px;
       color: #64748b;
@@ -229,7 +269,6 @@
     }
     .jn-cmp-col.nv .jn-drawer-open:hover { background: #5a8e00; border-color: #5a8e00; color: #fff; }
     .jn-cmp-col.nv .jn-drawer-open[aria-expanded="true"] { background: #5a8e00; border-color: #5a8e00; color: #fff; }
-    .touch-flow-nv .touch-card.touch-start,
     .touch-flow-nv a.touch-card { border-left: 1px solid #e2e8f0; }
     .touch-flow-nv .touch-num { background: #76b900; }
     .touch-flow-nv a.touch-card.is-flow-target,
@@ -1054,6 +1093,7 @@
     /* 子站分组 · 触点 + 操作路径合一 */
     .jn-zone-path { display: flex; flex-direction: column; gap: 8px; }
     .jn-zone-block { border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; background: #fff; }
+    .jn-zone-block.jn-zone-optional { display: none; }
     .jn-cmp-col.nv .jn-zone-block { border-color: #d7e8b3; }
     .jn-cmp-col.hs .jn-zone-block { border-color: #f5dfe1; }
     .jn-cmp-col.nv .jn-zone-head {
@@ -1063,6 +1103,14 @@
     .jn-cmp-col.hs .jn-zone-head {
       background: #c7000b; color: #fff; font-size: 11px; font-weight: 800;
       padding: 5px 10px; display: flex; align-items: center; gap: 6px; line-height: 1.35;
+    }
+    .jn-zone-block.jn-zone-local { border-color: #e2e8f0; }
+    .jn-cmp-col.nv .jn-zone-block.jn-zone-local,
+    .jn-cmp-col.hs .jn-zone-block.jn-zone-local { border-color: #e2e8f0; }
+    .jn-zone-block.jn-zone-local .jn-zone-head,
+    .jn-cmp-col.nv .jn-zone-block.jn-zone-local .jn-zone-head,
+    .jn-cmp-col.hs .jn-zone-block.jn-zone-local .jn-zone-head {
+      background: #94a3b8; color: #fff;
     }
     .jn-zone-cross { font-size: 10px; font-weight: 700; opacity: .92; }
     .jn-zone-steps { padding: 8px; display: flex; flex-direction: column; gap: 8px; }
@@ -1163,9 +1211,6 @@
     .touch-card { display: block; border: 1px solid #e2e8f0; border-radius: 8px; padding: 7px 10px 7px 8px; background: #fff; text-decoration: none; color: inherit; transition: border-color .15s, box-shadow .15s; box-sizing: border-box; }
     a.touch-card { cursor: pointer; }
     a.touch-card:hover { border-color: #c7000b; box-shadow: 0 1px 3px rgba(199,0,11,.08); }
-    .touch-card.touch-start { border-left: 3px solid #c7000b; }
-    .touch-flow-nv .touch-card.touch-start { border-left: 1px solid #e2e8f0; }
-    .touch-flow:not(.touch-flow-nv) .touch-card.touch-start { border-left: 3px solid #c7000b; }
     .touch-card.touch-onpage { border-style: dashed; background: #f8fafc; cursor: default; border-left: 3px solid #cbd5e1; }
     .touch-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 4px; }
     .touch-num { flex-shrink: 0; width: 18px; height: 18px; border-radius: 5px; background: #c7000b; color: #fff; font-size: 10px; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; }
@@ -3927,158 +3972,154 @@
         </div>
 
         <div class="jn-card">
-          <div class="jn-card-head"><span class="jn-card-name">安装与环境变量</span><span class="tp tp-hi">触点强</span></div>
+          <div class="jn-card-head"><span class="jn-card-name">安装与环境变量</span><span class="tp tp-hi">触点强</span><span class="sc-verdict sc-verdict-hs">昇腾更优</span></div>
           <div class="jn-card-cmp">
-            <div class="jn-cmp-col hs">
+            <div class="jn-cmp-col hs jn-cmp-win">
               <div class="jn-cmp-label">昇腾</div>
-              <div class="jn-card-do">下载驱动 / 固件 / CANN 安装包，照安装指南配置环境变量</div>
+              <div class="jn-card-do">经 CANN 快速安装页选版本，复制命令到本地安装</div>
               <div class="jn-cmp-divider"></div>
               <div class="jn-cmp-path-label">操作路径</div>
               <div class="jn-zone-path">
                 <div class="jn-zone-block">
-                  <div class="jn-zone-head">昇腾社区 · 资源</div>
+                  <div class="jn-zone-head">昇腾社区</div>
                   <div class="jn-zone-steps">
-                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-install" data-flow-step="1"><span class="jn-zone-page">社区首页</span><span class="jn-zone-act"><b>Click</b> · 顶栏「资源 ▾」</span></button>
-                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-install" data-flow-step="2"><span class="jn-zone-page">资源下载中心</span><span class="jn-zone-act"><b>Open</b> · 软件 / 资源下载入口</span></button>
-                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-install" data-flow-step="3"><span class="jn-zone-page">异构计算架构 CANN</span><span class="jn-zone-act"><b>Click</b> · 硬件使能 · CANN 分类</span></button>
-                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-install" data-flow-step="4"><span class="jn-zone-page">CANN 软件包 · 下载</span><span class="jn-zone-act"><b>Click</b> · 选版本 → 下载 CANN 包</span></button>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-install" data-flow-step="1"><span class="jn-zone-page">社区首页</span><span class="jn-zone-act"><b>Click</b> · 顶栏 CANN</span></button>
                   </div>
                 </div>
                 <div class="jn-zone-block">
-                  <div class="jn-zone-head">昇腾社区 · 文档</div>
+                  <div class="jn-zone-head">CANN<span class="jn-zone-cross">↗ 跨子站</span></div>
                   <div class="jn-zone-steps">
-                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-install" data-flow-step="5"><span class="jn-zone-page">社区首页</span><span class="jn-zone-act"><b>Click</b> · 顶栏「文档」</span></button>
-                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-install" data-flow-step="6"><span class="jn-zone-page">CANN 安装指南</span><span class="jn-zone-act"><b>Read</b> · 安装步骤 · 依赖顺序</span></button>
-                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-install" data-flow-step="7"><span class="jn-zone-page">环境变量</span><span class="jn-zone-act"><b>Do</b> · 配置 ASCEND / LD_LIBRARY_PATH 等</span></button>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-install" data-flow-step="2"><span class="jn-zone-page">CANN 主页</span><span class="jn-zone-act"><b>Click</b> · 顶栏「下载」</span></button>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-install" data-flow-step="3"><span class="jn-zone-page">CANN 快速安装</span><span class="jn-zone-act"><b>Do</b> · 选版本 / 系列 / 安装方式</span></button>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-install" data-flow-step="4"><span class="jn-zone-page">CANN 快速安装</span><span class="jn-zone-act"><b>Do</b> · 复制命令到本地</span></button>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-install" data-flow-step="5"><span class="jn-zone-page">CANN 社区版文档</span><span class="jn-zone-act"><b>Read</b> · 文档</span></button>
                   </div>
                 </div>
               </div>
               <div id="hs-install-flow-source" hidden>
               <div class="touch-flow" id="hs-install-touch-flow">
                 <a class="touch-card touch-start" href="https://www.hiascend.com/zh" target="_blank" rel="noopener" data-flow-step="1">
-                  <div class="touch-head"><span class="touch-num">1</span><span class="touch-head-row"><span class="touch-zone">【昇腾社区 · 资源】</span><span class="touch-page">社区首页</span></span><span class="touch-url">hiascend.com/zh</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>顶栏「资源 ▾」</span></div>
-                  <div class="touch-shot touch-shot-pending"><span>截图 · 待补充</span></div>
+                  <div class="touch-head"><span class="touch-num">1</span><span class="touch-head-row"><span class="touch-zone">【昇腾社区】</span><span class="touch-page">社区首页</span></span><span class="touch-url">hiascend.com/zh</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>顶栏 CANN</span></div>
+                  <div class="touch-shot">
+                    <img src="assets/hs/install/step-01-zh-home-cann.png" alt="社区首页 · 顶栏 CANN 入口" width="1024" height="509" loading="lazy" />
+                  </div>
+                </a>
+                <div class="touch-flow-gap"><span class="touch-flow-gap-mark">↗</span>断点 · 昇腾社区 → CANN 子站</div>
+                <a class="touch-card" href="https://www.hiascend.com/cann" target="_blank" rel="noopener" data-flow-step="2">
+                  <div class="touch-head"><span class="touch-num">2</span><span class="touch-head-row"><span class="touch-zone">【CANN】</span><span class="touch-page">CANN 主页</span></span><span class="touch-url">hiascend.com/cann</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>顶栏「下载」</span></div>
+                  <div class="touch-shot">
+                    <img src="assets/hs/install/step-02-cann-home.png" alt="CANN 主页 · 顶栏下载" width="1024" height="510" loading="lazy" />
+                  </div>
                 </a>
                 <div class="touch-arrow-down">↓</div>
-                <a class="touch-card" href="https://www.hiascend.com/developer/download/software" target="_blank" rel="noopener" data-flow-step="2">
-                  <div class="touch-head"><span class="touch-num">2</span><span class="touch-head-row"><span class="touch-zone">【昇腾社区 · 资源】</span><span class="touch-page">资源下载中心</span></span><span class="touch-url">…/developer/download/software</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>软件 / 资源下载入口</span></div>
-                  <div class="touch-shot touch-shot-pending"><span>截图 · 待补充</span></div>
+                <a class="touch-card" href="https://www.hiascend.com/cann/download" target="_blank" rel="noopener" data-flow-step="3">
+                  <div class="touch-head"><span class="touch-num">3</span><span class="touch-head-row"><span class="touch-zone">【CANN】</span><span class="touch-page">CANN 快速安装</span></span><span class="touch-url">…/cann/download</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Do</span>选版本 / 系列 / 安装方式</span></div>
+                  <div class="touch-shot">
+                    <img src="assets/hs/install/step-03-cann-download.png" alt="CANN 快速安装 · 选版本 / 系列 / 安装方式" width="1024" height="509" loading="lazy" />
+                  </div>
                 </a>
                 <div class="touch-arrow-down">↓</div>
-                <a class="touch-card" href="https://www.hiascend.com/developer/download" target="_blank" rel="noopener" data-flow-step="3">
-                  <div class="touch-head"><span class="touch-num">3</span><span class="touch-head-row"><span class="touch-zone">【昇腾社区 · 资源】</span><span class="touch-page">异构计算架构 CANN</span></span><span class="touch-url">…/developer/download</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>硬件使能 · CANN 分类</span></div>
-                  <div class="touch-shot touch-shot-pending"><span>截图 · 待补充</span></div>
-                </a>
-                <div class="touch-arrow-down">↓</div>
-                <a class="touch-card" href="https://www.hiascend.com/developer/download/software" target="_blank" rel="noopener" data-flow-step="4">
-                  <div class="touch-head"><span class="touch-num">4</span><span class="touch-head-row"><span class="touch-zone">【昇腾社区 · 资源】</span><span class="touch-page">CANN 软件包 · 下载</span></span><span class="touch-url">…/download/software</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>选版本 → 下载 CANN 包</span></div>
-                  <div class="touch-shot touch-shot-pending"><span>截图 · 待补充</span></div>
+                <a class="touch-card" href="https://www.hiascend.com/cann/download" target="_blank" rel="noopener" data-flow-step="4">
+                  <div class="touch-head"><span class="touch-num">4</span><span class="touch-head-row"><span class="touch-zone">【CANN】</span><span class="touch-page">CANN 快速安装</span></span><span class="touch-url">…/cann/download</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Do</span>复制命令到本地</span></div>
+                  <div class="touch-shot">
+                    <img src="assets/hs/install/step-04-cann-install.png" alt="CANN 快速安装 · 复制命令到本地" width="1024" height="510" loading="lazy" />
+                  </div>
                   <p class="touch-note">装前通常先查上卡版本配套 · 驱动 / 固件见 HDK 页</p>
                 </a>
-                <div class="touch-flow-branch"><span class="touch-flow-branch-mark">‖</span>并行 · 安装指南</div>
-                <a class="touch-card" href="https://www.hiascend.com/zh" target="_blank" rel="noopener" data-flow-step="5">
-                  <div class="touch-head"><span class="touch-num">5</span><span class="touch-head-row"><span class="touch-zone">【昇腾社区 · 文档】</span><span class="touch-page">社区首页</span></span><span class="touch-url">hiascend.com/zh</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>顶栏「文档」</span></div>
-                  <div class="touch-shot touch-shot-pending"><span>截图 · 待补充</span></div>
-                </a>
                 <div class="touch-arrow-down">↓</div>
-                <a class="touch-card" href="https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/softwareinst/instg/instg_0008.html" target="_blank" rel="noopener" data-flow-step="6">
-                  <div class="touch-head"><span class="touch-num">6</span><span class="touch-head-row"><span class="touch-zone">【昇腾社区 · 文档】</span><span class="touch-page">CANN 安装指南</span></span><span class="touch-url">…/softwareinst/instg/instg_0008</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Read</span>安装步骤 · 依赖顺序</span></div>
-                  <div class="touch-shot touch-shot-pending"><span>截图 · 待补充</span></div>
-                </a>
-                <div class="touch-arrow-down">↓</div>
-                <a class="touch-card" href="https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/softwareinst/instg/instg_0008.html" target="_blank" rel="noopener" data-flow-step="7">
-                  <div class="touch-head"><span class="touch-num">7</span><span class="touch-head-row"><span class="touch-zone">【昇腾社区 · 文档】</span><span class="touch-page">环境变量</span></span><span class="touch-url">…/instg_0008 · 环境配置</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Do</span>按指南配置 ASCEND / LD_LIBRARY_PATH 等</span></div>
-                  <div class="touch-shot touch-shot-pending"><span>截图 · 待补充</span></div>
+                <a class="touch-card" href="https://www.hiascend.com/cann/document" target="_blank" rel="noopener" data-flow-step="5">
+                  <div class="touch-head"><span class="touch-num">5</span><span class="touch-head-row"><span class="touch-zone">【CANN】</span><span class="touch-page">CANN 社区版文档</span></span><span class="touch-url">…/cann/document</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Read</span>文档</span></div>
+                  <div class="touch-shot">
+                    <img src="assets/hs/install/step-05-cann-docs.png" alt="CANN 社区版文档 · 环境准备" width="1024" height="511" loading="lazy" />
+                  </div>
                 </a>
               </div>
-              <div class="pathflow-hint">同域 0 ↗ · 下载 1→4 ‖ 指南 5→7 · 两条路径可并行</div>
+              <div class="pathflow-hint">↗ 跨子站 1 · 主路径 1→5 · 同域</div>
               </div>
             </div>
             <div class="jn-cmp-col nv">
               <div class="jn-cmp-label">NVIDIA</div>
-              <div class="jn-card-do">下载 CUDA Toolkit / Driver，照 Installation Guide 配置 PATH / LD_LIBRARY_PATH</div>
+              <div class="jn-card-do">下载 CUDA Toolkit，照 Quick Start 安装文档操作</div>
               <div class="jn-cmp-divider"></div>
               <div class="jn-cmp-path-label">操作路径</div>
               <div class="jn-zone-path">
                 <div class="jn-zone-block">
                   <div class="jn-zone-head">NVIDIA Developer<span class="jn-zone-cross">↗ 跨子站</span></div>
                   <div class="jn-zone-steps">
-                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-install" data-flow-step="1"><span class="jn-zone-page">CUDA Toolkit Downloads</span><span class="jn-zone-act"><b>Click</b> · 选 OS / 版本 / 安装方式 → Download</span></button>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-install" data-flow-step="1"><span class="jn-zone-page">CUDA Toolkit Downloads</span><span class="jn-zone-act"><b>Click</b> · 选 OS / 版本 / 安装方式</span></button>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-install" data-flow-step="2"><span class="jn-zone-page">CUDA Toolkit Downloads</span><span class="jn-zone-act"><b>Click</b> · Download 下载安装包</span></button>
                   </div>
                 </div>
                 <div class="jn-zone-block">
                   <div class="jn-zone-head">Docs Hub<span class="jn-zone-cross">↗ 跨子站</span></div>
                   <div class="jn-zone-steps">
-                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-install" data-flow-step="2"><span class="jn-zone-page">CUDA Quick Start Guide</span><span class="jn-zone-act"><b>Read</b> · Launch 安装包 → 按 Local / Network Installer 步骤安装</span></button>
-                  </div>
-                </div>
-                <div class="jn-zone-block">
-                  <div class="jn-zone-head">本地</div>
-                  <div class="jn-zone-steps">
-                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-install" data-flow-step="3"><span class="jn-zone-page">本地</span><span class="jn-zone-act"><b>Do</b> · 安装 CUDA Toolkit</span></button>
-                  </div>
-                </div>
-                <div class="jn-zone-block">
-                  <div class="jn-zone-head">Docs Hub · 可选</div>
-                  <div class="jn-zone-steps">
-                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-install" data-flow-step="4"><span class="jn-zone-page">CUDA Toolkit Documentation</span><span class="jn-zone-act"><b>Click</b> · Installation Guide Linux</span></button>
-                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-install" data-flow-step="5"><span class="jn-zone-page">环境变量 · Installation Guide</span><span class="jn-zone-act"><b>Do</b> · §11.1 配置 PATH / LD_LIBRARY_PATH</span></button>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-install" data-flow-step="3"><span class="jn-zone-page">CUDA Quick Start Guide</span><span class="jn-zone-act"><b>Read</b> · 安装文档</span></button>
                   </div>
                 </div>
               </div>
               <div id="nv-install-flow-source" hidden>
               <div class="touch-flow touch-flow-nv" id="nv-install-touch-flow">
                 <a class="touch-card touch-start" href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="noopener" data-flow-step="1">
-                  <div class="touch-head"><span class="touch-num">1</span><span class="touch-head-row"><span class="touch-zone">【NVIDIA Developer】</span><span class="touch-page">下载 CUDA Toolkit</span></span><span class="touch-url">developer.nvidia.com/cuda-downloads</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>选 OS / 版本 / 安装方式 → Download</span></div>
+                  <div class="touch-head"><span class="touch-num">1</span><span class="touch-head-row"><span class="touch-zone">【NVIDIA Developer】</span><span class="touch-page">下载 CUDA Toolkit</span></span><span class="touch-url">developer.nvidia.com/cuda-downloads</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>选 OS / 版本 / 安装方式</span></div>
                   <div class="touch-shot">
-                    <img src="assets/nv/install/step-07-download.png" alt="CUDA Toolkit 13.3 Downloads · Download Installer" width="1024" height="509" loading="lazy" />
+                    <img src="assets/nv/install/step-07-download.png" alt="CUDA Toolkit 13.3 Downloads · Select Target Platform" width="1024" height="510" loading="lazy" />
                   </div>
-                  <p class="touch-note">↗ 跨域 · 装前查上卡兼容矩阵</p>
+                </a>
+                <div class="touch-arrow-down">↓</div>
+                <a class="touch-card" href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="noopener" data-flow-step="2">
+                  <div class="touch-head"><span class="touch-num">2</span><span class="touch-head-row"><span class="touch-zone">【NVIDIA Developer】</span><span class="touch-page">下载 CUDA Toolkit</span></span><span class="touch-url">developer.nvidia.com/cuda-downloads</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>Download 下载安装包</span></div>
+                  <div class="touch-shot">
+                    <img src="assets/nv/install/step-02-download-confirm.png" alt="CUDA Toolkit Downloads · Download Installer" width="1024" height="513" loading="lazy" />
+                  </div>
                 </a>
                 <div class="touch-flow-gap"><span class="touch-flow-gap-mark">↗</span>断点 · developer → docs · 需手动切浏览器</div>
-                <a class="touch-card" href="https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html" target="_blank" rel="noopener" data-flow-step="2">
-                  <div class="touch-head"><span class="touch-num">2</span><span class="touch-head-row"><span class="touch-zone">【Docs Hub】</span><span class="touch-page">CUDA Quick Start Guide</span></span><span class="touch-url">docs.nvidia.com/cuda/cuda-quick-start-guide</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Read</span>Launch 安装包 → 按 Local / Network Installer 步骤安装</span></div>
+                <a class="touch-card" href="https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html" target="_blank" rel="noopener" data-flow-step="3">
+                  <div class="touch-head"><span class="touch-num">3</span><span class="touch-head-row"><span class="touch-zone">【Docs Hub】</span><span class="touch-page">CUDA Quick Start Guide</span></span><span class="touch-url">docs.nvidia.com/cuda/cuda-quick-start-guide</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Read</span>安装文档</span></div>
                   <div class="touch-shot">
                     <img src="assets/nv/install/step-02-quick-start-install.png" alt="CUDA Quick Start Guide · Local Installer" width="1024" height="514" loading="lazy" />
                   </div>
                   <p class="touch-note">Windows §3.2 · Linux §4 已含 export · Windows exe 通常无需再配</p>
                 </a>
-                <div class="touch-arrow-down">↓</div>
-                <span class="touch-card touch-onpage" data-flow-step="3">
-                  <div class="touch-head"><span class="touch-num">3</span><span class="touch-head-row"><span class="touch-zone">【本地】</span><span class="touch-page">本地</span></span><span class="touch-url">目标机 · 安装</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Do</span>安装 CUDA Toolkit</span></div>
-                </span>
-                <div class="touch-flow-optional-group">
-                <a class="touch-card touch-optional" href="https://docs.nvidia.com/cuda/cuda-toolkit-documentation/" target="_blank" rel="noopener" data-flow-step="4">
-                  <span class="touch-opt-tag">可选</span>
-                  <div class="touch-head"><span class="touch-num">4</span><span class="touch-head-row"><span class="touch-zone">【Docs Hub · 可选】</span><span class="touch-page">CUDA Toolkit Documentation</span></span><span class="touch-url">docs.nvidia.com/cuda/cuda-toolkit-documentation</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>Installation Guide Linux</span></div>
-                  <div class="touch-shot">
-                    <img src="assets/nv/install/step-03-toolkit-docs-linux-guide.png" alt="CUDA Toolkit Documentation · Installation Guide Linux" width="1024" height="502" loading="lazy" />
-                  </div>
-                  <p class="touch-note">Explore · Release and installation 区</p>
-                </a>
-                <div class="touch-arrow-down">↓</div>
-                <a class="touch-card touch-optional" href="https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#environment-setup" target="_blank" rel="noopener" data-flow-step="5">
-                  <span class="touch-opt-tag">可选</span>
-                  <div class="touch-head"><span class="touch-num">5</span><span class="touch-head-row"><span class="touch-zone">【Docs Hub · 可选】</span><span class="touch-page">环境变量 · Installation Guide</span></span><span class="touch-url">…/cuda-installation-guide-linux · §11.1</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Do</span>§11.1 配置 PATH / LD_LIBRARY_PATH</span></div>
-                  <div class="touch-shot">
-                    <img src="assets/nv/install/step-04-install-guide-linux.png" alt="Installation Guide Linux · §11.1 Environment Setup" width="1024" height="514" loading="lazy" />
-                  </div>
-                  <p class="touch-note">与 ② Linux 子节重叠 · runfile 需 PATH + LD_LIBRARY_PATH</p>
-                </a>
-                </div>
               </div>
-              <div class="pathflow-hint">↗ 跨域 1 · 主路径 1→3 · 可选 4→5</div>
+              <div class="pathflow-hint">↗ 跨域 1 · 主路径 1→3</div>
               </div>
             </div>
           </div>
-          <div class="dd-effect">
-            效果：可感知 <b>✓（下载）/ ◐（指南）</b> · 点击 <b>各 2–3</b> · 昇腾<b>同域 0 跨域</b>，NVIDIA 下载与指南分属 developer / docs 两个子站。
-            <span class="dd-pain">痛点：两家都是「下载」与「安装指南」两条并行路径；装 CANN / CUDA 前通常还要先查版本配套，下载页本身不帮你做版本决策。</span>
+          <div class="dd-effect dd-effect-cmp">
+            <div class="dd-effect-col dd-effect-hs">
+              <div class="dd-effect-brand">昇腾</div>
+              <div class="dd-effect-item">
+                <span class="dd-effect-tag dd-tag-pro">优</span>
+                <span>5 步，跨 1 次子站（社区 → CANN）；进 CANN 后 2→5 在<b>同一 CANN 顶栏体系内</b>、0 跨域；快速安装页按系列 / OS / 方式生成命令，复制到本地即可执行。</span>
+              </div>
+              <div class="dd-effect-item">
+                <span class="dd-effect-tag dd-tag-con">缺</span>
+                <ul class="dd-effect-list">
+                  <li>须先经社区顶栏进 CANN 子站，比 CANN 站内直达「下载」多 1 次功能区切换</li>
+                  <li>与「版本兼容排查」查表、下卡 AscendHub 拉镜像<b>三条入口并列</b>，装完 CANN 不引导下一步</li>
+                </ul>
+              </div>
+            </div>
+            <div class="dd-effect-col dd-effect-nv">
+              <div class="dd-effect-brand">NVIDIA</div>
+              <div class="dd-effect-item">
+                <span class="dd-effect-tag dd-tag-pro">优</span>
+                <span>主路径 3 步；<b>Developer</b> 下载页绿钮选平台 → Download 直观；<b>Docs Hub</b> Quick Start 按 OS 给安装步骤，步数少于昇腾。</span>
+              </div>
+              <div class="dd-effect-item">
+                <span class="dd-effect-tag dd-tag-con">缺</span>
+                <ul class="dd-effect-list">
+                  <li>Developer ↔ Docs Hub <b>跨 1 子站</b>，安装说明不在下载页</li>
+                  <li>用户需手动切站读 Quick Start；下载页不做版本 / 驱动配套决策</li>
+                  <li>与查表、NGC 拉镜像各成一线，装完 CUDA 不引导进 NGC</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="jn-card">
-          <div class="jn-card-head"><span class="jn-card-name">容器 / 镜像搭建</span><span class="tp tp-hi">触点强</span></div>
+          <div class="jn-card-head"><span class="jn-card-name">容器 / 镜像搭建</span><span class="tp tp-hi">触点强</span><span class="sc-verdict sc-verdict-tie">相当</span></div>
           <div class="jn-card-cmp">
             <div class="jn-cmp-col hs">
               <div class="jn-cmp-label">昇腾</div>
@@ -4089,12 +4130,58 @@
                 <div class="jn-zone-block">
                   <div class="jn-zone-head">昇腾社区</div>
                   <div class="jn-zone-steps">
-                    <a class="jn-zone-step" href="https://www.hiascend.com/developer/download" target="_blank" rel="noopener"><span class="jn-zone-page">顶栏「资源 ▾」</span><span class="jn-zone-act"><b>Click</b> · 社区顶栏「资源 ▾」</span></a>
-                    <a class="jn-zone-step" href="https://www.hiascend.com/developer/ascendhub" target="_blank" rel="noopener"><span class="jn-zone-page">AscendHub</span><span class="jn-zone-act"><b>Open</b> · AscendHub</span></a>
-                    <a class="jn-zone-step" href="https://www.hiascend.com/developer/ascendhub" target="_blank" rel="noopener"><span class="jn-zone-page">按 CANN 版本选镜像</span><span class="jn-zone-act"><b>Click</b> · 按 CANN 版本筛选</span></a>
-                    <a class="jn-zone-step" href="https://ascendhub.huawei.com" target="_blank" rel="noopener"><span class="jn-zone-page">pull CANN 镜像</span><span class="jn-zone-act"><b>Click</b> · docker pull CANN 镜像</span></a>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-container" data-flow-step="1"><span class="jn-zone-page">社区首页</span><span class="jn-zone-act"><b>Click</b> · 昇腾镜像仓库</span></button>
                   </div>
                 </div>
+                <div class="jn-zone-block">
+                  <div class="jn-zone-head">开发者子站<span class="jn-zone-cross">↗ 跨子站</span></div>
+                  <div class="jn-zone-steps">
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-container" data-flow-step="2"><span class="jn-zone-page">AscendHub</span><span class="jn-zone-act"><b>Search</b> · CANN</span></button>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-container" data-flow-step="3"><span class="jn-zone-page">cann 镜像仓库</span><span class="jn-zone-act"><b>Click</b> · cann 镜像</span></button>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-container" data-flow-step="4"><span class="jn-zone-page">cann · 镜像下载</span><span class="jn-zone-act"><b>Click</b> · 选版本 / 立即下载</span></button>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-container" data-flow-step="5"><span class="jn-zone-page">pull 命令弹窗</span><span class="jn-zone-act"><b>Click</b> · docker pull CANN 镜像</span></button>
+                  </div>
+                </div>
+              </div>
+              <div id="hs-container-flow-source" hidden>
+              <div class="touch-flow" id="hs-container-touch-flow">
+                <a class="touch-card touch-start" href="https://www.hiascend.com/zh" target="_blank" rel="noopener" data-flow-step="1">
+                  <div class="touch-head"><span class="touch-num">1</span><span class="touch-head-row"><span class="touch-zone">【昇腾社区】</span><span class="touch-page">社区首页</span></span><span class="touch-url">hiascend.com/zh</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>昇腾镜像仓库</span></div>
+                  <div class="touch-shot">
+                    <img src="assets/hs/container/step-01-zh-home-resources.png" alt="社区首页 · 顶栏「资源 ▾」· 昇腾镜像仓库" width="1024" height="509" loading="lazy" />
+                  </div>
+                </a>
+                <div class="touch-arrow-down">↓</div>
+                <a class="touch-card" href="https://www.hiascend.com/developer/ascendhub" target="_blank" rel="noopener" data-flow-step="2">
+                  <div class="touch-head"><span class="touch-num">2</span><span class="touch-head-row"><span class="touch-zone">【开发者子站】</span><span class="touch-page">AscendHub</span></span><span class="touch-url">…/developer/ascendhub</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Search</span>CANN</span></div>
+                  <div class="touch-shot">
+                    <img src="assets/hs/container/step-02-ascendhub.png" alt="AscendHub · 昇腾镜像仓库" width="1024" height="510" loading="lazy" />
+                  </div>
+                </a>
+                <div class="touch-arrow-down">↓</div>
+                <a class="touch-card" href="https://www.hiascend.com/developer/ascendhub" target="_blank" rel="noopener" data-flow-step="3">
+                  <div class="touch-head"><span class="touch-num">3</span><span class="touch-head-row"><span class="touch-zone">【开发者子站】</span><span class="touch-page">cann 镜像仓库</span></span><span class="touch-url">…/developer/ascendhub · cann</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>cann 镜像</span></div>
+                  <div class="touch-shot">
+                    <img src="assets/hs/container/step-03-cann-repo.png" alt="AscendHub · cann 镜像仓库详情" width="1024" height="510" loading="lazy" />
+                  </div>
+                </a>
+                <div class="touch-arrow-down">↓</div>
+                <a class="touch-card" href="https://www.hiascend.com/developer/ascendhub" target="_blank" rel="noopener" data-flow-step="4">
+                  <div class="touch-head"><span class="touch-num">4</span><span class="touch-head-row"><span class="touch-zone">【开发者子站】</span><span class="touch-page">cann · 镜像下载</span></span><span class="touch-url">…/ascendhub · cann · Tags</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>选版本 / 立即下载</span></div>
+                  <div class="touch-shot">
+                    <img src="assets/hs/container/step-04-cann-download.png" alt="cann 镜像仓库 · 镜像下载 Tab · 版本列表" width="1024" height="512" loading="lazy" />
+                  </div>
+                </a>
+                <div class="touch-arrow-down">↓</div>
+                <a class="touch-card" href="https://www.hiascend.com/developer/ascendhub" target="_blank" rel="noopener" data-flow-step="5">
+                  <div class="touch-head"><span class="touch-num">5</span><span class="touch-head-row"><span class="touch-zone">【开发者子站】</span><span class="touch-page">pull 命令弹窗</span></span><span class="touch-url">…/ascendhub · cann · pull</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>docker pull CANN 镜像</span></div>
+                  <div class="touch-shot">
+                    <img src="assets/hs/container/step-05-cann-pull.png" alt="镜像下载弹窗 · docker pull 命令" width="1024" height="510" loading="lazy" />
+                  </div>
+                  <p class="touch-note">tag 须与已装 CANN 版本一致 · 错 tag 回查「版本兼容排查」</p>
+                </a>
+              </div>
+              <div class="pathflow-hint">↗ 跨子站 1 · 主路径 1→5</div>
               </div>
             </div>
             <div class="jn-cmp-col nv">
@@ -4104,77 +4191,229 @@
               <div class="jn-cmp-path-label">操作路径</div>
               <div class="jn-zone-path">
                 <div class="jn-zone-block">
+                  <div class="jn-zone-head">NVIDIA Developer</div>
+                  <div class="jn-zone-steps">
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-container" data-flow-step="1"><span class="jn-zone-page">开发者门户</span><span class="jn-zone-act"><b>Click</b> · NGC Catalog</span></button>
+                  </div>
+                </div>
+                <div class="jn-zone-block">
                   <div class="jn-zone-head">NGC Catalog<span class="jn-zone-cross">↗ 跨子站</span></div>
                   <div class="jn-zone-steps">
-                    <a class="jn-zone-step" href="https://catalog.ngc.nvidia.com/" target="_blank" rel="noopener"><span class="jn-zone-page">catalog.ngc.nvidia.com</span><span class="jn-zone-act"><b>Open</b> · catalog.ngc.nvidia.com</span></a>
-                    <a class="jn-zone-step" href="https://catalog.ngc.nvidia.com/containers" target="_blank" rel="noopener"><span class="jn-zone-page">NGC Containers</span><span class="jn-zone-act"><b>Open</b> · NGC Containers</span></a>
-                    <a class="jn-zone-step" href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/cuda" target="_blank" rel="noopener"><span class="jn-zone-page">CUDA Base 镜像</span><span class="jn-zone-act"><b>Open</b> · CUDA Base 镜像</span></a>
-                    <a class="jn-zone-step" href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/cuda" target="_blank" rel="noopener"><span class="jn-zone-page">pull CUDA 镜像</span><span class="jn-zone-act"><b>Click</b> · 按 CUDA 版本选 tag</span></a>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-container" data-flow-step="2"><span class="jn-zone-page">NGC Catalog</span><span class="jn-zone-act"><b>Click</b> · Containers</span></button>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-container" data-flow-step="3"><span class="jn-zone-page">NGC Containers</span><span class="jn-zone-act"><b>Click</b> · NVIDIA CUDA</span></button>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-container" data-flow-step="4"><span class="jn-zone-page">CUDA Base 镜像</span><span class="jn-zone-act"><b>Open</b> · CUDA Base 镜像</span></button>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-container" data-flow-step="5"><span class="jn-zone-page">pull CUDA 镜像</span><span class="jn-zone-act"><b>Do</b> · 按 CUDA 版本选 tag</span></button>
                   </div>
                 </div>
               </div>
+              <div id="nv-container-flow-source" hidden>
+              <div class="touch-flow touch-flow-nv" id="nv-container-touch-flow">
+                <a class="touch-card touch-start" href="https://developer.nvidia.com/" target="_blank" rel="noopener" data-flow-step="1">
+                  <div class="touch-head"><span class="touch-num">1</span><span class="touch-head-row"><span class="touch-zone">【NVIDIA Developer】</span><span class="touch-page">开发者门户</span></span><span class="touch-url">developer.nvidia.com</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>NGC Catalog</span></div>
+                  <div class="touch-shot">
+                    <img src="assets/nv/container/step-01-dev-ngc-entry.png" alt="developer.nvidia.com · Platforms and Tools · NGC Catalog" width="1024" height="510" loading="lazy" />
+                  </div>
+                  <p class="touch-note">Platforms and Tools → Cloud Development · NGC Catalog</p>
+                </a>
+                <div class="touch-flow-gap"><span class="touch-flow-gap-mark">↗</span>断点 · developer.nvidia.com → catalog.ngc.nvidia.com</div>
+                <a class="touch-card" href="https://catalog.ngc.nvidia.com/" target="_blank" rel="noopener" data-flow-step="2">
+                  <div class="touch-head"><span class="touch-num">2</span><span class="touch-head-row"><span class="touch-zone">【NGC Catalog】</span><span class="touch-page">NGC Catalog</span></span><span class="touch-url">catalog.ngc.nvidia.com</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>Containers</span></div>
+                  <div class="touch-shot">
+                    <img src="assets/nv/container/step-02-ngc-catalog.png" alt="NGC Catalog · Explore · Containers" width="1024" height="511" loading="lazy" />
+                  </div>
+                </a>
+                <div class="touch-arrow-down">↓</div>
+                <a class="touch-card" href="https://catalog.ngc.nvidia.com/containers" target="_blank" rel="noopener" data-flow-step="3">
+                  <div class="touch-head"><span class="touch-num">3</span><span class="touch-head-row"><span class="touch-zone">【NGC Catalog】</span><span class="touch-page">NGC Containers</span></span><span class="touch-url">catalog.ngc.nvidia.com/containers</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>NVIDIA CUDA</span></div>
+                  <div class="touch-shot">
+                    <img src="assets/nv/container/step-03-ngc-containers.png" alt="NGC Catalog · Containers · NVIDIA cuda" width="1024" height="510" loading="lazy" />
+                  </div>
+                </a>
+                <div class="touch-arrow-down">↓</div>
+                <a class="touch-card" href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/cuda" target="_blank" rel="noopener" data-flow-step="4">
+                  <div class="touch-head"><span class="touch-num">4</span><span class="touch-head-row"><span class="touch-zone">【NGC Catalog】</span><span class="touch-page">CUDA Base 镜像</span></span><span class="touch-url">…/orgs/nvidia/containers/cuda</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>CUDA Base 镜像</span></div>
+                  <div class="touch-shot">
+                    <img src="assets/nv/container/step-04-cuda-base.png" alt="NGC Catalog · NVIDIA cuda 容器详情" width="1024" height="511" loading="lazy" />
+                  </div>
+                </a>
+                <div class="touch-arrow-down">↓</div>
+                <a class="touch-card" href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/cuda" target="_blank" rel="noopener" data-flow-step="5">
+                  <div class="touch-head"><span class="touch-num">5</span><span class="touch-head-row"><span class="touch-zone">【NGC Catalog】</span><span class="touch-page">pull CUDA 镜像</span></span><span class="touch-url">…/containers/cuda · Tags</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Do</span>按 CUDA 版本选 tag · docker pull</span></div>
+                  <div class="touch-shot">
+                    <img src="assets/nv/container/step-05-cuda-tags.png" alt="NGC Catalog · cuda Tags · pull 命令" width="1024" height="509" loading="lazy" />
+                  </div>
+                  <p class="touch-note">tag 须与已装 CUDA 版本一致 · 错 tag 回查「版本兼容排查」</p>
+                </a>
+              </div>
+              <div class="pathflow-hint">↗ 跨域 1 · 主路径 1→5</div>
+              </div>
             </div>
           </div>
-          <div class="dd-effect">
-            效果：可感知 <b>◐→✓</b> · 点击 <b>2</b> · 镜像 tag 须与已装 CANN / CUDA 版本一致。
-            <span class="dd-pain">痛点：AscendHub / NGC 都不自动校验本地已装版本，选错 tag 需回查「版本兼容排查」。</span>
+          <div class="dd-effect dd-effect-cmp">
+            <div class="dd-effect-col dd-effect-hs">
+              <div class="dd-effect-brand">昇腾</div>
+              <div class="dd-effect-item">
+                <span class="dd-effect-tag dd-tag-pro">优</span>
+                <span>5 步，结构与安装卡对称：跨 1 次子站（社区 → 开发者子站）；进 AscendHub 后 2→5 <b>同域连贯</b>；pull 弹窗一次给 arm / x86 / 自适应命令。</span>
+              </div>
+              <div class="dd-effect-item">
+                <span class="dd-effect-tag dd-tag-con">缺</span>
+                <ul class="dd-effect-list">
+                  <li>入口藏在「资源 ▾ → 昇腾镜像仓库」，比 CANN 顶栏位更隐蔽</li>
+                  <li>须搜 CANN → 进 cann 仓 → 切「镜像下载」→「立即下载」才见 pull，比 NGC Tags 多 2 击</li>
+                  <li>不校验已装 CANN 版本，错 tag 须回查「版本兼容排查」</li>
+                </ul>
+              </div>
+            </div>
+            <div class="dd-effect-col dd-effect-nv">
+              <div class="dd-effect-brand">NVIDIA</div>
+              <div class="dd-effect-item">
+                <span class="dd-effect-tag dd-tag-pro">优</span>
+                <span>5 步，结构与安装卡对称：<b>Developer</b> → <b>NGC Catalog</b> 跨 1 域；门户 Platforms and Tools 入口已补齐；Tags Tab 可搜 tag、列表内直接复制 <code>nvcr.io</code> pull 命令。</span>
+              </div>
+              <div class="dd-effect-item">
+                <span class="dd-effect-tag dd-tag-con">缺</span>
+                <ul class="dd-effect-list">
+                  <li>developer → NGC 与上卡 cuda-downloads / docs <b>安装流未串联</b></li>
+                  <li>cuda 镜像 tag 数量极多，页面不提示该选哪条对应本地已装 CUDA，装前仍须查「版本兼容排查」</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="dd-sum">
-          <div class="dd-sum-row"><b>阶段结论：</b>配套表 → 软件包 → 容器镜像是一条<b>强耦合链</b>，但 IA 拆成 3 个并列入口。</div>
-          <div class="dd-sum-row"><b>分环节看谁更顺：</b>查配套——<b>已在社区内</b> 昇腾更少换站，<b>首次来查</b> NVIDIA 更易找对矩阵；下载安装——昇腾<b>同域连贯</b>更顺，NVIDIA 要在 developer / docs 间切换；拉镜像——两家接近，都须自行核对 tag。</div>
-          <div class="dd-sum-row"><b>共同短板：</b>缺一站式环境准备向导，「先查配套 → 再下载 → 再选镜像」三步未串成一条路径。</div>
+          <div class="dd-sum-row"><b>阶段结论：</b>装环境要依次做三件事——<b>查配套 → 下软件 → 拉镜像</b>，逻辑上是一连串，但官网拆成多条互不连的入口（昇腾：文档 / CANN / AscendHub；NVIDIA：docs / developer / NGC），做完一步<b>不会自动带你去下一步</b>。</div>
+          <div class="dd-sum-row"><b>分环节：</b>① <b>查配套</b>——NVIDIA 对照表好找（本阶段 NVIDIA 更优）；已在昇腾社区里的人少换站。② <b>下载安装</b>——昇腾更优：跨一次进 CANN 子站后全程同域；NVIDIA 只要 3 步，但下载页和安装文档分在两个站。③ <b>拉镜像</b>——相当：都要 5 步、都要先跨一次区；NVIDIA 选 tag 稍省事，两家都<b>不帮你核对本机已装版本</b>。</div>
+          <div class="dd-sum-row"><b>共同短板：</b>缺一条串起来的「环境准备向导」——查完表不知道去哪下包，装完不知道去哪拉镜像。</div>
         </div>
       </div>
 
       <!-- 2 算子开发 -->
-      <div class="jn-phase">
+      <div class="jn-phase" id="cmp-journey-p2">
         <div class="jn-phase-head"><span class="jn-phase-num">2</span>算子开发</div>
 
         <div class="jn-card">
-          <div class="jn-card-head"><span class="jn-card-name">自定义算子开发</span><span class="tp tp-mid">触点中</span></div>
+          <div class="jn-card-head"><span class="jn-card-name">自定义算子开发</span><span class="tp tp-mid">触点中</span><span class="sc-verdict sc-verdict-nv">NVIDIA 更优</span></div>
           <div class="jn-card-cmp">
             <div class="jn-cmp-col hs">
               <div class="jn-cmp-label">昇腾</div>
-              <div class="jn-card-do">查 Ascend C / 算子开发指南、API 参考，首次找样例代码</div>
+              <div class="jn-card-do">进开发者子站算子开发，读 asc-devkit Add 样例入门</div>
                             <div class="jn-cmp-divider"></div>
               <div class="jn-cmp-path-label">操作路径</div>
-              <div class="jn-zone-path">
+                            <div class="jn-zone-path">
                 <div class="jn-zone-block">
-                  <div class="jn-zone-head">昇腾社区</div>
+                  <div class="jn-zone-head">开发者子站</div>
                   <div class="jn-zone-steps">
-                    <a class="jn-zone-step" href="https://www.hiascend.com/zh" target="_blank" rel="noopener"><span class="jn-zone-page">社区顶栏 · 文档</span><span class="jn-zone-act"><b>Click</b> · 社区顶栏 · 文档</span></a>
-                    <a class="jn-zone-step" href="https://www.hiascend.com/cann" target="_blank" rel="noopener"><span class="jn-zone-page">CANN · 算子开发</span><span class="jn-zone-act"><b>Open</b> · CANN · 算子开发</span></a>
-                    <a class="jn-zone-step" href="https://www.hiascend.com/developer" target="_blank" rel="noopener"><span class="jn-zone-page">开发者专区 · 样例</span><span class="jn-zone-act"><b>Open</b> · 开发者专区 · 样例</span></a>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-p2-custom-op" data-flow-step="1"><span class="jn-zone-page">开发者 · 主页</span><span class="jn-zone-act"><b>Click</b> · 算子开发</span></button>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-p2-custom-op" data-flow-step="2"><span class="jn-zone-page">算子开发</span><span class="jn-zone-act"><b>Click</b> · 矢量算子实践案例</span></button>
+                  </div>
+                </div>
+                <div class="jn-zone-block">
+                  <div class="jn-zone-head">gitcode<span class="jn-zone-cross">↗ 跨域</span></div>
+                  <div class="jn-zone-steps">
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-p2-custom-op" data-flow-step="3"><span class="jn-zone-page">asc-devkit · Add 样例</span><span class="jn-zone-act"><b>Read</b> · 入门功能落地</span></button>
                   </div>
                 </div>
               </div>
+              <div id="hs-p2-custom-op-flow-source" hidden>
+              <div class="touch-flow" id="hs-p2-custom-op-touch-flow">
+                <a class="touch-card touch-start" href="https://www.hiascend.com/developer" target="_blank" rel="noopener" data-flow-step="1">
+                  <div class="touch-head"><span class="touch-num">1</span><span class="touch-head-row"><span class="touch-zone">【开发者子站】</span><span class="touch-page">开发者 · 主页</span></span><span class="touch-url">hiascend.com/developer</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>算子开发</span></div>
+                  <div class="touch-shot"><img src="assets/hs/p2/step-01-zh-home-op-dev.png" alt="开发者 · 主页 · 算子开发" width="1024" height="509" loading="lazy" /></div>
+                  
+                </a>
+                <div class="touch-arrow-down">↓</div>
+                <a class="touch-card" href="https://www.hiascend.com/developer/operator?tag=ascendc" target="_blank" rel="noopener" data-flow-step="2">
+                  <div class="touch-head"><span class="touch-num">2</span><span class="touch-head-row"><span class="touch-zone">【开发者子站】</span><span class="touch-page">算子开发</span></span><span class="touch-url">…/developer/operator</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>矢量算子实践案例</span></div>
+                  <div class="touch-shot"><img src="assets/hs/p2/step-02-cann-op-dev.png" alt="算子开发 · 矢量算子实践案例" width="1024" height="509" loading="lazy" /></div>
+                  
+                </a>
+                <div class="touch-arrow-down">↓</div>
+                <a class="touch-card" href="https://gitcode.com/cann/asc-devkit/blob/master/docs/guide/%E7%AE%97%E5%AD%90%E5%AE%9E%E8%B7%B5%E5%8F%82%E8%80%83/%E5%85%B8%E5%9E%8B%E7%AE%97%E5%AD%90%E5%AE%9E%E8%B7%B5%E6%A1%88%E4%BE%8B/SIMD%E7%AE%97%E5%AD%90%E5%AE%9E%E7%8E%B0/Add%E7%9F%A2%E9%87%8F%E7%AE%97%E5%AD%90%E5%AE%9E%E8%B7%B5/%E5%85%A5%E9%97%A8%E5%8A%9F%E8%83%BD%E8%90%BD%E5%9C%B0.md" target="_blank" rel="noopener" data-flow-step="3">
+                  <div class="touch-head"><span class="touch-num">3</span><span class="touch-head-row"><span class="touch-zone">【gitcode】</span><span class="touch-page">asc-devkit · Add 矢量算子实践</span></span><span class="touch-url">gitcode.com/cann/asc-devkit</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Read</span>入门功能落地</span></div>
+                  <div class="touch-shot"><img src="assets/hs/p2/step-03-asc-devkit-add-sample.png" alt="asc-devkit · Add 矢量算子实践 · 入门功能落地" width="1024" height="511" loading="lazy" /></div>
+                  
+                </a>
+              </div>
+              <div class="pathflow-hint">主路径 1→3</div>
+              </div>
             </div>
-            <div class="jn-cmp-col nv">
+            <div class="jn-cmp-col nv jn-cmp-win">
               <div class="jn-cmp-label">NVIDIA</div>
-              <div class="jn-card-do">查 CUDA C++ Programming Guide，对照 CUDA Samples 找参考实现</div>
+              <div class="jn-card-do">经 CUDA Toolkit 找 Sample CUDA Code，对照 GitHub cuda-samples 找参考实现</div>
                             <div class="jn-cmp-divider"></div>
               <div class="jn-cmp-path-label">操作路径</div>
-              <div class="jn-zone-path">
+                            <div class="jn-zone-path">
                 <div class="jn-zone-block">
-                  <div class="jn-zone-head">Docs Hub<span class="jn-zone-cross">↗ 跨子站</span></div>
+                  <div class="jn-zone-head">NVIDIA Developer</div>
                   <div class="jn-zone-steps">
-                    <a class="jn-zone-step" href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html" target="_blank" rel="noopener"><span class="jn-zone-page">docs · CUDA Guide</span><span class="jn-zone-act"><b>Click</b> · docs · CUDA Guide</span></a>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-p2-custom-op" data-flow-step="1"><span class="jn-zone-page">Homepage</span><span class="jn-zone-act"><b>Click</b> · CUDA Toolkit</span></button>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-p2-custom-op" data-flow-step="2"><span class="jn-zone-page">Resources · Sample CUDA Code</span><span class="jn-zone-act"><b>Click</b> · Sample CUDA Code</span></button>
                   </div>
                 </div>
                 <div class="jn-zone-block">
-                  <div class="jn-zone-head">NVIDIA Developer<span class="jn-zone-cross">↗ 跨子站</span></div>
+                  <div class="jn-zone-head">GitHub<span class="jn-zone-cross">↗ 跨域</span></div>
                   <div class="jn-zone-steps">
-                    <a class="jn-zone-step" href="https://developer.nvidia.com/cuda-code-samples" target="_blank" rel="noopener"><span class="jn-zone-page">CUDA Samples</span><span class="jn-zone-act"><b>Open</b> · CUDA Samples</span></a>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-p2-custom-op" data-flow-step="3"><span class="jn-zone-page">NVIDIA / cuda-samples</span><span class="jn-zone-act"><b>Read</b> · CUDA Samples</span></button>
                   </div>
                 </div>
+              </div>
+              <div id="nv-p2-custom-op-flow-source" hidden>
+              <div class="touch-flow touch-flow-nv" id="nv-p2-custom-op-touch-flow">
+                <a class="touch-card touch-start" href="https://developer.nvidia.com/" target="_blank" rel="noopener" data-flow-step="1">
+                  <div class="touch-head"><span class="touch-num">1</span><span class="touch-head-row"><span class="touch-zone">【NVIDIA Developer】</span><span class="touch-page">Homepage</span></span><span class="touch-url">developer.nvidia.com</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>CUDA Toolkit</span></div>
+                  <div class="touch-shot"><img src="assets/nv/p2/step-01-dev-cuda-toolkit-menu.png" alt="NVIDIA Developer Homepage · Platforms and Tools · CUDA Toolkit" width="1024" height="512" loading="lazy" /></div>
+                  
+                </a>
+                <div class="touch-arrow-down">↓</div>
+                <a class="touch-card" href="https://developer.nvidia.com/cuda/toolkit" target="_blank" rel="noopener" data-flow-step="2">
+                  <div class="touch-head"><span class="touch-num">2</span><span class="touch-head-row"><span class="touch-zone">【NVIDIA Developer】</span><span class="touch-page">Resources · Sample CUDA Code</span></span><span class="touch-url">developer.nvidia.com/cuda/toolkit</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>Sample CUDA Code</span></div>
+                  <div class="touch-shot"><img src="assets/nv/p2/step-02-cuda-toolkit-resources-samples.png" alt="CUDA Toolkit · Resources · Sample CUDA Code" width="1024" height="514" loading="lazy" /></div>
+                  
+                </a>
+                <div class="touch-arrow-down">↓</div>
+                <a class="touch-card" href="https://github.com/NVIDIA/cuda-samples" target="_blank" rel="noopener" data-flow-step="3">
+                  <div class="touch-head"><span class="touch-num">3</span><span class="touch-head-row"><span class="touch-zone">【GitHub】</span><span class="touch-page">NVIDIA / cuda-samples</span></span><span class="touch-url">github.com/NVIDIA/cuda-samples</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Read</span>CUDA Samples</span></div>
+                  <div class="touch-shot"><img src="assets/nv/p2/step-04-cuda-samples-github.png" alt="GitHub · NVIDIA / cuda-samples" width="1024" height="514" loading="lazy" /></div>
+                  
+                </a>
+              </div>
+              <div class="pathflow-hint">主路径 1→3</div>
               </div>
             </div>
           </div>
-          <div class="dd-effect">
-            <div class="dd-effect-row"><b>体验</b>：都在 docs 体系里查规范 + 找样例（◐）。昇腾同站串联文档与开发者样例；NVIDIA Guide 与 Samples 分属 docs / developer，但路径短、样例生态成熟。</div>
-            <div class="dd-effect-row dd-pain"><b>痛点</b>：首次写自定义算子都要在文档与样例间来回跳，缺少「从 0 到跑通」的单页向导。</div>
+          <div class="dd-effect dd-effect-cmp">
+            <div class="dd-effect-col dd-effect-hs">
+              <div class="dd-effect-brand">昇腾</div>
+              <div class="dd-effect-item">
+                <span class="dd-effect-tag dd-tag-pro">优</span>
+                <span>3 步，跨 1 次域（gitcode）；开发者子站 1→2 <b>同域连贯</b>；算子开发页有「矢量算子实践案例」入口，asc-devkit 提供 Add 样例「入门功能落地」<b>分步教程</b>，更贴近「从 0 写第一个算子」。</span>
+              </div>
+              <div class="dd-effect-item">
+                <span class="dd-effect-tag dd-tag-con">缺</span>
+                <ul class="dd-effect-list">
+                  <li>开发者子站 → gitcode <b>无站内跳转</b>，须自行找到 asc-devkit 仓库与文档路径</li>
+                  <li>算子开发指南 / API 与样例分两处，缺单页「规范 + 样例 + 跑通」串联</li>
+                  <li>样例仓库与 Toolkit 版本对齐需用户自行核对</li>
+                </ul>
+              </div>
+            </div>
+            <div class="dd-effect-col dd-effect-nv">
+              <div class="dd-effect-brand">NVIDIA</div>
+              <div class="dd-effect-item">
+                <span class="dd-effect-tag dd-tag-pro">优</span>
+                <span>3 步，Developer 1→2 <b>同域连贯</b>；CUDA Toolkit Resources 有独立 <b>Sample CUDA Code</b> 卡片；GitHub <code>cuda-samples</code> 生态成熟、样例多、与 Toolkit 版本同步发布。</span>
+              </div>
+              <div class="dd-effect-item">
+                <span class="dd-effect-tag dd-tag-con">缺</span>
+                <ul class="dd-effect-list">
+                  <li>无顶栏 Samples 入口，须 Homepage → CUDA Toolkit → Resources <b>三层才到样例</b></li>
+                  <li><a href="https://docs.nvidia.com/cuda/cuda-programming-guide/index.html" target="_blank" rel="noopener">Programming Guide</a> 在 docs、样例在 Developer + GitHub；若从 docs 查规范，<b>docs 与 Sample Code 未互链</b>，不易找到样例</li>
+                  <li>developer → GitHub 跨域；与安装 / 容器卡<b>未衔接</b>，装完环境不引导来找样例</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -4186,15 +4425,42 @@
               <div class="jn-card-do">查精度比对工具用法与判定标准，下载 / 更新工具</div>
                             <div class="jn-cmp-divider"></div>
               <div class="jn-cmp-path-label">操作路径</div>
-              <div class="jn-zone-path">
+                            <div class="jn-zone-path">
                 <div class="jn-zone-block">
                   <div class="jn-zone-head">昇腾社区</div>
                   <div class="jn-zone-steps">
-                    <a class="jn-zone-step" href="https://www.hiascend.com/zh" target="_blank" rel="noopener"><span class="jn-zone-page">社区顶栏 · 文档</span><span class="jn-zone-act"><b>Click</b> · 社区顶栏 · 文档</span></a>
-                    <a class="jn-zone-step" href="https://www.hiascend.com/document" target="_blank" rel="noopener"><span class="jn-zone-page">精度比对工具说明</span><span class="jn-zone-act"><b>Open</b> · 精度比对工具说明</span></a>
-                    <a class="jn-zone-step" href="https://www.hiascend.com/developer/download/software" target="_blank" rel="noopener"><span class="jn-zone-page">资源下载中心 · 工具</span><span class="jn-zone-act"><b>Open</b> · 资源下载中心 · 工具</span></a>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-p2-precision" data-flow-step="1"><span class="jn-zone-page">社区顶栏 · 文档</span><span class="jn-zone-act"><b>Click</b> · 社区顶栏 · 文档</span></button>
                   </div>
                 </div>
+                <div class="jn-zone-block">
+                  <div class="jn-zone-head">开发者子站<span class="jn-zone-cross">↗ 跨子站</span></div>
+                  <div class="jn-zone-steps">
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-p2-precision" data-flow-step="2"><span class="jn-zone-page">精度比对工具说明</span><span class="jn-zone-act"><b>Open</b> · 精度比对工具说明</span></button>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-p2-precision" data-flow-step="3"><span class="jn-zone-page">资源下载中心 · 工具</span><span class="jn-zone-act"><b>Open</b> · 资源下载中心 · 工具</span></button>
+                  </div>
+                </div>
+              </div>
+              <div id="hs-p2-precision-flow-source" hidden>
+              <div class="touch-flow" id="hs-p2-precision-touch-flow">
+                <a class="touch-card touch-start" href="https://www.hiascend.com/zh" target="_blank" rel="noopener" data-flow-step="1">
+                  <div class="touch-head"><span class="touch-num">1</span><span class="touch-head-row"><span class="touch-zone">【昇腾社区】</span><span class="touch-page">社区首页</span></span><span class="touch-url">hiascend.com/zh</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>顶栏「文档」</span></div>
+                  <div class="touch-shot"><img src="assets/hs/compat/step-02-zh-home.png" alt="社区首页 · 顶栏文档" width="1920" height="1080" loading="lazy" /></div>
+                  
+                </a>
+                <div class="touch-flow-gap"><span class="touch-flow-gap-mark">↗</span>断点 · 昇腾社区 → 开发者子站</div>
+                <a class="touch-card" href="https://www.hiascend.com/document" target="_blank" rel="noopener" data-flow-step="2">
+                  <div class="touch-head"><span class="touch-num">2</span><span class="touch-head-row"><span class="touch-zone">【开发者子站】</span><span class="touch-page">精度比对工具说明</span></span><span class="touch-url">hiascend.com/document</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>精度比对工具说明</span></div>
+                  <div class="touch-shot"><img src="assets/hs/compat/step-03-document.png" alt="文档中心" width="1920" height="1080" loading="lazy" /></div>
+                  
+                </a>
+                <div class="touch-arrow-down">↓</div>
+                <a class="touch-card" href="https://www.hiascend.com/developer/download/software" target="_blank" rel="noopener" data-flow-step="3">
+                  <div class="touch-head"><span class="touch-num">3</span><span class="touch-head-row"><span class="touch-zone">【开发者子站】</span><span class="touch-page">资源下载中心 · 工具</span></span><span class="touch-url">…/developer/download/software</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>资源下载中心 · 工具</span></div>
+                  <div class="touch-shot touch-shot-pending"><span>截图 · 待补充</span></div>
+                  
+                </a>
+              </div>
+              <div class="pathflow-hint">↗ 跨子站 1 · 主路径 1→3</div>
               </div>
             </div>
             <div class="jn-cmp-col nv">
@@ -4202,25 +4468,47 @@
               <div class="jn-card-do">用 Nsight Compute 对比 kernel 输出，查精度 / 数值相关文档</div>
                             <div class="jn-cmp-divider"></div>
               <div class="jn-cmp-path-label">操作路径</div>
-              <div class="jn-zone-path">
+                            <div class="jn-zone-path">
                 <div class="jn-zone-block">
                   <div class="jn-zone-head">NVIDIA Developer<span class="jn-zone-cross">↗ 跨子站</span></div>
                   <div class="jn-zone-steps">
-                    <a class="jn-zone-step" href="https://developer.nvidia.com/nsight-compute" target="_blank" rel="noopener"><span class="jn-zone-page">Nsight Compute</span><span class="jn-zone-act"><b>Open</b> · Nsight Compute</span></a>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-p2-precision" data-flow-step="1"><span class="jn-zone-page">Nsight Compute</span><span class="jn-zone-act"><b>Open</b> · Nsight Compute</span></button>
                   </div>
                 </div>
                 <div class="jn-zone-block">
                   <div class="jn-zone-head">Docs Hub<span class="jn-zone-cross">↗ 跨子站</span></div>
                   <div class="jn-zone-steps">
-                    <a class="jn-zone-step" href="https://docs.nvidia.com/nsight-compute/" target="_blank" rel="noopener"><span class="jn-zone-page">工具文档</span><span class="jn-zone-act"><b>Open</b> · 工具文档</span></a>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-p2-precision" data-flow-step="2"><span class="jn-zone-page">工具文档</span><span class="jn-zone-act"><b>Open</b> · 工具文档</span></button>
                   </div>
                 </div>
                 <div class="jn-zone-block">
                   <div class="jn-zone-head">NVIDIA Developer<span class="jn-zone-cross">↗ 跨子站</span></div>
                   <div class="jn-zone-steps">
-                    <a class="jn-zone-step" href="https://developer.nvidia.com/nsight-compute/download" target="_blank" rel="noopener"><span class="jn-zone-page">下载工具</span><span class="jn-zone-act"><b>Open</b> · 下载工具</span></a>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-p2-precision" data-flow-step="3"><span class="jn-zone-page">下载工具</span><span class="jn-zone-act"><b>Open</b> · 下载工具</span></button>
                   </div>
                 </div>
+              </div>
+              <div id="nv-p2-precision-flow-source" hidden>
+              <div class="touch-flow touch-flow-nv" id="nv-p2-precision-touch-flow">
+                <a class="touch-card touch-start" href="https://developer.nvidia.com/nsight-compute" target="_blank" rel="noopener" data-flow-step="1">
+                  <div class="touch-head"><span class="touch-num">1</span><span class="touch-head-row"><span class="touch-zone">【NVIDIA Developer】</span><span class="touch-page">Nsight Compute</span></span><span class="touch-url">developer.nvidia.com/nsight-compute</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>Nsight Compute</span></div>
+                  <div class="touch-shot touch-shot-pending"><span>截图 · 待补充</span></div>
+                  
+                </a>
+                <div class="touch-arrow-down">↓</div>
+                <a class="touch-card" href="https://docs.nvidia.com/nsight-compute/" target="_blank" rel="noopener" data-flow-step="2">
+                  <div class="touch-head"><span class="touch-num">2</span><span class="touch-head-row"><span class="touch-zone">【Docs Hub】</span><span class="touch-page">工具文档</span></span><span class="touch-url">docs.nvidia.com/nsight-compute</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>工具文档</span></div>
+                  <div class="touch-shot touch-shot-pending"><span>截图 · 待补充</span></div>
+                  
+                </a>
+                <div class="touch-arrow-down">↓</div>
+                <a class="touch-card" href="https://developer.nvidia.com/nsight-compute/download" target="_blank" rel="noopener" data-flow-step="3">
+                  <div class="touch-head"><span class="touch-num">3</span><span class="touch-head-row"><span class="touch-zone">【NVIDIA Developer】</span><span class="touch-page">下载工具</span></span><span class="touch-url">…/nsight-compute/download</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>下载工具</span></div>
+                  <div class="touch-shot touch-shot-pending"><span>截图 · 待补充</span></div>
+                  
+                </a>
+              </div>
+              <div class="pathflow-hint">↗ 跨子站 2 · 主路径 1→3</div>
               </div>
             </div>
           </div>
@@ -4238,15 +4526,47 @@
               <div class="jn-card-do">查 Tiling 开发指南与最佳实践</div>
                             <div class="jn-cmp-divider"></div>
               <div class="jn-cmp-path-label">操作路径</div>
-              <div class="jn-zone-path">
+                            <div class="jn-zone-path">
                 <div class="jn-zone-block">
                   <div class="jn-zone-head">昇腾社区</div>
                   <div class="jn-zone-steps">
-                    <a class="jn-zone-step" href="https://www.hiascend.com/zh" target="_blank" rel="noopener"><span class="jn-zone-page">社区顶栏 · 文档</span><span class="jn-zone-act"><b>Click</b> · 社区顶栏 · 文档</span></a>
-                    <a class="jn-zone-step" href="https://www.hiascend.com/cann" target="_blank" rel="noopener"><span class="jn-zone-page">CANN · 算子编程</span><span class="jn-zone-act"><b>Open</b> · CANN · 算子编程</span></a>
-                    <a class="jn-zone-step" href="https://www.hiascend.com/document" target="_blank" rel="noopener"><span class="jn-zone-page">Tiling 开发指南</span><span class="jn-zone-act"><b>Open</b> · Tiling 开发指南</span></a>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-p2-tiling" data-flow-step="1"><span class="jn-zone-page">社区顶栏 · 文档</span><span class="jn-zone-act"><b>Click</b> · 社区顶栏 · 文档</span></button>
                   </div>
                 </div>
+                <div class="jn-zone-block">
+                  <div class="jn-zone-head">CANN<span class="jn-zone-cross">↗ 跨子站</span></div>
+                  <div class="jn-zone-steps">
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-p2-tiling" data-flow-step="2"><span class="jn-zone-page">CANN · 算子编程</span><span class="jn-zone-act"><b>Open</b> · CANN · 算子编程</span></button>
+                  </div>
+                </div>
+                <div class="jn-zone-block">
+                  <div class="jn-zone-head">开发者子站<span class="jn-zone-cross">↗ 跨子站</span></div>
+                  <div class="jn-zone-steps">
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-p2-tiling" data-flow-step="3"><span class="jn-zone-page">Tiling 开发指南</span><span class="jn-zone-act"><b>Open</b> · Tiling 开发指南</span></button>
+                  </div>
+                </div>
+              </div>
+              <div id="hs-p2-tiling-flow-source" hidden>
+              <div class="touch-flow" id="hs-p2-tiling-touch-flow">
+                <a class="touch-card touch-start" href="https://www.hiascend.com/zh" target="_blank" rel="noopener" data-flow-step="1">
+                  <div class="touch-head"><span class="touch-num">1</span><span class="touch-head-row"><span class="touch-zone">【昇腾社区】</span><span class="touch-page">社区首页</span></span><span class="touch-url">hiascend.com/zh</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>顶栏「文档」</span></div>
+                  <div class="touch-shot"><img src="assets/hs/compat/step-02-zh-home.png" alt="社区首页 · 顶栏文档" width="1920" height="1080" loading="lazy" /></div>
+                  
+                </a>
+                <div class="touch-flow-gap"><span class="touch-flow-gap-mark">↗</span>断点 · 昇腾社区 → CANN 子站</div>
+                <a class="touch-card" href="https://www.hiascend.com/cann" target="_blank" rel="noopener" data-flow-step="2">
+                  <div class="touch-head"><span class="touch-num">2</span><span class="touch-head-row"><span class="touch-zone">【CANN】</span><span class="touch-page">CANN · 算子编程</span></span><span class="touch-url">hiascend.com/cann</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>CANN · 算子编程</span></div>
+                  <div class="touch-shot"><img src="assets/hs/install/step-02-cann-home.png" alt="CANN 主页" width="1024" height="510" loading="lazy" /></div>
+                  
+                </a>
+                <div class="touch-flow-gap"><span class="touch-flow-gap-mark">↗</span>断点 · CANN → 开发者子站</div>
+                <a class="touch-card" href="https://www.hiascend.com/document" target="_blank" rel="noopener" data-flow-step="3">
+                  <div class="touch-head"><span class="touch-num">3</span><span class="touch-head-row"><span class="touch-zone">【开发者子站】</span><span class="touch-page">Tiling 开发指南</span></span><span class="touch-url">hiascend.com/document</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>Tiling 开发指南</span></div>
+                  <div class="touch-shot"><img src="assets/hs/compat/step-03-document.png" alt="文档中心" width="1920" height="1080" loading="lazy" /></div>
+                  
+                </a>
+              </div>
+              <div class="pathflow-hint">↗ 跨子站 2 · 主路径 1→3</div>
               </div>
             </div>
             <div class="jn-cmp-col nv">
@@ -4254,14 +4574,30 @@
               <div class="jn-card-do">查 Occupancy / Tiling 相关章节与 CUDA Best Practices</div>
                             <div class="jn-cmp-divider"></div>
               <div class="jn-cmp-path-label">操作路径</div>
-              <div class="jn-zone-path">
+                            <div class="jn-zone-path">
                 <div class="jn-zone-block">
                   <div class="jn-zone-head">Docs Hub<span class="jn-zone-cross">↗ 跨子站</span></div>
                   <div class="jn-zone-steps">
-                    <a class="jn-zone-step" href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html" target="_blank" rel="noopener"><span class="jn-zone-page">CUDA Guide</span><span class="jn-zone-act"><b>Open</b> · CUDA Guide</span></a>
-                    <a class="jn-zone-step" href="https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html" target="_blank" rel="noopener"><span class="jn-zone-page">Best Practices Guide</span><span class="jn-zone-act"><b>Open</b> · Best Practices Guide</span></a>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-p2-tiling" data-flow-step="1"><span class="jn-zone-page">CUDA Guide</span><span class="jn-zone-act"><b>Open</b> · CUDA Guide</span></button>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-p2-tiling" data-flow-step="2"><span class="jn-zone-page">Best Practices Guide</span><span class="jn-zone-act"><b>Open</b> · Best Practices Guide</span></button>
                   </div>
                 </div>
+              </div>
+              <div id="nv-p2-tiling-flow-source" hidden>
+              <div class="touch-flow touch-flow-nv" id="nv-p2-tiling-touch-flow">
+                <a class="touch-card touch-start" href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html" target="_blank" rel="noopener" data-flow-step="1">
+                  <div class="touch-head"><span class="touch-num">1</span><span class="touch-head-row"><span class="touch-zone">【Docs Hub】</span><span class="touch-page">CUDA Guide</span></span><span class="touch-url">docs.nvidia.com/cuda/…</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>CUDA Guide</span></div>
+                  <div class="touch-shot"><img src="assets/nv/compat/step-01-docs-hub.png" alt="Docs Hub" width="1024" height="510" loading="lazy" /></div>
+                  
+                </a>
+                <div class="touch-arrow-down">↓</div>
+                <a class="touch-card" href="https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html" target="_blank" rel="noopener" data-flow-step="2">
+                  <div class="touch-head"><span class="touch-num">2</span><span class="touch-head-row"><span class="touch-zone">【Docs Hub】</span><span class="touch-page">Best Practices Guide</span></span><span class="touch-url">docs.nvidia.com/cuda/…</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>Best Practices Guide</span></div>
+                  <div class="touch-shot touch-shot-pending"><span>截图 · 待补充</span></div>
+                  
+                </a>
+              </div>
+              <div class="pathflow-hint">↗ 跨子站 0 · 主路径 1→2</div>
               </div>
             </div>
           </div>
@@ -4279,15 +4615,47 @@
               <div class="jn-card-do">查融合规则 / 融合 pass 开发文档</div>
                             <div class="jn-cmp-divider"></div>
               <div class="jn-cmp-path-label">操作路径</div>
-              <div class="jn-zone-path">
+                            <div class="jn-zone-path">
                 <div class="jn-zone-block">
                   <div class="jn-zone-head">昇腾社区</div>
                   <div class="jn-zone-steps">
-                    <a class="jn-zone-step" href="https://www.hiascend.com/zh" target="_blank" rel="noopener"><span class="jn-zone-page">社区顶栏 · 文档</span><span class="jn-zone-act"><b>Click</b> · 社区顶栏 · 文档</span></a>
-                    <a class="jn-zone-step" href="https://www.hiascend.com/cann" target="_blank" rel="noopener"><span class="jn-zone-page">CANN · 图引擎</span><span class="jn-zone-act"><b>Open</b> · CANN · 图引擎</span></a>
-                    <a class="jn-zone-step" href="https://www.hiascend.com/document" target="_blank" rel="noopener"><span class="jn-zone-page">融合 pass 开发</span><span class="jn-zone-act"><b>Open</b> · 融合 pass 开发</span></a>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-p2-fusion" data-flow-step="1"><span class="jn-zone-page">社区顶栏 · 文档</span><span class="jn-zone-act"><b>Click</b> · 社区顶栏 · 文档</span></button>
                   </div>
                 </div>
+                <div class="jn-zone-block">
+                  <div class="jn-zone-head">CANN<span class="jn-zone-cross">↗ 跨子站</span></div>
+                  <div class="jn-zone-steps">
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-p2-fusion" data-flow-step="2"><span class="jn-zone-page">CANN · 图引擎</span><span class="jn-zone-act"><b>Open</b> · CANN · 图引擎</span></button>
+                  </div>
+                </div>
+                <div class="jn-zone-block">
+                  <div class="jn-zone-head">开发者子站<span class="jn-zone-cross">↗ 跨子站</span></div>
+                  <div class="jn-zone-steps">
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-p2-fusion" data-flow-step="3"><span class="jn-zone-page">融合 pass 开发</span><span class="jn-zone-act"><b>Open</b> · 融合 pass 开发</span></button>
+                  </div>
+                </div>
+              </div>
+              <div id="hs-p2-fusion-flow-source" hidden>
+              <div class="touch-flow" id="hs-p2-fusion-touch-flow">
+                <a class="touch-card touch-start" href="https://www.hiascend.com/zh" target="_blank" rel="noopener" data-flow-step="1">
+                  <div class="touch-head"><span class="touch-num">1</span><span class="touch-head-row"><span class="touch-zone">【昇腾社区】</span><span class="touch-page">社区首页</span></span><span class="touch-url">hiascend.com/zh</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>顶栏「文档」</span></div>
+                  <div class="touch-shot"><img src="assets/hs/compat/step-02-zh-home.png" alt="社区首页 · 顶栏文档" width="1920" height="1080" loading="lazy" /></div>
+                  
+                </a>
+                <div class="touch-flow-gap"><span class="touch-flow-gap-mark">↗</span>断点 · 昇腾社区 → CANN 子站</div>
+                <a class="touch-card" href="https://www.hiascend.com/cann" target="_blank" rel="noopener" data-flow-step="2">
+                  <div class="touch-head"><span class="touch-num">2</span><span class="touch-head-row"><span class="touch-zone">【CANN】</span><span class="touch-page">CANN · 图引擎</span></span><span class="touch-url">hiascend.com/cann</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>CANN · 图引擎</span></div>
+                  <div class="touch-shot"><img src="assets/hs/install/step-02-cann-home.png" alt="CANN 主页" width="1024" height="510" loading="lazy" /></div>
+                  
+                </a>
+                <div class="touch-flow-gap"><span class="touch-flow-gap-mark">↗</span>断点 · CANN → 开发者子站</div>
+                <a class="touch-card" href="https://www.hiascend.com/document" target="_blank" rel="noopener" data-flow-step="3">
+                  <div class="touch-head"><span class="touch-num">3</span><span class="touch-head-row"><span class="touch-zone">【开发者子站】</span><span class="touch-page">融合 pass 开发</span></span><span class="touch-url">hiascend.com/document</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>融合 pass 开发</span></div>
+                  <div class="touch-shot"><img src="assets/hs/compat/step-03-document.png" alt="文档中心" width="1920" height="1080" loading="lazy" /></div>
+                  
+                </a>
+              </div>
+              <div class="pathflow-hint">↗ 跨子站 2 · 主路径 1→3</div>
               </div>
             </div>
             <div class="jn-cmp-col nv">
@@ -4295,19 +4663,35 @@
               <div class="jn-card-do">查 CUDA Graph / cuDNN / TensorRT 层融合相关文档</div>
                             <div class="jn-cmp-divider"></div>
               <div class="jn-cmp-path-label">操作路径</div>
-              <div class="jn-zone-path">
+                            <div class="jn-zone-path">
                 <div class="jn-zone-block">
                   <div class="jn-zone-head">Docs Hub · 路径 1<span class="jn-zone-cross">↗ 跨子站</span></div>
                   <div class="jn-zone-steps">
-                    <a class="jn-zone-step" href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#cuda-graphs" target="_blank" rel="noopener"><span class="jn-zone-page">docs · CUDA Graphs</span><span class="jn-zone-act"><b>Click</b> · docs · CUDA Graphs</span></a>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-p2-fusion" data-flow-step="1"><span class="jn-zone-page">docs · CUDA Graphs</span><span class="jn-zone-act"><b>Click</b> · docs · CUDA Graphs</span></button>
                   </div>
                 </div>
                 <div class="jn-zone-block">
                   <div class="jn-zone-head">Docs Hub · 路径 2<span class="jn-zone-cross">↗ 跨子站</span></div>
                   <div class="jn-zone-steps">
-                    <a class="jn-zone-step" href="https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html" target="_blank" rel="noopener"><span class="jn-zone-page">TensorRT 融合</span><span class="jn-zone-act"><b>Open</b> · TensorRT 融合</span></a>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-p2-fusion" data-flow-step="2"><span class="jn-zone-page">TensorRT 融合</span><span class="jn-zone-act"><b>Open</b> · TensorRT 融合</span></button>
                   </div>
                 </div>
+              </div>
+              <div id="nv-p2-fusion-flow-source" hidden>
+              <div class="touch-flow touch-flow-nv" id="nv-p2-fusion-touch-flow">
+                <a class="touch-card touch-start" href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#cuda-graphs" target="_blank" rel="noopener" data-flow-step="1">
+                  <div class="touch-head"><span class="touch-num">1</span><span class="touch-head-row"><span class="touch-zone">【Docs Hub】</span><span class="touch-page">docs · CUDA Graphs</span></span><span class="touch-url">docs.nvidia.com/cuda/…#cuda-graphs</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>CUDA Graphs</span></div>
+                  <div class="touch-shot"><img src="assets/nv/compat/step-01-docs-hub.png" alt="Docs Hub" width="1024" height="510" loading="lazy" /></div>
+                  
+                </a>
+                <div class="touch-arrow-down">↓</div>
+                <a class="touch-card" href="https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html" target="_blank" rel="noopener" data-flow-step="2">
+                  <div class="touch-head"><span class="touch-num">2</span><span class="touch-head-row"><span class="touch-zone">【Docs Hub】</span><span class="touch-page">TensorRT 融合</span></span><span class="touch-url">docs.nvidia.com/tensorrt/…</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>TensorRT 融合</span></div>
+                  <div class="touch-shot touch-shot-pending"><span>截图 · 待补充</span></div>
+                  
+                </a>
+              </div>
+              <div class="pathflow-hint">↗ 主路径 1→2 · 训练/推理分路径</div>
               </div>
             </div>
           </div>
@@ -4325,15 +4709,42 @@
               <div class="jn-card-do">查算子注册、框架适配插件文档与样例</div>
                             <div class="jn-cmp-divider"></div>
               <div class="jn-cmp-path-label">操作路径</div>
-              <div class="jn-zone-path">
+                            <div class="jn-zone-path">
                 <div class="jn-zone-block">
                   <div class="jn-zone-head">昇腾社区</div>
                   <div class="jn-zone-steps">
-                    <a class="jn-zone-step" href="https://www.hiascend.com/zh" target="_blank" rel="noopener"><span class="jn-zone-page">社区顶栏 · 文档</span><span class="jn-zone-act"><b>Click</b> · 社区顶栏 · 文档</span></a>
-                    <a class="jn-zone-step" href="https://www.hiascend.com/document" target="_blank" rel="noopener"><span class="jn-zone-page">算子注册 / 插件</span><span class="jn-zone-act"><b>Open</b> · 算子注册 / 插件</span></a>
-                    <a class="jn-zone-step" href="https://www.hiascend.com/developer" target="_blank" rel="noopener"><span class="jn-zone-page">开发者专区 · 样例</span><span class="jn-zone-act"><b>Open</b> · 开发者专区 · 样例</span></a>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-p2-register" data-flow-step="1"><span class="jn-zone-page">社区顶栏 · 文档</span><span class="jn-zone-act"><b>Click</b> · 社区顶栏 · 文档</span></button>
                   </div>
                 </div>
+                <div class="jn-zone-block">
+                  <div class="jn-zone-head">开发者子站<span class="jn-zone-cross">↗ 跨子站</span></div>
+                  <div class="jn-zone-steps">
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-p2-register" data-flow-step="2"><span class="jn-zone-page">算子注册 / 插件</span><span class="jn-zone-act"><b>Open</b> · 算子注册 / 插件</span></button>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-p2-register" data-flow-step="3"><span class="jn-zone-page">开发者专区 · 样例</span><span class="jn-zone-act"><b>Open</b> · 开发者专区 · 样例</span></button>
+                  </div>
+                </div>
+              </div>
+              <div id="hs-p2-register-flow-source" hidden>
+              <div class="touch-flow" id="hs-p2-register-touch-flow">
+                <a class="touch-card touch-start" href="https://www.hiascend.com/zh" target="_blank" rel="noopener" data-flow-step="1">
+                  <div class="touch-head"><span class="touch-num">1</span><span class="touch-head-row"><span class="touch-zone">【昇腾社区】</span><span class="touch-page">社区首页</span></span><span class="touch-url">hiascend.com/zh</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>顶栏「文档」</span></div>
+                  <div class="touch-shot"><img src="assets/hs/compat/step-02-zh-home.png" alt="社区首页 · 顶栏文档" width="1920" height="1080" loading="lazy" /></div>
+                  
+                </a>
+                <div class="touch-flow-gap"><span class="touch-flow-gap-mark">↗</span>断点 · 昇腾社区 → 开发者子站</div>
+                <a class="touch-card" href="https://www.hiascend.com/document" target="_blank" rel="noopener" data-flow-step="2">
+                  <div class="touch-head"><span class="touch-num">2</span><span class="touch-head-row"><span class="touch-zone">【开发者子站】</span><span class="touch-page">算子注册 / 插件</span></span><span class="touch-url">hiascend.com/document</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>算子注册 / 插件</span></div>
+                  <div class="touch-shot"><img src="assets/hs/compat/step-03-document.png" alt="文档中心" width="1920" height="1080" loading="lazy" /></div>
+                  
+                </a>
+                <div class="touch-arrow-down">↓</div>
+                <a class="touch-card" href="https://www.hiascend.com/developer" target="_blank" rel="noopener" data-flow-step="3">
+                  <div class="touch-head"><span class="touch-num">3</span><span class="touch-head-row"><span class="touch-zone">【开发者子站】</span><span class="touch-page">开发者专区 · 样例</span></span><span class="touch-url">…/developer</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>开发者专区 · 样例</span></div>
+                  <div class="touch-shot touch-shot-pending"><span>截图 · 待补充</span></div>
+                  
+                </a>
+              </div>
+              <div class="pathflow-hint">↗ 跨子站 1 · 主路径 1→3</div>
               </div>
             </div>
             <div class="jn-cmp-col nv">
@@ -4341,19 +4752,35 @@
               <div class="jn-card-do">查 PyTorch C++ Extension / TensorRT Plugin 集成文档与样例</div>
                             <div class="jn-cmp-divider"></div>
               <div class="jn-cmp-path-label">操作路径</div>
-              <div class="jn-zone-path">
+                            <div class="jn-zone-path">
                 <div class="jn-zone-block">
                   <div class="jn-zone-head">PyTorch · 路径 1<span class="jn-zone-cross">↗ 跨子站</span></div>
                   <div class="jn-zone-steps">
-                    <a class="jn-zone-step" href="https://pytorch.org/tutorials/advanced/cpp_extension.html" target="_blank" rel="noopener"><span class="jn-zone-page">PyTorch C++ Extension</span><span class="jn-zone-act"><b>Open</b> · PyTorch C++ Extension</span></a>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-p2-register" data-flow-step="1"><span class="jn-zone-page">PyTorch C++ Extension</span><span class="jn-zone-act"><b>Open</b> · PyTorch C++ Extension</span></button>
                   </div>
                 </div>
                 <div class="jn-zone-block">
                   <div class="jn-zone-head">Docs Hub · 路径 2<span class="jn-zone-cross">↗ 跨子站</span></div>
                   <div class="jn-zone-steps">
-                    <a class="jn-zone-step" href="https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html#add-custom-layer" target="_blank" rel="noopener"><span class="jn-zone-page">TensorRT 自定义层</span><span class="jn-zone-act"><b>Open</b> · TensorRT 自定义层</span></a>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-p2-register" data-flow-step="2"><span class="jn-zone-page">TensorRT 自定义层</span><span class="jn-zone-act"><b>Open</b> · TensorRT 自定义层</span></button>
                   </div>
                 </div>
+              </div>
+              <div id="nv-p2-register-flow-source" hidden>
+              <div class="touch-flow touch-flow-nv" id="nv-p2-register-touch-flow">
+                <a class="touch-card touch-start" href="https://pytorch.org/tutorials/advanced/cpp_extension.html" target="_blank" rel="noopener" data-flow-step="1">
+                  <div class="touch-head"><span class="touch-num">1</span><span class="touch-head-row"><span class="touch-zone">【PyTorch】</span><span class="touch-page">PyTorch C++ Extension</span></span><span class="touch-url">pytorch.org/tutorials/…</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>PyTorch C++ Extension</span></div>
+                  <div class="touch-shot touch-shot-pending"><span>截图 · 待补充</span></div>
+                  
+                </a>
+                <div class="touch-arrow-down">↓</div>
+                <a class="touch-card" href="https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html#add-custom-layer" target="_blank" rel="noopener" data-flow-step="2">
+                  <div class="touch-head"><span class="touch-num">2</span><span class="touch-head-row"><span class="touch-zone">【Docs Hub】</span><span class="touch-page">TensorRT 自定义层</span></span><span class="touch-url">docs.nvidia.com/tensorrt/…</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>TensorRT 自定义层</span></div>
+                  <div class="touch-shot touch-shot-pending"><span>截图 · 待补充</span></div>
+                  
+                </a>
+              </div>
+              <div class="pathflow-hint">↗ 主路径 1→2 · 框架分路径</div>
               </div>
             </div>
           </div>
@@ -4371,15 +4798,47 @@
               <div class="jn-card-do">以官网清单为准，查已支持算子清单 / 算子库 API 列表</div>
                             <div class="jn-cmp-divider"></div>
               <div class="jn-cmp-path-label">操作路径</div>
-              <div class="jn-zone-path">
+                            <div class="jn-zone-path">
                 <div class="jn-zone-block">
                   <div class="jn-zone-head">昇腾社区</div>
                   <div class="jn-zone-steps">
-                    <a class="jn-zone-step" href="https://www.hiascend.com/zh" target="_blank" rel="noopener"><span class="jn-zone-page">社区顶栏 · 文档</span><span class="jn-zone-act"><b>Click</b> · 社区顶栏 · 文档</span></a>
-                    <a class="jn-zone-step" href="https://www.hiascend.com/cann" target="_blank" rel="noopener"><span class="jn-zone-page">CANN · 算子库</span><span class="jn-zone-act"><b>Open</b> · CANN · 算子库</span></a>
-                    <a class="jn-zone-step" href="https://www.hiascend.com/document" target="_blank" rel="noopener"><span class="jn-zone-page">已支持算子清单</span><span class="jn-zone-act"><b>Open</b> · 已支持算子清单</span></a>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-p2-oplib" data-flow-step="1"><span class="jn-zone-page">社区顶栏 · 文档</span><span class="jn-zone-act"><b>Click</b> · 社区顶栏 · 文档</span></button>
                   </div>
                 </div>
+                <div class="jn-zone-block">
+                  <div class="jn-zone-head">CANN<span class="jn-zone-cross">↗ 跨子站</span></div>
+                  <div class="jn-zone-steps">
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-p2-oplib" data-flow-step="2"><span class="jn-zone-page">CANN · 算子库</span><span class="jn-zone-act"><b>Open</b> · CANN · 算子库</span></button>
+                  </div>
+                </div>
+                <div class="jn-zone-block">
+                  <div class="jn-zone-head">开发者子站<span class="jn-zone-cross">↗ 跨子站</span></div>
+                  <div class="jn-zone-steps">
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-hs-p2-oplib" data-flow-step="3"><span class="jn-zone-page">已支持算子清单</span><span class="jn-zone-act"><b>Open</b> · 已支持算子清单</span></button>
+                  </div>
+                </div>
+              </div>
+              <div id="hs-p2-oplib-flow-source" hidden>
+              <div class="touch-flow" id="hs-p2-oplib-touch-flow">
+                <a class="touch-card touch-start" href="https://www.hiascend.com/zh" target="_blank" rel="noopener" data-flow-step="1">
+                  <div class="touch-head"><span class="touch-num">1</span><span class="touch-head-row"><span class="touch-zone">【昇腾社区】</span><span class="touch-page">社区首页</span></span><span class="touch-url">hiascend.com/zh</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>顶栏「文档」</span></div>
+                  <div class="touch-shot"><img src="assets/hs/compat/step-02-zh-home.png" alt="社区首页 · 顶栏文档" width="1920" height="1080" loading="lazy" /></div>
+                  
+                </a>
+                <div class="touch-flow-gap"><span class="touch-flow-gap-mark">↗</span>断点 · 昇腾社区 → CANN 子站</div>
+                <a class="touch-card" href="https://www.hiascend.com/cann" target="_blank" rel="noopener" data-flow-step="2">
+                  <div class="touch-head"><span class="touch-num">2</span><span class="touch-head-row"><span class="touch-zone">【CANN】</span><span class="touch-page">CANN · 算子库</span></span><span class="touch-url">hiascend.com/cann</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>CANN · 算子库</span></div>
+                  <div class="touch-shot"><img src="assets/hs/install/step-02-cann-home.png" alt="CANN 主页" width="1024" height="510" loading="lazy" /></div>
+                  
+                </a>
+                <div class="touch-flow-gap"><span class="touch-flow-gap-mark">↗</span>断点 · CANN → 开发者子站</div>
+                <a class="touch-card" href="https://www.hiascend.com/document" target="_blank" rel="noopener" data-flow-step="3">
+                  <div class="touch-head"><span class="touch-num">3</span><span class="touch-head-row"><span class="touch-zone">【开发者子站】</span><span class="touch-page">已支持算子清单</span></span><span class="touch-url">hiascend.com/document</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>已支持算子清单</span></div>
+                  <div class="touch-shot"><img src="assets/hs/compat/step-03-document.png" alt="文档中心" width="1920" height="1080" loading="lazy" /></div>
+                  
+                </a>
+              </div>
+              <div class="pathflow-hint">↗ 跨子站 2 · 主路径 1→3</div>
               </div>
             </div>
             <div class="jn-cmp-col nv">
@@ -4387,19 +4846,35 @@
               <div class="jn-card-do">查 cuDNN / cuBLAS 等库的支持算子与 API 列表</div>
                             <div class="jn-cmp-divider"></div>
               <div class="jn-cmp-path-label">操作路径</div>
-              <div class="jn-zone-path">
+                            <div class="jn-zone-path">
                 <div class="jn-zone-block">
                   <div class="jn-zone-head">Docs Hub · 路径 1<span class="jn-zone-cross">↗ 跨子站</span></div>
                   <div class="jn-zone-steps">
-                    <a class="jn-zone-step" href="https://docs.nvidia.com/deeplearning/cudnn/api/index.html" target="_blank" rel="noopener"><span class="jn-zone-page">docs · cuDNN API</span><span class="jn-zone-act"><b>Click</b> · docs · cuDNN API</span></a>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-p2-oplib" data-flow-step="1"><span class="jn-zone-page">docs · cuDNN API</span><span class="jn-zone-act"><b>Click</b> · docs · cuDNN API</span></button>
                   </div>
                 </div>
                 <div class="jn-zone-block">
                   <div class="jn-zone-head">Docs Hub · 路径 2<span class="jn-zone-cross">↗ 跨子站</span></div>
                   <div class="jn-zone-steps">
-                    <a class="jn-zone-step" href="https://docs.nvidia.com/cuda/cublas/index.html" target="_blank" rel="noopener"><span class="jn-zone-page">cuBLAS API</span><span class="jn-zone-act"><b>Open</b> · cuBLAS API</span></a>
+                    <button type="button" class="jn-zone-step" data-drawer="push-drawer-nv-p2-oplib" data-flow-step="2"><span class="jn-zone-page">cuBLAS API</span><span class="jn-zone-act"><b>Open</b> · cuBLAS API</span></button>
                   </div>
                 </div>
+              </div>
+              <div id="nv-p2-oplib-flow-source" hidden>
+              <div class="touch-flow touch-flow-nv" id="nv-p2-oplib-touch-flow">
+                <a class="touch-card touch-start" href="https://docs.nvidia.com/deeplearning/cudnn/api/index.html" target="_blank" rel="noopener" data-flow-step="1">
+                  <div class="touch-head"><span class="touch-num">1</span><span class="touch-head-row"><span class="touch-zone">【Docs Hub】</span><span class="touch-page">docs · cuDNN API</span></span><span class="touch-url">docs.nvidia.com/cudnn/…</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Click</span>cuDNN API</span></div>
+                  <div class="touch-shot"><img src="assets/nv/compat/step-01-docs-hub.png" alt="Docs Hub" width="1024" height="510" loading="lazy" /></div>
+                  
+                </a>
+                <div class="touch-arrow-down">↓</div>
+                <a class="touch-card" href="https://docs.nvidia.com/cuda/cublas/index.html" target="_blank" rel="noopener" data-flow-step="2">
+                  <div class="touch-head"><span class="touch-num">2</span><span class="touch-head-row"><span class="touch-zone">【Docs Hub】</span><span class="touch-page">cuBLAS API</span></span><span class="touch-url">docs.nvidia.com/cublas/…</span><span class="touch-act touch-act-below"><span class="touch-act-tag">Open</span>cuBLAS API</span></div>
+                  <div class="touch-shot touch-shot-pending"><span>截图 · 待补充</span></div>
+                  
+                </a>
+              </div>
+              <div class="pathflow-hint">↗ 主路径 1→2 · 多库分路径</div>
               </div>
             </div>
           </div>
@@ -4411,8 +4886,8 @@
 
         <div class="dd-sum">
           <div class="dd-sum-row"><b>阶段结论：</b>算子开发阶段官网角色是「查规范 + 找样例 + 对清单」，编码本身在本地 IDE 完成。</div>
-          <div class="dd-sum-row"><b>分环节看谁更顺：</b>全程同站——昇腾更少换域；查指南 / 样例——NVIDIA Samples 生态更成熟；查工具——NVIDIA Nsight 品牌统一；查算子清单——NVIDIA API 索引更可搜索。</div>
-          <div class="dd-sum-row"><b>共同短板：</b>文档、样例、工具下载仍是三个入口，缺「自定义算子从 0 到跑通」串联向导。</div>
+          <div class="dd-sum-row"><b>分环节看谁更顺：</b>① <b>自定义算子 / 找样例</b>——NVIDIA 更优（3 步到 cuda-samples，样例生态成熟）；昇腾 asc-devkit 有「入门功能落地」分步教程，但 gitcode 无站内链。② 全程同站——昇腾其他卡更少换域。③ 查工具——NVIDIA Nsight 品牌统一。④ 查算子清单——NVIDIA API 索引更可搜索。</div>
+          <div class="dd-sum-row"><b>共同短板：</b>文档、样例、工具下载仍是多个入口，缺「自定义算子从 0 到跑通」串联向导。</div>
         </div>
       </div>
 
@@ -6085,7 +6560,7 @@
       <div class="push-drawer-head">
         <div>
           <h2 id="push-drawer-hs-install-title">安装与环境变量 · 昇腾流程图</h2>
-          <div class="push-drawer-sub">操作：7步 ； 同域 0 ↗ · 下载 ‖ 指南</div>
+          <div class="push-drawer-sub">操作：5步 ； 跨子站 1个</div>
         </div>
         <button type="button" class="push-drawer-close" data-drawer-close aria-label="关闭流程图">×</button>
       </div>
@@ -6098,11 +6573,193 @@
       <div class="push-drawer-head">
         <div>
           <h2 id="push-drawer-nv-install-title">安装与环境变量 · NVIDIA 流程图</h2>
-          <div class="push-drawer-sub">操作：5步 ； 跨子站 2个 · 可选 4→5</div>
+          <div class="push-drawer-sub">操作：3步 ； 跨子站 2个</div>
         </div>
         <button type="button" class="push-drawer-close" data-drawer-close aria-label="关闭流程图">×</button>
       </div>
       <div class="push-drawer-body" id="push-drawer-nv-install-body"></div>
+    </div>
+  </aside>
+
+  <aside class="push-drawer" id="push-drawer-hs-container" aria-hidden="true" aria-labelledby="push-drawer-hs-container-title">
+    <div class="push-drawer-inner">
+      <div class="push-drawer-head">
+        <div>
+          <h2 id="push-drawer-hs-container-title">容器 / 镜像搭建 · 昇腾流程图</h2>
+          <div class="push-drawer-sub">操作：5步 ； 跨子站 1个</div>
+        </div>
+        <button type="button" class="push-drawer-close" data-drawer-close aria-label="关闭流程图">×</button>
+      </div>
+      <div class="push-drawer-body" id="push-drawer-hs-container-body"></div>
+    </div>
+  </aside>
+
+  <aside class="push-drawer" id="push-drawer-nv-container" aria-hidden="true" aria-labelledby="push-drawer-nv-container-title">
+    <div class="push-drawer-inner">
+      <div class="push-drawer-head">
+        <div>
+          <h2 id="push-drawer-nv-container-title">容器 / 镜像搭建 · NVIDIA 流程图</h2>
+          <div class="push-drawer-sub">操作：5步 ； 跨域 1个</div>
+        </div>
+        <button type="button" class="push-drawer-close" data-drawer-close aria-label="关闭流程图">×</button>
+      </div>
+      <div class="push-drawer-body" id="push-drawer-nv-container-body"></div>
+    </div>
+  </aside>
+
+  <aside class="push-drawer" id="push-drawer-hs-p2-custom-op" aria-hidden="true" aria-labelledby="push-drawer-hs-p2-custom-op-title">
+    <div class="push-drawer-inner">
+      <div class="push-drawer-head">
+        <div>
+          <h2 id="push-drawer-hs-p2-custom-op-title">自定义算子开发 · 昇腾流程图</h2>
+          <div class="push-drawer-sub">操作：3步 ； 跨域 1个</div>
+        </div>
+        <button type="button" class="push-drawer-close" data-drawer-close aria-label="关闭流程图">×</button>
+      </div>
+      <div class="push-drawer-body" id="push-drawer-hs-p2-custom-op-body"></div>
+    </div>
+  </aside>
+
+  <aside class="push-drawer" id="push-drawer-nv-p2-custom-op" aria-hidden="true" aria-labelledby="push-drawer-nv-p2-custom-op-title">
+    <div class="push-drawer-inner">
+      <div class="push-drawer-head">
+        <div>
+          <h2 id="push-drawer-nv-p2-custom-op-title">自定义算子开发 · NVIDIA 流程图</h2>
+          <div class="push-drawer-sub">操作：3步 ； 跨域 1个</div>
+        </div>
+        <button type="button" class="push-drawer-close" data-drawer-close aria-label="关闭流程图">×</button>
+      </div>
+      <div class="push-drawer-body" id="push-drawer-nv-p2-custom-op-body"></div>
+    </div>
+  </aside>
+
+  <aside class="push-drawer" id="push-drawer-hs-p2-precision" aria-hidden="true" aria-labelledby="push-drawer-hs-p2-precision-title">
+    <div class="push-drawer-inner">
+      <div class="push-drawer-head">
+        <div>
+          <h2 id="push-drawer-hs-p2-precision-title">算子精度排查 · 昇腾流程图</h2>
+          <div class="push-drawer-sub">操作：3步 ； 跨子站 1个</div>
+        </div>
+        <button type="button" class="push-drawer-close" data-drawer-close aria-label="关闭流程图">×</button>
+      </div>
+      <div class="push-drawer-body" id="push-drawer-hs-p2-precision-body"></div>
+    </div>
+  </aside>
+
+  <aside class="push-drawer" id="push-drawer-nv-p2-precision" aria-hidden="true" aria-labelledby="push-drawer-nv-p2-precision-title">
+    <div class="push-drawer-inner">
+      <div class="push-drawer-head">
+        <div>
+          <h2 id="push-drawer-nv-p2-precision-title">算子精度排查 · NVIDIA 流程图</h2>
+          <div class="push-drawer-sub">操作：3步 ； 跨子站 2个</div>
+        </div>
+        <button type="button" class="push-drawer-close" data-drawer-close aria-label="关闭流程图">×</button>
+      </div>
+      <div class="push-drawer-body" id="push-drawer-nv-p2-precision-body"></div>
+    </div>
+  </aside>
+
+  <aside class="push-drawer" id="push-drawer-hs-p2-tiling" aria-hidden="true" aria-labelledby="push-drawer-hs-p2-tiling-title">
+    <div class="push-drawer-inner">
+      <div class="push-drawer-head">
+        <div>
+          <h2 id="push-drawer-hs-p2-tiling-title">动态 shape / Tiling · 昇腾流程图</h2>
+          <div class="push-drawer-sub">操作：3步 ； 跨子站 2个</div>
+        </div>
+        <button type="button" class="push-drawer-close" data-drawer-close aria-label="关闭流程图">×</button>
+      </div>
+      <div class="push-drawer-body" id="push-drawer-hs-p2-tiling-body"></div>
+    </div>
+  </aside>
+
+  <aside class="push-drawer" id="push-drawer-nv-p2-tiling" aria-hidden="true" aria-labelledby="push-drawer-nv-p2-tiling-title">
+    <div class="push-drawer-inner">
+      <div class="push-drawer-head">
+        <div>
+          <h2 id="push-drawer-nv-p2-tiling-title">动态 shape / Tiling · NVIDIA 流程图</h2>
+          <div class="push-drawer-sub">操作：2步</div>
+        </div>
+        <button type="button" class="push-drawer-close" data-drawer-close aria-label="关闭流程图">×</button>
+      </div>
+      <div class="push-drawer-body" id="push-drawer-nv-p2-tiling-body"></div>
+    </div>
+  </aside>
+
+  <aside class="push-drawer" id="push-drawer-hs-p2-fusion" aria-hidden="true" aria-labelledby="push-drawer-hs-p2-fusion-title">
+    <div class="push-drawer-inner">
+      <div class="push-drawer-head">
+        <div>
+          <h2 id="push-drawer-hs-p2-fusion-title">算子融合 · 昇腾流程图</h2>
+          <div class="push-drawer-sub">操作：3步 ； 跨子站 2个</div>
+        </div>
+        <button type="button" class="push-drawer-close" data-drawer-close aria-label="关闭流程图">×</button>
+      </div>
+      <div class="push-drawer-body" id="push-drawer-hs-p2-fusion-body"></div>
+    </div>
+  </aside>
+
+  <aside class="push-drawer" id="push-drawer-nv-p2-fusion" aria-hidden="true" aria-labelledby="push-drawer-nv-p2-fusion-title">
+    <div class="push-drawer-inner">
+      <div class="push-drawer-head">
+        <div>
+          <h2 id="push-drawer-nv-p2-fusion-title">算子融合 · NVIDIA 流程图</h2>
+          <div class="push-drawer-sub">操作：2步 ； 路径 2</div>
+        </div>
+        <button type="button" class="push-drawer-close" data-drawer-close aria-label="关闭流程图">×</button>
+      </div>
+      <div class="push-drawer-body" id="push-drawer-nv-p2-fusion-body"></div>
+    </div>
+  </aside>
+
+  <aside class="push-drawer" id="push-drawer-hs-p2-register" aria-hidden="true" aria-labelledby="push-drawer-hs-p2-register-title">
+    <div class="push-drawer-inner">
+      <div class="push-drawer-head">
+        <div>
+          <h2 id="push-drawer-hs-p2-register-title">注册与框架集成 · 昇腾流程图</h2>
+          <div class="push-drawer-sub">操作：3步 ； 跨子站 1个</div>
+        </div>
+        <button type="button" class="push-drawer-close" data-drawer-close aria-label="关闭流程图">×</button>
+      </div>
+      <div class="push-drawer-body" id="push-drawer-hs-p2-register-body"></div>
+    </div>
+  </aside>
+
+  <aside class="push-drawer" id="push-drawer-nv-p2-register" aria-hidden="true" aria-labelledby="push-drawer-nv-p2-register-title">
+    <div class="push-drawer-inner">
+      <div class="push-drawer-head">
+        <div>
+          <h2 id="push-drawer-nv-p2-register-title">注册与框架集成 · NVIDIA 流程图</h2>
+          <div class="push-drawer-sub">操作：2步 ； 路径 2</div>
+        </div>
+        <button type="button" class="push-drawer-close" data-drawer-close aria-label="关闭流程图">×</button>
+      </div>
+      <div class="push-drawer-body" id="push-drawer-nv-p2-register-body"></div>
+    </div>
+  </aside>
+
+  <aside class="push-drawer" id="push-drawer-hs-p2-oplib" aria-hidden="true" aria-labelledby="push-drawer-hs-p2-oplib-title">
+    <div class="push-drawer-inner">
+      <div class="push-drawer-head">
+        <div>
+          <h2 id="push-drawer-hs-p2-oplib-title">算子库选型 · 昇腾流程图</h2>
+          <div class="push-drawer-sub">操作：3步 ； 跨子站 2个</div>
+        </div>
+        <button type="button" class="push-drawer-close" data-drawer-close aria-label="关闭流程图">×</button>
+      </div>
+      <div class="push-drawer-body" id="push-drawer-hs-p2-oplib-body"></div>
+    </div>
+  </aside>
+
+  <aside class="push-drawer" id="push-drawer-nv-p2-oplib" aria-hidden="true" aria-labelledby="push-drawer-nv-p2-oplib-title">
+    <div class="push-drawer-inner">
+      <div class="push-drawer-head">
+        <div>
+          <h2 id="push-drawer-nv-p2-oplib-title">算子库选型 · NVIDIA 流程图</h2>
+          <div class="push-drawer-sub">操作：2步 ； 路径 2</div>
+        </div>
+        <button type="button" class="push-drawer-close" data-drawer-close aria-label="关闭流程图">×</button>
+      </div>
+      <div class="push-drawer-body" id="push-drawer-nv-p2-oplib-body"></div>
     </div>
   </aside>
 
@@ -6325,18 +6982,39 @@
     document.querySelectorAll('.push-drawer-body .touch-card.is-flow-target').forEach(function (c) {
       c.classList.remove('is-flow-target');
     });
+    document.querySelectorAll('.push-drawer-body').forEach(function (body) {
+      delete body.dataset.activeFlowStep;
+      delete body.dataset.preserveScrollTop;
+    });
     document.querySelectorAll('.jn-drawer-open').forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
   }
   var DRAWER_FLOW_PAIRS = [
     { drawer: 'push-drawer-compat', source: 'compat-flow-source', body: 'push-drawer-compat-body' },
     { drawer: 'push-drawer-nv-compat', source: 'nv-compat-flow-source', body: 'push-drawer-nv-compat-body' },
     { drawer: 'push-drawer-hs-install', source: 'hs-install-flow-source', body: 'push-drawer-hs-install-body' },
-    { drawer: 'push-drawer-nv-install', source: 'nv-install-flow-source', body: 'push-drawer-nv-install-body' }
+    { drawer: 'push-drawer-nv-install', source: 'nv-install-flow-source', body: 'push-drawer-nv-install-body' },
+    { drawer: 'push-drawer-hs-container', source: 'hs-container-flow-source', body: 'push-drawer-hs-container-body' },
+    { drawer: 'push-drawer-nv-container', source: 'nv-container-flow-source', body: 'push-drawer-nv-container-body' },
+    { drawer: 'push-drawer-hs-p2-custom-op', source: 'hs-p2-custom-op-flow-source', body: 'push-drawer-hs-p2-custom-op-body' },
+    { drawer: 'push-drawer-nv-p2-custom-op', source: 'nv-p2-custom-op-flow-source', body: 'push-drawer-nv-p2-custom-op-body' },
+    { drawer: 'push-drawer-hs-p2-precision', source: 'hs-p2-precision-flow-source', body: 'push-drawer-hs-p2-precision-body' },
+    { drawer: 'push-drawer-nv-p2-precision', source: 'nv-p2-precision-flow-source', body: 'push-drawer-nv-p2-precision-body' },
+    { drawer: 'push-drawer-hs-p2-tiling', source: 'hs-p2-tiling-flow-source', body: 'push-drawer-hs-p2-tiling-body' },
+    { drawer: 'push-drawer-nv-p2-tiling', source: 'nv-p2-tiling-flow-source', body: 'push-drawer-nv-p2-tiling-body' },
+    { drawer: 'push-drawer-hs-p2-fusion', source: 'hs-p2-fusion-flow-source', body: 'push-drawer-hs-p2-fusion-body' },
+    { drawer: 'push-drawer-nv-p2-fusion', source: 'nv-p2-fusion-flow-source', body: 'push-drawer-nv-p2-fusion-body' },
+    { drawer: 'push-drawer-hs-p2-register', source: 'hs-p2-register-flow-source', body: 'push-drawer-hs-p2-register-body' },
+    { drawer: 'push-drawer-nv-p2-register', source: 'nv-p2-register-flow-source', body: 'push-drawer-nv-p2-register-body' },
+    { drawer: 'push-drawer-hs-p2-oplib', source: 'hs-p2-oplib-flow-source', body: 'push-drawer-hs-p2-oplib-body' },
+    { drawer: 'push-drawer-nv-p2-oplib', source: 'nv-p2-oplib-flow-source', body: 'push-drawer-nv-p2-oplib-body' }
   ];
   function syncDrawerFlowBody(bodyId, sourceId) {
     var source = document.getElementById(sourceId);
     var target = document.getElementById(bodyId);
-    if (source && target) target.innerHTML = source.innerHTML;
+    if (source && target) {
+      target.innerHTML = source.innerHTML;
+      target.querySelectorAll('[id]').forEach(function (el) { el.removeAttribute('id'); });
+    }
   }
   function postProcessCompatDrawer() {
     var compatBody = document.getElementById('push-drawer-compat-body');
@@ -6353,10 +7031,19 @@
     if (!body) return;
     var card = body.querySelector('.touch-card[data-flow-step="' + step + '"]');
     if (!card) return;
+    body.dataset.activeFlowStep = step;
     body.querySelectorAll('.touch-card.is-flow-target').forEach(function (c) { c.classList.remove('is-flow-target'); });
     card.classList.add('is-flow-target');
     var scrollTop = card.getBoundingClientRect().top - body.getBoundingClientRect().top + body.scrollTop - 8;
     body.scrollTo({ top: Math.max(0, scrollTop), behavior: 'smooth' });
+  }
+  function markDrawerFlowStep(body, step) {
+    if (!body || !step) return;
+    var card = body.querySelector('.touch-card[data-flow-step="' + step + '"]');
+    if (!card) return;
+    body.dataset.activeFlowStep = step;
+    body.querySelectorAll('.touch-card.is-flow-target').forEach(function (c) { c.classList.remove('is-flow-target'); });
+    card.classList.add('is-flow-target');
   }
   function openPushDrawer(drawerId, flowStep) {
     var row = document.getElementById('main-drawer-row');
@@ -6364,6 +7051,8 @@
     if (!row || !drawer) return;
     var active = document.querySelector('.push-drawer.is-active');
     if (active && active.id === drawerId) {
+      var samePair = DRAWER_FLOW_PAIRS.find(function (p) { return p.drawer === drawerId; });
+      if (samePair) syncDrawerFlowBody(samePair.body, samePair.source);
       if (flowStep) {
         requestAnimationFrame(function () {
           scrollToDrawerFlowStep(drawerId, flowStep);
@@ -6436,10 +7125,43 @@
         openPushDrawer(btn.getAttribute('data-drawer'), btn.getAttribute('data-flow-step'));
       });
     });
+    row.addEventListener('mousedown', function (e) {
+      var card = e.target.closest('.push-drawer-body a.touch-card[data-flow-step]');
+      if (!card) return;
+      var body = card.closest('.push-drawer-body');
+      if (body) body.dataset.preserveScrollTop = String(body.scrollTop);
+    });
+    row.addEventListener('click', function (e) {
+      var card = e.target.closest('.push-drawer-body a.touch-card[data-flow-step]');
+      if (!card) return;
+      var body = card.closest('.push-drawer-body');
+      if (!body) return;
+      markDrawerFlowStep(body, card.getAttribute('data-flow-step'));
+      var top = body.dataset.preserveScrollTop;
+      if (top != null) {
+        requestAnimationFrame(function () {
+          body.scrollTop = Number(top);
+        });
+      }
+    });
+    window.addEventListener('focus', function () {
+      var active = document.querySelector('.push-drawer.is-active');
+      if (!active) return;
+      var pair = DRAWER_FLOW_PAIRS.find(function (p) { return p.drawer === active.id; });
+      if (!pair) return;
+      var body = document.getElementById(pair.body);
+      if (!body || !body.dataset.activeFlowStep) return;
+      markDrawerFlowStep(body, body.dataset.activeFlowStep);
+      requestAnimationFrame(function () {
+        scrollToDrawerFlowStep(active.id, body.dataset.activeFlowStep);
+      });
+    });
     window.openCompatFlowDrawer = function () { openPushDrawer('push-drawer-compat'); };
     window.openNvCompatFlowDrawer = function () { openPushDrawer('push-drawer-nv-compat'); };
     window.openHsInstallFlowDrawer = function () { openPushDrawer('push-drawer-hs-install'); };
     window.openNvInstallFlowDrawer = function () { openPushDrawer('push-drawer-nv-install'); };
+    window.openHsContainerFlowDrawer = function () { openPushDrawer('push-drawer-hs-container'); };
+    window.openNvContainerFlowDrawer = function () { openPushDrawer('push-drawer-nv-container'); };
   }
   initPushDrawers();
 
@@ -6633,6 +7355,10 @@
   }
   annotatePersonaTables();
 })();
+</script>
+</body>
+</html>
+
 </script>
 </body>
 </html>
